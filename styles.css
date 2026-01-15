@@ -3,7 +3,7 @@
 body{
     padding: 0;
     margin: 0;
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", Times, serif;
 }
 
 /* ---------------------- */
@@ -55,6 +55,7 @@ body{
 
 #navBarPrincipal h2{
     animation: deslizarCima 1s ease-out forwards;
+    font-size: larger;
 }
 
 #navBarPrincipal img{
@@ -66,9 +67,39 @@ body{
     animation: deslizarDireita 1s ease-out forwards;
 }
 
+#sectionPrincipal{
+    margin-top: 10rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#principalTexto{
+    display: flex;
+}
+
+#principalTexto img{
+    /* preciso rever como deixar ela do lado do titulo*/
+
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+
+
+#divBarraPesquisa input{
+    border: solid gray 2px;
+    border-radius: 0.3rem;
+
+    width: 43vw;
+    height: 1.5rem;
+}
+
 /* ---------------------- */
 
-@media (min-width: 900px){
+@media (min-width: 720px){
     body{
         display: none;
     }
