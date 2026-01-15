@@ -1,0 +1,75 @@
+/* Regras Globais */
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* ---------------------- */
+
+/* ANIMAÇÕES*/
+
+@keyframes deslizarEsquerda{
+    from {
+        opacity: 0.5;
+        transform: translateX(-50px);
+    } 
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes deslizarDireita{
+    from {
+        opacity: 0.5;
+        transform: translateX(50px);
+    } 
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes deslizarCima{
+    from {
+        opacity: 0.5;
+        transform: translateY(-50px);
+    } 
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+/* ---------------------- */
+
+/* ESTILIZAÇÕES */
+#navBarPrincipal{
+    background-color: rgb(20, 65, 180);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem 3rem;
+}
+
+#navBarPrincipal h2{
+    animation: deslizarCima 1s ease-out forwards;
+}
+
+#navBarPrincipal img{
+    height: 4rem;
+    animation: deslizarEsquerda 1s ease-out forwards;
+}
+
+#menuHamburger{
+    animation: deslizarDireita 1s ease-out forwards;
+}
+
+/* ---------------------- */
+
+@media (min-width: 900px){
+    body{
+        display: none;
+    }
+}
