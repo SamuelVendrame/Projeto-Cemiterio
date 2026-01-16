@@ -44,13 +44,18 @@ body{
 }
 /* ---------------------- */
 
+.corBase{
+    background-image: linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen);
+}
+
 /* ESTILIZAÇÕES */
 #navBarPrincipal{
-    background-color: rgb(20, 65, 180);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     padding: 0.3rem 3rem;
+    color: white;
 }
 
 #navBarPrincipal h2{
@@ -65,6 +70,14 @@ body{
 
 #menuHamburger{
     animation: deslizarDireita 1s ease-out forwards;
+    
+}
+
+#menuHamburger img{
+    width: 2rem;
+    height: 2rem;
+
+    margin-top: 3px;
 }
 
 #sectionPrincipal{
@@ -134,6 +147,29 @@ body{
 
     width: 43vw;
     height: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
+/* FOOTER */
+
+footer{
+    display: none; /*adicionar FLEX quando terminar o restante da pagina, e a imagem do linkedin tb.*/
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 10vh;
+
+    gap: 0.6rem;
+
+    margin-top: auto;
 }
 
 /* ---------------------- */
