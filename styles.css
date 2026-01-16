@@ -76,18 +76,57 @@ body{
     align-items: center;
 }
 
+#sectionPrincipal h1{
+    margin-bottom: 0.8rem;
+}
+
 #principalTexto{
     display: flex;
+    gap: 0.7rem;
 }
 
-#principalTexto img{
-    /* preciso rever como deixar ela do lado do titulo*/
+#imagemInterrogacao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+#imagemInterrogacao img{
+    /* preciso rever como deixar ela do lado do titulo*/
     height: 1.5rem;
     width: 1.5rem;
+    margin-bottom: 1rem;
 }
 
+#imagemInterrogacao img:hover{
+    cursor: pointer;
+}
 
+/* DIV invisível na aba de dúvidas (?) */
+
+#invisivelDuvidaDiv{
+    background-color: white;
+    border: 2px solid gray;
+    border-radius: 14px;
+
+    position: fixed;
+
+    width: 20rem;
+    height: 15rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.escondido{
+    display: none !important;
+}
+
+/* --------------------- */
 
 #divBarraPesquisa input{
     border: solid gray 2px;
