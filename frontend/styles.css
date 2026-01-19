@@ -4,13 +4,20 @@ body{
     padding: 0;
     margin: 0;
     font-family: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", Times, serif;
+    overflow-x: hidden; /*Corrobora com o problema da horizontal sliding bar que aparecia por causa das animações que mexiam com pixeis e aumentavam o tamanho da tela por um breve momento ao reiniciar a pagina."*/
+}
+
+*{
+    box-sizing: border-box; /*Pra evitar a barra de rolagem criada pelo padding em alguns elementos*/
+    margin: 0;
+    padding: 0;
 }
 
 /* ---------------------- */
 
 /* OVERLAY - Para criar o estilo opaco ao abrir uma div popUp.*/
 
-#overlay{
+.overlay{
     position: fixed;
     top: 0; /* entender melhor o top e left. */
     left: 0;
@@ -57,6 +64,20 @@ body{
         transform: translateY(0px);
     }
 }
+
+@keyframes deslizarBaixo{
+    from{
+        opacity: 0.5;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+
 /* ---------------------- */
 
 .corBase{
@@ -75,7 +96,8 @@ body{
 
 #navBarPrincipal h2{
     animation: deslizarCima 1s ease-out forwards;
-    font-size: larger;
+    padding: 0 1rem;
+    font-size: 1rem;
 }
 
 #navBarPrincipal img{
@@ -85,7 +107,7 @@ body{
 
 #menuHamburger{
     animation: deslizarDireita 1s ease-out forwards;
-    
+    /*Considerar arrumar o fato de que ao clicar no menu hamburguer com o overlay (opacidade) aberto, ele nao fecha a navbar lateral.*/
 }
 
 #menuHamburger:hover{
@@ -104,7 +126,7 @@ body{
     background-image: linear-gradient(to bottom, rgb(76, 128, 18), rgb(81, 133, 13), rgb(173, 132, 17));
 
     height: 100vh;
-    width: 35%;
+    width: 55%;
 
     z-index: 1000;
     top: 0;
@@ -113,6 +135,8 @@ body{
 
     display: flex;
     justify-content: center;
+
+    animation: deslizarEsquerda 0.5s ease forwards;
 }
 
 #navbarEscondidaLinks{
@@ -156,10 +180,13 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    animation: deslizarBaixo 1s ease-out forwards;
 }
 
 #sectionPrincipal h1{
     margin-bottom: 0.8rem;
+    font-size: x-large;
 }
 
 #principalTexto{
@@ -193,21 +220,39 @@ body{
     position: fixed;
 
     width: 20rem;
-    min-height: 15rem;
+    min-height: 17rem;
     max-height: auto;
+    gap: 1rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
-    z-index: 1000;
+    z-index: 9999;
+
+    animation: deslizarCima 0.7s ease-in-out forwards;
 }
 
-#invisivelDuvidaDiv p{
+#invisivelDuvidaDiv ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 0.5rem;
+}
+
+#invisivelDuvidaDiv li{
     overflow-wrap: break-word; /* entender isso melhor, mas serve ao ajudar no overflow de caracteres nao fittables */
     word-wrap: break-word;
     max-width: 50%;
+    list-style: none;
+}
+
+#invisivelDuvidaDiv button{
+    border-radius: 0.5rem;
+    padding: 0.5rem;
 }
 
 .escondido{
@@ -237,6 +282,7 @@ body{
 footer{
     display: none; /*adicionar FLEX quando terminar o restante da pagina, e a imagem do linkedin tb.*/
     
+
     align-items: center;
     justify-content: center;
 

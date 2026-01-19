@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <!--!! Considerar o uso de max-width nas propriedades CSS quando o projeto estiver funcional, para priorizar responsividade-->
     <nav id="navBarPrincipal" class="corBase">
         <div id="logoSaoManoel">
             <img src="logoRodape.png">
@@ -33,13 +33,19 @@
 
             <div id="imagemInterrogacao">
                 <img id="interrogacao" src="interrogacao.png">
+                    <div class="overlay escondido">
                     <div id="invisivelDuvidaDiv" class="escondido">
                         <h3>Como utilizar a barra de pesquisa?</h3>
-                        <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-                        <button id="fechar">
+                            <ul>
+                                <li>Digite o nome que deseja;</li>
+                                <li>Em seguida, clique no item desejado;</li>
+                                <li>Caso não apareça, a busca não consta no sistema.</li>
+                            </ul>
+                       <button id="fechar">
                             FECHAR
                         </button>
                     </div>
+                </div>
             </div>
 
         <div id="divBarraPesquisa">
@@ -58,7 +64,7 @@
         </div>
     </footer>
 
-    <div id="overlay" class="escondido"></div>
+    <div class="overlay escondido"></div>
 
     <script src="index.js"></script>
 </body>

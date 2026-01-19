@@ -1,13 +1,32 @@
-document.getElementById("interrogacao").addEventListener("click", function(){
-
+/* document.getElementById("interrogacao").addEventListener("click", function(){
     invisivelDuvidaDiv.classList.remove("escondido")
+
+    const overlay = document.getElementById("overlay");
+    overlay.classList.remove("escondido")
 
     const botaoFechar = document.getElementById("fechar")
         botaoFechar.addEventListener("click", () => {
             invisivelDuvidaDiv.classList.add("escondido")
+            overlay.classList.add("escondido")
         })
         // Considerando criação de um click fora da div que feche a div PopUp também, mas não consegui no momento.
-}); // considerar reformulacao pois gera muitos listeners.
+}); // considerar reformulacao pois gera muitos listeners. */
+
+/* (function (){ Refazer.
+    const interrogacao = document.getElementById("interrogacao");
+    invisivelDuvidaDiv = document.getElementById("invisivelDuvidaDiv")
+    const overlay = document.getElementById("overlay");
+        const botaoFechar = document.getElementById("botaoFechar")
+
+    interrogacao.addEventListener("click", function(){
+        invisivelDuvidaDiv.classList.toggle("escondido")
+        overlay.classList.toggle("escondido")
+    })
+
+    const botaoFechar = () => {
+        overlay.classl
+    }
+})() */ 
 
 (function(){
     const botaoHamburger = document.getElementById("menuHamburger")
