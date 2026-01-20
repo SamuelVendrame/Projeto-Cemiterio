@@ -94,7 +94,7 @@ body{
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    padding: 0.3rem 3rem;
+    padding: 0.3rem 2rem;
     color: white;
 }
 
@@ -266,15 +266,36 @@ body{
 
 /* --------------------- */
 
-#divBarraPesquisa input{
-    border: solid gray 2px;
-    border-radius: 0.3rem;
-
-    width: 43vw;
-    height: 1.5rem;
+#divBarraPesquisa{
+    justify-content: center;
+    align-items: center;
 }
 
+#divBarraPesquisa input{
+    border: solid gray 2px;
+    border-radius: 0.15rem;
+    background-color: rgb(239, 237, 237);
+    
 
+    width: 70vw;
+    height: 2.5rem;
+
+    font-size: 1.1rem;
+
+    padding-left: 0.5rem;
+
+}
+
+#caixaDeResultados ul{
+    border-top: 1px solid black;
+    padding: 15px 10px;
+}
+
+#caixaDeResultados ul li{
+    list-style: none;
+    border-radius: 3px;
+    padding: 15px 10px;
+}
 
 
 
