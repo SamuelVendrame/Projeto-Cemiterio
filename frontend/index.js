@@ -12,26 +12,36 @@
         // Considerando criação de um click fora da div que feche a div PopUp também, mas não consegui no momento.
 }); // considerar reformulacao pois gera muitos listeners. */
 
-/* (function (){ Refazer.
-    const interrogacao = document.getElementById("interrogacao");
-    invisivelDuvidaDiv = document.getElementById("invisivelDuvidaDiv")
-    const overlay = document.getElementById("overlay");
-        const botaoFechar = document.getElementById("botaoFechar")
+(function(){
+    const invisivelDuvidaDiv = document.getElementById("invisivelDuvidaDiv")
+    const overlay = document.querySelector(".overlay")
+    const botaoFechar = document.getElementById("fechar")
+    const interrogacaoClicar = document.getElementById("interrogacao")
 
-    interrogacao.addEventListener("click", function(){
+    interrogacaoClicar.addEventListener("click", function(){
+        invisivelDuvidaDiv.classList.remove("escondido")
+        overlay.classList.remove("escondido")
+
+    });
+
+    botaoFechar.addEventListener("click", function(){
         invisivelDuvidaDiv.classList.toggle("escondido")
         overlay.classList.toggle("escondido")
     })
 
-    const botaoFechar = () => {
-        overlay.classl
+    const fecharOverlay = () => {
+            overlay.classList.add("escondido")
+            invisivelDuvidaDiv.classList.add("escondido")
     }
-})() */ 
+
+    overlay.addEventListener("click", fecharOverlay)
+
+})();
 
 (function(){
     const botaoHamburger = document.getElementById("menuHamburger")
     const navBar = document.getElementById("configNavBar")
-    const overlay = document.getElementById("overlay");
+    const overlay = document.querySelector(".overlay");
 
 
     botaoHamburger.addEventListener("click", function(){

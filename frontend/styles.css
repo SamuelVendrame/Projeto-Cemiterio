@@ -26,6 +26,10 @@ body{
     background-color: rgba(0, 0, 0, 0.5); 
     z-index: 999;
     cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ---------------------- */
@@ -231,8 +235,9 @@ body{
     flex-direction: column;
     z-index: 9999;
 
-    animation: deslizarCima 0.7s ease-in-out forwards;
+    animation: deslizarCima 0.5s ease-in-out forwards;
 }
+
 
 #invisivelDuvidaDiv ul{
     display: flex;
