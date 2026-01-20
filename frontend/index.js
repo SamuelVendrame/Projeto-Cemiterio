@@ -47,8 +47,12 @@
 }) (); // IIFE, eh bom entender e reutilizar - mas nao a carregar para o react por causa das presencas dos modulos.
 
 const nomes = [
-    'Pedro',
-    "Ana"
+    'Pedroa Santana',
+    "Pedroa Joelho",
+    "Pedro Cabrunco",
+    'Ana',
+    'Santo',
+    "Barbara"
 ];
 
 (function (){
@@ -62,17 +66,24 @@ const nomes = [
         if(input.length){
             resultado = nomes.filter((nomes) => {
                 return nomes.toLowerCase().includes(input.toLowerCase())
+                
             })
                 console.log(resultado)
         }
         mostrarResultados(resultado)
+
+        if(!resultado.length){
+            caixaDeResultados.innerHTML = ' ';
+        }
     }
 })();
 
 function mostrarResultados(resultado){
-    const conteudo = resultado.map((list) => {
+    const resultadoSlice5 = resultado.slice(0, 5)
+
+    const conteudo = resultadoSlice5.map((list) => {
         return "<li>" + list + "</li>"
-    })
+    }).join("")
     caixaDeResultados.innerHTML = "<ul>" + conteudo + "</ul>"
 }
 
