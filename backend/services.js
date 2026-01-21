@@ -1,0 +1,1 @@
+//Responsabilidade: regra de negócio

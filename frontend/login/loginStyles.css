@@ -1,0 +1,34 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.corBase{
+    background-image: linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen);
+}
+
+#loginSection{
+    margin:  auto;
+}
+
+#divLogin{
+    background-color: rgb(216, 216, 216);
+    border: 0.45rem solid;
+    border-image: linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen) 1; 
+    border-radius: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    height: 55vh;
+    width: 55vw;
+}
+
+#divLogin h1{
+    margin-bottom: 1rem;
+}

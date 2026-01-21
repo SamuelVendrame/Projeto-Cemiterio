@@ -1,0 +1,1 @@
+// Para configurar o Express. Middlewares e logger de middlewares, autenticação e configs globais.
