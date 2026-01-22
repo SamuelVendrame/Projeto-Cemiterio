@@ -157,6 +157,8 @@ body{
     gap: 1rem;
 
     width: 100%;
+
+
 }
 
 #navbarEscondidaLinks hr{
@@ -166,7 +168,20 @@ body{
 #navbarEscondidaLinks li{
     font-size: x-large;
     color: white;
-    padding: 0 90%;
+}
+
+#navbarEscondidaLinks li a{
+    display: block;
+    padding: 1.5rem 5rem;
+}
+
+#navbarEscondidaLinks li a:hover{
+    background: linear-gradient(to bottom, rgb(3, 167, 3), rgb(19, 107, 19));
+}
+
+
+#navbarEscondidaLinks li a:active{
+    background-color: darkgreen;
 }
 
 #navbarEscondidaLinks a,
@@ -329,6 +344,7 @@ footer{
 
     align-items: center;
     justify-content: center;
+    text-align: center;
 
     width: 100vw;
     height: 10vh;
@@ -343,6 +359,7 @@ footer{
 #creditosSite{
     display: flex;
     justify-content: center;
+
 
     margin-top: 0.5rem;
     gap: 0.4rem;

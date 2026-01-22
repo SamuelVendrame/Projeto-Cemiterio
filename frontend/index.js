@@ -55,6 +55,16 @@ const nomes = [
     "Barbara"
 ];
 
+
+const fetchDados = fetch("/rotaDados")
+.then(res => {
+    return res.json()
+})
+
+.then(dados => {
+    console.log(dados[1])
+});
+
 (function (){
     const barraInput = document.getElementById("barraPesquisa");
     const barraResultados = document.getElementById("caixaDeResultados");
@@ -68,7 +78,6 @@ const nomes = [
                 return nomes.toLowerCase().includes(input.toLowerCase())
                 
             })
-                console.log(resultado)
         }
         mostrarResultados(resultado)
 

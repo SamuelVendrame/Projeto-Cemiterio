@@ -3,6 +3,19 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    font-family: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", Times, serif;
+
+}
+
+@keyframes deslizarCima{
+    from{
+        opacity: 0.5;
+        transform: translateY(-6rem);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .corBase{
@@ -14,9 +27,16 @@ body{
 }
 
 #divLogin{
-    background-color: rgb(216, 216, 216);
-    border: 0.45rem solid;
-    border-image: linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen) 1; 
+    background:
+    linear-gradient(rgb(216, 216, 216), rgb(216, 216, 216)) padding-box,
+    linear-gradient(
+        to bottom,
+        rgb(190, 149, 13),
+        rgb(76, 128, 18),
+        darkgreen
+    ) border-box;
+
+    border: 0.45rem solid transparent;
     border-radius: 1rem;
 
     display: flex;
@@ -27,8 +47,18 @@ body{
 
     height: 55vh;
     width: 55vw;
+
+    animation: deslizarCima 0.5s ease-out forwards;
 }
 
 #divLogin h1{
     margin-bottom: 1rem;
+}
+
+#loginInputs{
+    display: flex;
+    flex-direction: column;
+
+    padding: 3rem;
+    gap: 1.6rem;
 }
