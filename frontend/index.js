@@ -44,7 +44,7 @@
     }
 
     overlay.addEventListener("click", fecharMenu)
-}) (); // IIFE, eh bom entender e reutilizar - mas nao a carregar para o react por causa das presencas dos modulos.
+}) (); // IIFE, eh bom entender e reutilizar - mas nao a carregar para o REACT por causa das presencas dos modulos.
 
 const nomes = [
     'Pedroa Santana',
