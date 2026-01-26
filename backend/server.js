@@ -1,22 +1,16 @@
 const express = require("express")
 const path = require('path'); 
 const fs = require('fs');
+const router = express.Router();
 
 const app = express();
+
+app.use(express.json())
 
 const PORT = 3000;
 
 app.use(express.static(path.join(__dirname, "..", 'frontend')));
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname,"..", "frontend", "index.html"))
-})
-
-app.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname, "..","frontend", "login", "login.html"))
-})
-
-
 app.listen(PORT, (req, res) => {
-    console.log("Servidor rodando na porta 3000.")
+    console.log("Servidor rodando na porta 3000")
 })

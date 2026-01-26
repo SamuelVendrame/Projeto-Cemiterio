@@ -86,3 +86,8 @@ function mostrarResultados(resultado){
     caixaDeResultados.innerHTML = "<ul>" + conteudo + "</ul>"
 }
 
+/* app.post("/hospital/registrarConsulta/:idMedico, (req, res) => {
+    const doutorestranho = req.params.idMedico
+    const filtroConsulta = req.query.nivelUrgencia
+    const {nome_paciente, sintomas, convenio } = req.body
+})
