@@ -14,5 +14,5 @@ const rotaDados = require("./routes/dataRoutes.js")
 app.use(rotaDados)
 
 app.listen(PORT, (req, res) => {
-    console.log("Servidor rodando na porta 3000.")
+    console.log("Servidor rodando na porta 3000")
 })

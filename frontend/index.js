@@ -44,7 +44,7 @@
     }
 
     overlay.addEventListener("click", fecharMenu)
-}) (); // IIFE, eh bom entender e reutilizar - mas nao a carregar para o react por causa das presencas dos modulos.
+}) (); // IIFE, eh bom entender e reutilizar - mas nao a carregar para o REACT por causa das presencas dos modulos.
 
 const nomes = [
     'Pedroa Santana',
@@ -86,3 +86,8 @@ function mostrarResultados(resultado){
     caixaDeResultados.innerHTML = "<ul>" + conteudo + "</ul>"
 }
 
+/* app.post("/hospital/registrarConsulta/:idMedico, (req, res) => {
+    const doutorestranho = req.params.idMedico
+    const filtroConsulta = req.query.nivelUrgencia
+    const {nome_paciente, sintomas, convenio } = req.body
+})
