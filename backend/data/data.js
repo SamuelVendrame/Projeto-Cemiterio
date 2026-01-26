@@ -44,4 +44,4 @@ const registros = [
 ];
 
 
-module.exports = { registros };
+module.exports =  registros ;
