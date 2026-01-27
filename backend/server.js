@@ -10,9 +10,13 @@ const PORT = 3000;
 
 app.use(express.static(path.join(__dirname, "..", 'frontend')));
 
+app.get("/", (req, res) => { 
+    res.sendFile(path.join(frontendPath, "index.html"));
+});
+
 const rotaDados = require("./routes/dataRoutes.js")
 app.use(rotaDados)
 
-app.listen(PORT, (req, res) => {
+app.listen(PORT, () => {
     console.log("Servidor rodando na porta 3000")
 })
