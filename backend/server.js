@@ -10,8 +10,8 @@ const PORT = 3000;
 
 app.use(express.static(path.join(__dirname, "..", 'frontend')));
 
-app.get("/", (req, res) => { 
-    res.sendFile(path.join(frontendPath, "index.html"));
+app.get("/admin", (req, res) => { 
+    res.sendFile(path.join(__dirname, "..", "frontend", "admin", "admin.html"));
 });
 
 const rotaDados = require("./routes/dataRoutes.js")
