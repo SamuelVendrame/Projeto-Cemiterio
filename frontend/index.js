@@ -109,5 +109,6 @@ app.get("/listar", (req, res) =>{
     app.get("/buscarUser:id", (req, res) => {
         const id = body.params.id
         const userBuscado = users.find(users => users.id === id)
+        res.send(userBuscado)
         })
 */

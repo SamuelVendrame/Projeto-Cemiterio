@@ -14,8 +14,8 @@ app.get("/admin", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "frontend", "admin", "admin.html"));
 });
 
-const rotaDados = require("./routes/dataRoutes.js")
-app.use(rotaDados)
+const rotaDeDados = require("./routes/dataRoutes")
+app.use("/", rotaDeDados)
 
 app.listen(PORT, () => {
     console.log("Servidor rodando na porta 3000")

@@ -242,9 +242,13 @@ footer{
 
 #fechar{
     border: 2px black solid;
+    border-radius: 3px;
+
     position: absolute;
     top: 1rem;
     right: 1.5rem;
+
+    padding: 0.15rem;
 }
 
 #fechar:hover{
