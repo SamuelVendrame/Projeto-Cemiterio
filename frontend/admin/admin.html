@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="admin.css">
+    <link rel="icon" type="icon" href="logoRodape.png">
     <title>Pesquisa Cemitério - ADMIN</title>
 </head>
 <body>
@@ -24,19 +25,15 @@
             <div id="verificarCadastros">
                 <input id="pesquisarRegistros" placeholder="Procure um registro...">
                     <ul id="listaRegistros">
-                        <li>XXXX</li>
-                        <li>XXXX</li>
-                        <li>XXXX</li>
-                        <li>XXXX</li>
-                        <li>XXXX</li>
-                        <li>XXXX</li>
-                        <li>XXXX</li>
-                        <li>XXXX</li>
-                        <li>XXXX</li>
+                        
                     </ul>
             </div>
     </section>
     <!--Considerar adição de método de pesquisa por páginas, não tudo num scroll com uma barra de pesquisa só. (pag 1, 2, 3...)-->
+
+    <div id="divAdicionarRegistro">
+        <button id="registrar">ADICIONAR REGISTRO</button>
+    </div>
 
     <footer class="corBase">
         <div id="mensagemFooter">
@@ -50,9 +47,43 @@
         </div>
     </footer>
 
-    <div id="divAdicionarRegistro">
-        <button id="registrar">ADICIONAR REGISTRO</button>
+   <div class="overlay escondido">
+        <div id="criarRegistro" class="escondido">
+            <div id="fechar">x</div>
+            <form id="registroInputs" action="/registro" method="POST">
+                <label>
+                    Nome:
+                    <input type="text" name="nome" required />
+                </label>
+
+                <label>
+                    Data de nascimento:
+                    <input type="date" name="dataNascimento" required />
+                </label>
+
+                <label>
+                    Data de falência:
+                    <input type="date" name="dataFalencia" required />
+                </label>
+
+                <label>
+                    Há outra pessoa enterrada junto?
+                    <input type="checkbox" id="temOutraPessoa" />
+                </label>
+
+                <div id="outraPessoaBox" style="display: none;">
+                    <label>
+                    Nome da outra pessoa:
+                    <input type="text" name="nomeOutraPessoa" />
+                    </label>
+                </div>
+
+                <button id="registrarDados" type="submit">Registrar</button>
+            </form>
+        </div>
     </div>
+
+    <script src="admin.js" defer></script>
     
 </body>
 </html>

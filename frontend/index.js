@@ -52,7 +52,8 @@ const nomes = [
     "Pedro Cabrunco",
     'Ana',
     'Santo',
-    "Barbara"
+    "Barbara",
+    "João"
 ];
 
 (function (){
@@ -86,8 +87,27 @@ function mostrarResultados(resultado){
     caixaDeResultados.innerHTML = "<ul>" + conteudo + "</ul>"
 }
 
-/* app.post("/hospital/registrarConsulta/:idMedico, (req, res) => {
-    const doutorestranho = req.params.idMedico
-    const filtroConsulta = req.query.nivelUrgencia
-    const {nome_paciente, sintomas, convenio } = req.body
-})
+/*E se eu refatorar esse código, fazendo com que o display de resultados encontrados na busca possa ser mais ilimitado, mas definindo um padrão de height máximo para a div, e colocando um overflow-y pra gerar uma scrollbar*/
+
+/* 
+// pasta userRoutes
+
+app.get("/listar", (req, res) =>{
+    const listarUsers = () => {
+        users.forEach = console.log(users)
+        }
+    })
+
+    app.post("/criarUser", (req, res) => {
+        const userNovo{
+        userNovo.nome = req.body.nome
+        userNovo.id = req.body.id
+        }
+        res.send(userNovo)
+        })
+
+    app.get("/buscarUser:id", (req, res) => {
+        const id = body.params.id
+        const userBuscado = users.find(users => users.id === id)
+        })
+*/
