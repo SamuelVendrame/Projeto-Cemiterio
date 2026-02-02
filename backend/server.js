@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const app = express();
 
+app.use(express.json())
 app.use(cors());
 
 const PORT = 3000;
@@ -14,7 +15,7 @@ app.get("/admin", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "frontend", "admin", "admin.html"));
 });
 
-const rotaRegistros = require("./routes/registros.js")
+const rotaRegistros = require("./routes/registroRoutes.js")
 app.use("/", rotaRegistros)
 
 const rotaDeDados = require("./routes/dataRoutes")

@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router()
 
-const registros = require("./data/registros.js")
+const registros = require("../data/data.js")
 
 router.post("/registrar", (req, res) =>{
+    console.log(req.body)
 
     const {
         nome,
@@ -35,6 +36,10 @@ router.post("/registrar", (req, res) =>{
 
     registros.push(novoRegistro)
 
+    return res.status(201).json({
+        mensagem: "Registro criado com sucesso",
+        registro: novoRegistro
+    })
 })
 
 module.exports = router;
