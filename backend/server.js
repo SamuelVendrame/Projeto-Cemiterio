@@ -14,6 +14,9 @@ app.get("/admin", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "frontend", "admin", "admin.html"));
 });
 
+const rotaRegistros = require("./routes/registros.js")
+app.use("/", rotaRegistros)
+
 const rotaDeDados = require("./routes/dataRoutes")
 app.use("/", rotaDeDados)
 
