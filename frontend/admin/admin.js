@@ -1,5 +1,4 @@
 
-
 (function(){
     const criarRegistro = document.getElementById("criarRegistro");
     const overlay = document.querySelector(".overlay")
@@ -17,10 +16,6 @@
             }
     }
 
-    const botaoEnviar = document.getElementById("registrarDados").addEventListener("click", function(){
-        overlay.classList.add("escondido")
-        criarRegistro.classList.add("escondido")
-    })
 
     overlay.addEventListener("click", fechar)
 
@@ -31,6 +26,9 @@
 
     formRegistro.addEventListener("submit", async function(event){
         event.preventDefault();
+        overlay.classList.add("escondido")
+        criarRegistro.classList.add("escondido")
+        
         const nome = formRegistro.elements.nome.value;
         const dataNascimento = formRegistro.elements.dataNascimento.value;
         const dataFalencia = formRegistro.elements.dataFalencia.value;
@@ -41,6 +39,7 @@
         }
 
         try{
+
         const resposta = await fetch("/registrar", {
             method: "POST",
             headers: {
@@ -55,14 +54,13 @@
         })
         const dados = await resposta.json();
             if(!resposta.ok){
-                console.log("Um erro ocorreu.")
+                console.log("Um erro ocorreu AQUI.")
                 return
             }
 
         } catch(error){
-            console.log("Um erro ocorreu.")
+            console.log("Um erro ocorreu.", error)
         }
-
     })
    
 })();
