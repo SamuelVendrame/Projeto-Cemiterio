@@ -1,17 +1,9 @@
-(function(){
 
-  const botaoRegistrar = document.getElementById("registrar").addEventListener("click", async function(){
-        const resposta = await fetch("http://localhost:3000/buscarDadosDoPrimeiroUsuario")
-        const dados = await resposta.json()
-
-        console.log(dados)
-  })
-
-})();
 
 (function(){
     const criarRegistro = document.getElementById("criarRegistro");
     const overlay = document.querySelector(".overlay")
+    const formRegistro = document.getElementById("registroInputs")
     
       const botaoRegistrar = document.getElementById("registrar").addEventListener("click", function(){
         criarRegistro.classList.remove("escondido")
@@ -35,6 +27,42 @@
     const botaoFechar = document.getElementById("fechar").addEventListener("click", function(){
         overlay.classList.add("escondido")
         criarRegistro.classList.add("escondido")
+    })
+
+    formRegistro.addEventListener("submit", async function(event){
+        event.preventDefault();
+        const nome = formRegistro.elements.nome.value;
+        const dataNascimento = formRegistro.elements.dataNascimento.value;
+        const dataFalencia = formRegistro.elements.dataFalencia.value;
+        let nomeOutraPessoa = formRegistro.elements.nomeOutraPessoa.value || null;
+        
+        if(nomeOutraPessoa === ""){
+            nomeOutraPessoa = null
+        }
+
+        try{
+        const resposta = await fetch("/registrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nome,
+                dataNascimento,
+                dataFalencia,
+                nomeOutraPessoa
+            })
+        })
+        const dados = await resposta.json();
+            if(!resposta.ok){
+                console.log("Um erro ocorreu.")
+                return
+            }
+
+        } catch(error){
+            console.log("Um erro ocorreu.")
+        }
+
     })
    
 })();
