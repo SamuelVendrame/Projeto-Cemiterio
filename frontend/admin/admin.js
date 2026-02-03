@@ -1,5 +1,5 @@
 
-(function(){
+(function funcaoLidarFormulario(){
     const criarRegistro = document.getElementById("criarRegistro");
     const overlay = document.querySelector(".overlay")
     const formRegistro = document.getElementById("registroInputs")
@@ -28,7 +28,7 @@
         event.preventDefault();
         overlay.classList.add("escondido")
         criarRegistro.classList.add("escondido")
-        
+
         const nome = formRegistro.elements.nome.value;
         const dataNascimento = formRegistro.elements.dataNascimento.value;
         const dataFalencia = formRegistro.elements.dataFalencia.value;
@@ -52,11 +52,27 @@
                 nomeOutraPessoa
             })
         })
-        const dados = await resposta.json();
-            if(!resposta.ok){
-                console.log("Um erro ocorreu AQUI.")
-                return
-            }
+            const dados = await resposta.json();
+                if(!resposta.ok){
+                    console.log("Um erro ocorreu AQUI.")
+                    return
+                }
+
+        const modalInfosInseridas = document.getElementById("modalMostrarInput")
+        const modalWrapper = document.getElementById("modalWrapper")
+
+            overlay.classList.remove("escondido")
+            modalInfosInseridas.classList.remove("escondido")
+
+            overlay.addEventListener("click", function(){
+                overlay.classList.add("escondido")
+                modalInfosInseridas.classList.add("escondido")
+            })
+            
+            const fecharModal = document.getElementById("fecharModal").addEventListener("click", function(){
+                overlay.classList.add("escondido")
+                modalInfosInseridas.classList.add("escondido")
+            })
 
         } catch(error){
             console.log("Um erro ocorreu.", error)
@@ -65,13 +81,49 @@
    
 })();
 
-(function(){
+(function verificarDuploEnterro(){
     const checkbox = document.getElementById("temOutraPessoa");
     const box = document.getElementById("outraPessoaBox");
 
         checkbox.addEventListener("change", () => {
         box.style.display = checkbox.checked ? "block" : "none";
     });
+
+})();
+
+
+(function displayerDeDadosRegistrados(){
+
+        /*(function (){
+            const barraInput = document.getElementById("barraPesquisa");
+            const barraResultados = document.getElementById("caixaDeResultados");
+
+            barraInput.onkeyup = function(){
+                let resultado = []
+                let input = barraInput.value;
+
+                if(input.length){
+                    resultado = nomes.filter((nomes) => {
+                        return nomes.toLowerCase().includes(input.toLowerCase())
+                        
+                    })
+                }
+                mostrarResultados(resultado)
+
+                if(!resultado.length){
+                    caixaDeResultados.innerHTML = ' ';
+                }
+            }
+        })();
+
+        function mostrarResultados(resultado){
+            const resultadoSlice5 = resultado.slice(0, 5)
+
+            const conteudo = resultadoSlice5.map((list) => {
+                return "<li>" + list + "</li>"
+            }).join("")
+            caixaDeResultados.innerHTML = "<ul>" + conteudo + "</ul>"
+        } */
 
 })();
 

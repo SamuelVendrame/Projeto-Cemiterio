@@ -46,7 +46,7 @@
     overlay.addEventListener("click", fecharMenu)
 }) (); // IIFE, eh bom entender e reutilizar - mas nao a carregar para o REACT por causa das presencas dos modulos.
 
-const nomes = [
+/* const nomes = [
     'Pedroa Santana',
     "Pedroa Joelho",
     "Pedro Cabrunco",
@@ -54,13 +54,15 @@ const nomes = [
     'Santo',
     "Barbara",
     "João"
-];
+]; */
 
 (function (){
     const barraInput = document.getElementById("barraPesquisa");
     const barraResultados = document.getElementById("caixaDeResultados");
 
-    barraInput.onkeyup = function(){
+    
+
+    barraInput.onkeyup = function(){ // o fetch em dataRoutes ficará aqui dentro, depois de uma função de tratagem de dados com debounce.
         let resultado = []
         let input = barraInput.value;
 

@@ -1,47 +1,40 @@
 const registros = [
   {
-    id: 1,
     nome: "Ana",
-    jazigo: "Q1-L02",
-    data: "2023-05-14",
-    data_insercao: "2024-11-10"
+    dataNascimento: "1958-03-22",
+    dataFalencimento: "2023-05-14",
+    outraPessoaNome: "Carlos"
   },
   {
-    id: 2,
     nome: "Pedro",
-    jazigo: "Q1-L03",
-    data: "2023-06-01",
-    data_insercao: "2024-11-11"
+    dataNascimento: "1967-11-09",
+    dataFalencimento: "2023-06-01",
+    outraPessoaNome: "Maria"
   },
   {
-    id: 3,
     nome: "Gabriel",
-    jazigo: "Q2-L01",
-    data: "2023-06-18",
-    data_insercao: "2024-11-12"
+    dataNascimento: "1975-01-15",
+    dataFalencimento: "2023-06-18",
+    outraPessoaNome: "Lucas"
   },
   {
-    id: 4,
     nome: "João",
-    jazigo: "Q2-L02",
-    data: "2023-07-02",
-    data_insercao: "2024-11-13"
+    dataNascimento: "1962-08-30",
+    dataFalencimento: "2023-07-02",
+    outraPessoaNome: "Fernanda"
   },
   {
-    id: 5,
     nome: "Ytalo",
-    jazigo: "Q3-L01",
-    data: "2023-07-20",
-    data_insercao: "2024-11-14"
+    dataNascimento: "1980-04-12",
+    dataFalencimento: "2023-07-20",
+    outraPessoaNome: "Rafael"
   },
   {
-    id: 6,
     nome: "Samuel",
-    jazigo: "Q3-L02",
-    data: "2023-08-05",
-    data_insercao: "2024-11-15"
+    dataNascimento: "1971-12-03",
+    dataFalencimento: "2023-08-05",
+    outraPessoaNome: "Daniel"
   }
 ];
 
-
-module.exports =  registros;
+module.exports = registros;

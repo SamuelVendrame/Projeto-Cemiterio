@@ -184,6 +184,39 @@ body{
     cursor: pointer;
 }
 
+#modalMostrarInput{
+    border: solid 3px black;
+    border-radius: 6px;
+
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+
+    width: 60vw;
+    min-height: auto;
+    max-height: 65vh;
+
+    z-index: 9999;
+
+    animation: deslizarCima 0.6s ease-out forwards;
+}
+
+#modalMostrarInputs:hover{
+    cursor:default;
+}
+
+#modalWrapper h3,
+#modalWrapper button{
+    margin: 1.7rem;
+}
+
+#modalWrapper button:hover{
+    cursor: pointer;
+}
 
 
 footer{
