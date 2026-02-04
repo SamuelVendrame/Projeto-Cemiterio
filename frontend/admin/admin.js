@@ -65,11 +65,13 @@
         modalInputs.classList.remove("escondido")
         overlay.classList.remove("escondido")
 
+        nomeOutraPessoaInput.textContent = nomeOutraPessoa;
+
         if(nomeOutraPessoa == null){
             nomeOutraPessoaInput.textContent = "Não há outra pessoa junto."
         }
 
-        nomeOutraPessoaInput.textContent = dados.registro.nomeOutraPessoa;
+
         
 
         }catch(error){
