@@ -3,6 +3,7 @@
     const criarRegistro = document.getElementById("criarRegistro");
     const overlay = document.querySelector(".overlay")
     const formRegistro = document.getElementById("registroInputs")
+    const modalInputs = document.getElementById("modalMostrarInput")
     
       const botaoRegistrar = document.getElementById("registrar").addEventListener("click", function(){
         criarRegistro.classList.remove("escondido")
@@ -16,13 +17,11 @@
             }
     }
 
+    criarRegistro.addEventListener("click", function(event){
+        event.stopPropagation()
+    })
 
     overlay.addEventListener("click", fechar)
-
-    const botaoFechar = document.getElementById("fechar").addEventListener("click", function(){
-        overlay.classList.add("escondido")
-        criarRegistro.classList.add("escondido")
-    })
 
     formRegistro.addEventListener("submit", async function(event){
         event.preventDefault();
@@ -57,28 +56,50 @@
                     console.log("Um erro ocorreu AQUI.")
                     return
                 }
+        
+        document.getElementById("nomeInserido").textContent = dados.registro.nome;
+        document.getElementById("dataNascInserida").textContent = dados.registro.dataNascimento
+        document.getElementById("dataFaleInserida").textContent = dados.registro.dataFalencia
+        const nomeOutraPessoaInput = document.getElementById("outraPessoaInserida")
 
-        const modalInfosInseridas = document.getElementById("modalMostrarInput")
-        const modalWrapper = document.getElementById("modalWrapper")
+        modalInputs.classList.remove("escondido")
+        overlay.classList.remove("escondido")
 
-            overlay.classList.remove("escondido")
-            modalInfosInseridas.classList.remove("escondido")
+        if(nomeOutraPessoa == null){
+            nomeOutraPessoaInput.textContent = "Não há outra pessoa junto."
+        }
 
-            overlay.addEventListener("click", function(){
-                overlay.classList.add("escondido")
-                modalInfosInseridas.classList.add("escondido")
-            })
-            
-            const fecharModal = document.getElementById("fecharModal").addEventListener("click", function(){
-                overlay.classList.add("escondido")
-                modalInfosInseridas.classList.add("escondido")
-            })
+        nomeOutraPessoaInput.textContent = dados.registro.nomeOutraPessoa;
+        
 
-        } catch(error){
+        }catch(error){
             console.log("Um erro ocorreu.", error)
         }
     })
    
+})();
+
+(function modalHandler(){
+    const modalInfosInseridas = document.getElementById("modalMostrarInput")
+    const overlay = document.querySelector(".overlay")
+
+            const fecharModal = document.getElementById("fecharModal")
+
+            fecharModal.addEventListener("click", function(){
+                overlay.classList.add("escondido")
+                modalInfosInseridas.classList.add("escondido")
+            })
+
+            overlay.addEventListener("click", function(){
+                modalInfosInseridas.classList.add("escondido");
+                overlay.classList.add("escondido");
+            })
+
+            modalInfosInseridas.addEventListener("click", function(event){
+                event.stopPropagation()
+            })
+
+        
 })();
 
 (function verificarDuploEnterro(){
@@ -92,9 +113,9 @@
 })();
 
 
-(function displayerDeDadosRegistrados(){
+/*(function displayerDeDadosRegistrados(){
 
-        /*(function (){
+        (function (){
             const barraInput = document.getElementById("barraPesquisa");
             const barraResultados = document.getElementById("caixaDeResultados");
 
@@ -123,8 +144,8 @@
                 return "<li>" + list + "</li>"
             }).join("")
             caixaDeResultados.innerHTML = "<ul>" + conteudo + "</ul>"
-        } */
+        } 
 
-})();
+})();*/
 
 

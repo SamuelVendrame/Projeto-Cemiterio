@@ -218,6 +218,9 @@ body{
     cursor: pointer;
 }
 
+#modalMostrarInput:hover{
+    cursor: default;
+}
 
 footer{
     display: flex; /*adicionar FLEX quando terminar o restante da pagina, e a imagem do linkedin tb.*/
