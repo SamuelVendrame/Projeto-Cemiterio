@@ -65,14 +65,11 @@
         modalInputs.classList.remove("escondido")
         overlay.classList.remove("escondido")
 
-        nomeOutraPessoaInput.textContent = nomeOutraPessoa;
+        nomeOutraPessoaInput.textContent = "Sim - Nome: " + nomeOutraPessoa;
 
         if(nomeOutraPessoa == null){
             nomeOutraPessoaInput.textContent = "Não há outra pessoa junto."
         }
-
-
-        
 
         }catch(error){
             console.log("Um erro ocorreu.", error)

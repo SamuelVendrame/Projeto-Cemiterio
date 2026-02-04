@@ -196,9 +196,9 @@ body{
     text-align: center;
     flex-direction: row;
 
-    width: 60vw;
+    max-width: 60vw;
     min-height: auto;
-    max-height: 65vh;
+    max-height: 78vh;
 
     z-index: 9999;
 
