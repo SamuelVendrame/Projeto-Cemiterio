@@ -82,16 +82,18 @@
     }
 
     function mostrarResultados(dados){
-        if(dados.length > 5){
-            console.log("Tem: ", dados.length)
-        }
         const resultadoSlice5 = dados.slice(0, 5)
 
         const conteudo = resultadoSlice5.map((list) => {
+            if(dados.length > 5){
+            console.log("Tem: ", dados.length)
+            }
             return  "<li>" + list + "</li>" 
         }).join("");
 
-        caixaDeResultados.innerHTML = "<ul>" + conteudo + "</ul>"
+        let quantidadeDisplayed = resultadoSlice5.length
+
+        caixaDeResultados.innerHTML = "<p>" + "Mostrando " + quantidadeDisplayed + " resultados de " + dados.length + "</p>" + "<ul>" + conteudo + "</ul>"
             if(barraInput.value == ""){
                 caixaDeResultados.innerHTML = "";
             }
