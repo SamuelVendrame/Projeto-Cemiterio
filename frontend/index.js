@@ -46,48 +46,52 @@
     overlay.addEventListener("click", fecharMenu)
 }) (); // IIFE, eh bom entender e reutilizar - mas nao a carregar para o REACT por causa das presencas dos modulos.
 
-/* const nomes = [
-    'Pedroa Santana',
-    "Pedroa Joelho",
-    "Pedro Cabrunco",
-    'Ana',
-    'Santo',
-    "Barbara",
-    "João"
-]; */
-
 (function (){
     const barraInput = document.getElementById("barraPesquisa");
     const barraResultados = document.getElementById("caixaDeResultados");
 
-    
+      function debounce(func, delay){
+            let timeoutId;
 
-    barraInput.onkeyup = function(){ // o fetch em dataRoutes ficará aqui dentro, depois de uma função de tratagem de dados com debounce.
-        let resultado = []
-        let input = barraInput.value;
-
-        if(input.length){
-            resultado = nomes.filter((nomes) => {
-                return nomes.toLowerCase().includes(input.toLowerCase())
-                
-            })
+            return function(...args){
+                if(timeoutId){
+                    clearTimeout(timeoutId);
+                }
+                timeoutId = setTimeout(() => {
+                    func.apply(this, args)
+                }, delay)
+            }
         }
-        mostrarResultados(resultado)
 
-        if(!resultado.length){
-            caixaDeResultados.innerHTML = ' ';
+        async function buscarNoBackEnd(valor){
+           const buscarDados = await fetch('/mostrarDadosSearch?valor=' + valor)
+
+           if(!buscarDados.ok){
+            console.log("Fetch de busca falhou.")
+           }
+
+           const dados = await buscarDados.json();
+            mostrarResultados(dados)
         }
+
+    const buscarDebounced = debounce(buscarNoBackEnd, 500)
+
+    barraInput.onkeyup = function(){ 
+        const valor = barraInput.value;
+        buscarDebounced(valor);
     }
+
+    function mostrarResultados(dados){
+        const resultadoSlice5 = dados.slice(0, 5)
+
+        const conteudo = resultadoSlice5.map((list) => {
+            return "<li>" + list + "</li>"
+        }).join("");
+
+        caixaDeResultados.innerHTML = "<ul>" + conteudo + "</ul>"
+    }
+
 })();
-
-function mostrarResultados(resultado){
-    const resultadoSlice5 = resultado.slice(0, 5)
-
-    const conteudo = resultadoSlice5.map((list) => {
-        return "<li>" + list + "</li>"
-    }).join("")
-    caixaDeResultados.innerHTML = "<ul>" + conteudo + "</ul>"
-}
 
 /*E se eu refatorar esse código, fazendo com que o display de resultados encontrados na busca possa ser mais ilimitado, mas definindo um padrão de height máximo para a div, e colocando um overflow-y pra gerar uma scrollbar*/
 

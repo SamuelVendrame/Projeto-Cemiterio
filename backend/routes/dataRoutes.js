@@ -5,7 +5,16 @@ const router = express.Router();
     router.get("/mostrarDadosSearch", (req, res) => {
         const { valor } = req.query;
 
-        const nomes = ["Pedro", "Ana"];
+        const nomes = [
+            'Pedroa Santana',
+            "Pedroa Joelho",
+            "Pedro Cabrunco",
+            'Ana',
+            'Santo',
+            "Barbara",
+            "João",
+            "Pedro"
+        ]
 
         if (!valor) {
             return res.json([]);
