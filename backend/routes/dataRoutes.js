@@ -13,7 +13,10 @@ const router = express.Router();
             'Santo',
             "Barbara",
             "João",
-            "Pedro"
+            "Pedro Pedrão",
+            "Pedro Padrão",
+            "Pedrinho",
+            "Pedralho"
         ]
 
         if (!valor) {

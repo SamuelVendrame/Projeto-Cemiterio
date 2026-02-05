@@ -82,20 +82,26 @@
     }
 
     function mostrarResultados(dados){
+        if(dados.length > 5){
+            console.log("Tem: ", dados.length)
+        }
         const resultadoSlice5 = dados.slice(0, 5)
 
         const conteudo = resultadoSlice5.map((list) => {
-            return "<li>" + list + "</li>"
+            return  "<li>" + list + "</li>" 
         }).join("");
 
         caixaDeResultados.innerHTML = "<ul>" + conteudo + "</ul>"
+            if(barraInput.value == ""){
+                caixaDeResultados.innerHTML = "";
+            }
     }
 
 })();
 
 /*E se eu refatorar esse código, fazendo com que o display de resultados encontrados na busca possa ser mais ilimitado, mas definindo um padrão de height máximo para a div, e colocando um overflow-y pra gerar uma scrollbar*/
 
-/* 
+/*   "<p>" + "Mostrando X resultados de " + dados.length + "</p>"
 // pasta userRoutes
 
 app.get("/listar", (req, res) =>{
