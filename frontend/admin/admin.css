@@ -161,12 +161,14 @@ body{
 #listaRegistros{
     display: flex;
     flex-direction: column;
-
-    list-style: none;
 }
 
+#listaRegistros li{
+    list-style: none;
+    }
+
 .nomesRegistrados{
-    padding: 0.4rem;
+    padding: 0.3rem;
 }
 
 .nomesRegistrados:hover{

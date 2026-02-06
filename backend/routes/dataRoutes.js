@@ -3,7 +3,7 @@ const registros = require("../data/data.js")
 const express = require('express');
 const router = express.Router();
 
-    router.get("/mostrarDadosSearch", (req, res) => {
+    router.get("/jubanga", (req, res) => {
         const { valor } = req.query;
 
         const nomes = [

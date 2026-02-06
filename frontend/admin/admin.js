@@ -74,9 +74,97 @@
    
 })();
 
-(function displayerDeDadosRegistrados(){
+
+(function (){
+    const barraInput = document.getElementById("pesquisarRegistros");
+    const barraResultados = document.getElementById("listaRegistros");
+
+    async function buscarNoBackEnd(){
+           const buscarDados = await fetch('/jubanga')
+
+           if(!buscarDados.ok){
+            console.log("Fetch de busca falhou.")
+           }
+
+           const dados = await buscarDados.json();
+            mostrarDadosSemTrigger(dados)
+        }
+        buscarNoBackEnd()
+
+    function mostrarDadosSemTrigger(dados){
+        console.log("X")
+            const conteudo = dados.map((list) => {
+                return "<li class='nomesRegistrados'>" + list + "</li>" 
+            }).join("");
+
+            listaRegistros.innerHTML =  "<li>" + "<ul>" + conteudo + "</ul>" + "</li>" 
+        }
+})();
+
+ (function (){
+    const barraInput = document.getElementById("pesquisarRegistros");
+    const barraResultados = document.getElementById("listaRegistros");
+
+      function debounce(func, delay){
+            let timeoutId;
+
+            return function(...args){
+                if(timeoutId){
+                    clearTimeout(timeoutId);
+                }
+                timeoutId = setTimeout(() => {
+                    func.apply(this, args)
+                }, delay)
+            }
+        }
+
+        //
+
+        async function buscarNoBackEnd(valor){
+           const buscarDados = await fetch('/mostrarDadosSearch?valor=' + valor)
+
+           if(!buscarDados.ok){
+            console.log("Fetch de busca falhou.")
+           }
+
+           const dados = await buscarDados.json();
+            mostrarResultados(dados)
+        }
+
+    
+    const buscarDebounced = debounce(buscarNoBackEnd, 500)
+
+    //
+
+    barraInput.onkeyup = function(){ 
+        const valor = barraInput.value;
+        buscarDebounced(valor);
+    }
+
+    //
+
+    function mostrarResultados(dados){
+        const conteudo = dados.map((list) => {
+            return "<li class='nomesRegistrados'>" + list + "</li>" 
+        }).join("");
+
+        listaRegistros.innerHTML =  "<li>" + "<ul>" + conteudo + "</ul>" + "</li>" 
+           // if(barraInput.value == ""){
+             //   listaRegistros.innerHTML = "";
+         //   }
+    }       
+
+})(); 
+
+
+    ///////////////////////////////////////////////////////////////////
+
+
+/*(function displayerDeDadosRegistrados(){
     const input = document.getElementById("pesquisarRegistros").value;
     const listaRegistros = document.getElementById("listaRegistros");
+
+    
 
    async function buscarRegistros(){
         const busca = await fetch("/jubanga")
@@ -99,9 +187,8 @@
         }
         
    })
-
 ();
-
+*/
 (function modalHandler(){
     const modalInfosInseridas = document.getElementById("modalMostrarInput")
     const overlay = document.querySelector(".overlay")
