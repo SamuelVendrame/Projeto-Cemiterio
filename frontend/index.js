@@ -91,7 +91,7 @@
         let quantidadeDisplayed = resultadoSlice5.length
 
         caixaDeResultados.innerHTML =  "</li>" + "<ul>" + conteudo + "</ul>" + "<li id='displayer'>" + "Mostrando " + quantidadeDisplayed + " resultados de " + dados.length
-            if(conteudo >= 0){ //terminar
+            if(conteudo >= 0){ 
         caixaDeResultados.innerHTML = "<li id='displayer'>" + "Mostrando " + quantidadeDisplayed + " resultados de " + dados.length
             }
             if(barraInput.value == ""){

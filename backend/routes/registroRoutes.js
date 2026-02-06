@@ -42,4 +42,24 @@ router.post("/registrar", (req, res) =>{
     })
 })
 
+  router.get("/jubanga", (req, res) => {
+        
+        const nomes = [
+            'Pedroa Santana',
+            "Pedroa Joelho",
+            "Pedro Cabrunco",
+            'Ana',
+            'Santo',
+            "Barbara",
+            "João",
+            "Pedro Pedrão",
+            "Pedro Padrão",
+            "Pedrinho",
+            "Pedralho"
+        ]
+
+        res.json(nomes)
+    })
+
+
 module.exports = router;

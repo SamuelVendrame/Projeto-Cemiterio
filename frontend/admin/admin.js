@@ -32,10 +32,6 @@
         const dataNascimento = formRegistro.elements.dataNascimento.value;
         const dataFalencia = formRegistro.elements.dataFalencia.value;
         let nomeOutraPessoa = formRegistro.elements.nomeOutraPessoa.value || null;
-        
-        if(nomeOutraPessoa === ""){
-            nomeOutraPessoa = null
-        }
 
         try{
 
@@ -77,6 +73,34 @@
     })
    
 })();
+
+(function displayerDeDadosRegistrados(){
+    const input = document.getElementById("pesquisarRegistros").value;
+    const listaRegistros = document.getElementById("listaRegistros");
+
+   async function buscarRegistros(){
+        const busca = await fetch("/jubanga")
+
+        if(!busca.ok){
+            return console.log("Algo deu errado no fetch de display.")
+        }
+
+        const dados = await busca.json()
+        mostrarRegistros(dados);
+   }
+    buscarRegistros()
+
+     function mostrarRegistros(dados){
+        const listaNomes = dados.map((nome)=> {
+            return "<li class='nomesRegistrados'>"+ nome + "</li>"
+            }).join("");
+
+            listaRegistros.innerHTML = "<li>"+ listaNomes +"</li>"
+        }
+        
+   })
+
+();
 
 (function modalHandler(){
     const modalInfosInseridas = document.getElementById("modalMostrarInput")
