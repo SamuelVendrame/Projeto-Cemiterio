@@ -91,10 +91,13 @@
         let quantidadeDisplayed = resultadoSlice5.length
 
         caixaDeResultados.innerHTML =  "</li>" + "<ul>" + conteudo + "</ul>" + "<li id='displayer'>" + "Mostrando " + quantidadeDisplayed + " resultados de " + dados.length
-            if(barraInput.value == "" || conteudo == 0){ //terminar
+            if(conteudo >= 0){ //terminar
+        caixaDeResultados.innerHTML = "<li id='displayer'>" + "Mostrando " + quantidadeDisplayed + " resultados de " + dados.length
+            }
+            if(barraInput.value == ""){
                 caixaDeResultados.innerHTML = "";
             }
-    }
+    }       
 
 })();
 
