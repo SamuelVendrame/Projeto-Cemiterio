@@ -7,6 +7,9 @@ const app = express();
 app.use(express.json())
 app.use(cors());
 
+const rotaSessions = require("./sessions/sessions.js")
+app.use(rotaSessions)
+
 const loggerMiddleware = (req, res, next) => {
     const logDate = new Date().toISOString()
     console.log(`${logDate}, Metodo de requisicao: ${req.method} - URL Original: ${req.originalUrl}`)
@@ -27,8 +30,16 @@ app.use("/", rotaRegistros)
 const rotaDeDados = require("./routes/dataRoutes")
 app.use("/", rotaDeDados)
 
-const rotaCookies = require("./sessions/sessions.js")
-app.use("/", rotaCookies)
+//remover quando funcionar (funcionou! só acessar a rota no google)
+app.get("/teste-session", (req, res) => {
+    if (!req.session.contador) {
+        req.session.contador = 1;
+    } else {
+        req.session.contador++;
+    }
+
+    res.send(`Contador: ${req.session.contador}`);
+});
 
 const PORT = 3000;
 
