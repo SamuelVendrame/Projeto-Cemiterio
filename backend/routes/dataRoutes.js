@@ -1,36 +1,36 @@
-
-const registros = require("../data/data.js")
-const express = require('express');
+const registros = require("../data/data.js");
+const express = require("express");
 const router = express.Router();
 
-    router.get("/jubanga", (req, res) => {
-        const { valor } = req.query;
+router.get("/mostrarDadosSearch", (req, res) => {
+  const { valor } = req.query;
 
-        const nomes = [
-            'Pedroa Santana',
-            "Pedroa Joelho",
-            "Pedro Cabrunco",
-            'Ana',
-            'Santo',
-            "Barbara",
-            "João",
-            "Pedro Pedrão",
-            "Pedro Padrão",
-            "Pedrinho",
-            "Pedralho"
-        ]
+  if (!valor) {
+    return res.json([]);
+  }
 
-        if (!valor) {
-            return res.json([]);
-        }
+  const valorMin = valor.toLowerCase();
+  const resultado = registros.filter((registro) =>
+    registro.nome.toLowerCase().includes(valorMin),
+  );
 
-        const valorMin = valor.toLowerCase();
-        const resultado = nomes.filter(nome =>
-            nome.toLowerCase().includes(valorMin)
-        );
+  const dadoFinal = resultado.map((resultado) => resultado.nome);
 
-        res.json(resultado);
-    });
+  res.json(dadoFinal);
+});
 
 module.exports = router;
+/*router.get("/mostrarDadosSearch", (req, res) => {
+  const { valor } = req.query;
 
+  if (!valor) {
+    return res.json([]);
+  }
+
+  const valorMin = valor.toLowerCase();
+  const resultado = registros.filter((registro) =>
+    registro.toLowerCase().includes(valorMin),
+  );
+
+  res.json(resultado);
+}); */

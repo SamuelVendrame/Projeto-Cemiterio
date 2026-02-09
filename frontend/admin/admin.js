@@ -1,164 +1,165 @@
+(function funcaoLidarFormulario() {
+  const criarRegistro = document.getElementById("criarRegistro");
+  const overlay = document.querySelector(".overlay");
+  const formRegistro = document.getElementById("registroInputs");
+  const modalInputs = document.getElementById("modalMostrarInput");
 
-(function funcaoLidarFormulario(){
-    const criarRegistro = document.getElementById("criarRegistro");
-    const overlay = document.querySelector(".overlay")
-    const formRegistro = document.getElementById("registroInputs")
-    const modalInputs = document.getElementById("modalMostrarInput")
-    
-      const botaoRegistrar = document.getElementById("registrar").addEventListener("click", function(){
-        criarRegistro.classList.remove("escondido")
-        overlay.classList.remove("escondido")
-    })
+  const botaoRegistrar = document
+    .getElementById("registrar")
+    .addEventListener("click", function () {
+      criarRegistro.classList.remove("escondido");
+      overlay.classList.remove("escondido");
+    });
 
-        const fechar = (event) => {
-            if(event.target === overlay){
-            overlay.classList.add("escondido")
-            criarRegistro.classList.add("escondido")
-            }
+  const fechar = (event) => {
+    if (event.target === overlay) {
+      overlay.classList.add("escondido");
+      criarRegistro.classList.add("escondido");
     }
+  };
 
-    criarRegistro.addEventListener("click", function(event){
-        event.stopPropagation()
-    })
+  criarRegistro.addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
 
-    overlay.addEventListener("click", fechar)
+  overlay.addEventListener("click", fechar);
 
-    formRegistro.addEventListener("submit", async function(event){
-        event.preventDefault();
-        overlay.classList.add("escondido")
-        criarRegistro.classList.add("escondido")
+  formRegistro.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    overlay.classList.add("escondido");
+    criarRegistro.classList.add("escondido");
 
-        const nome = formRegistro.elements.nome.value;
-        const dataNascimento = formRegistro.elements.dataNascimento.value;
-        const dataFalencia = formRegistro.elements.dataFalencia.value;
-        let nomeOutraPessoa = formRegistro.elements.nomeOutraPessoa.value || null;
+    const nome = formRegistro.elements.nome.value;
+    const dataNascimento = formRegistro.elements.dataNascimento.value;
+    const dataFalencia = formRegistro.elements.dataFalencia.value;
+    let nomeOutraPessoa = formRegistro.elements.nomeOutraPessoa.value || null;
 
-        try{
+    try {
+      const resposta = await fetch("/registrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome,
+          dataNascimento,
+          dataFalencia,
+          nomeOutraPessoa,
+        }),
+      });
+      const dados = await resposta.json();
+      if (!resposta.ok) {
+        console.log("Um erro ocorreu AQUI.");
+        return;
+      }
 
-        const resposta = await fetch("/registrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nome,
-                dataNascimento,
-                dataFalencia,
-                nomeOutraPessoa
-            })
-        })
-            const dados = await resposta.json();
-                if(!resposta.ok){
-                    console.log("Um erro ocorreu AQUI.")
-                    return
-                }
-        
-        document.getElementById("nomeInserido").textContent = dados.registro.nome;
-        document.getElementById("dataNascInserida").textContent = dados.registro.dataNascimento
-        document.getElementById("dataFaleInserida").textContent = dados.registro.dataFalencia
-        const nomeOutraPessoaInput = document.getElementById("outraPessoaInserida")
+      document.getElementById("nomeInserido").textContent = dados.registro.nome;
+      document.getElementById("dataNascInserida").textContent =
+        dados.registro.dataNascimento;
+      document.getElementById("dataFaleInserida").textContent =
+        dados.registro.dataFalencia;
+      const nomeOutraPessoaInput = document.getElementById(
+        "outraPessoaInserida",
+      );
 
-        modalInputs.classList.remove("escondido")
-        overlay.classList.remove("escondido")
+      modalInputs.classList.remove("escondido");
+      overlay.classList.remove("escondido");
 
-        nomeOutraPessoaInput.textContent = "Sim - Nome: " + nomeOutraPessoa;
+      nomeOutraPessoaInput.textContent = "Sim - Nome: " + nomeOutraPessoa;
 
-        if(nomeOutraPessoa == null){
-            nomeOutraPessoaInput.textContent = "Não há outra pessoa junto."
-        }
-
-        }catch(error){
-            console.log("Um erro ocorreu.", error)
-        }
-    })
-   
+      if (nomeOutraPessoa == null) {
+        nomeOutraPessoaInput.textContent = "Não há outra pessoa junto.";
+      }
+    } catch (error) {
+      console.log("Um erro ocorreu.", error);
+    }
+  });
 })();
 
+(function () {
+  const barraInput = document.getElementById("pesquisarRegistros");
+  const barraResultados = document.getElementById("listaRegistros");
 
-(function (){
-    const barraInput = document.getElementById("pesquisarRegistros");
-    const barraResultados = document.getElementById("listaRegistros");
+  async function buscarNoBackEnd() {
+    const buscarDados = await fetch("/mostrarDadosSearch");
 
-    async function buscarNoBackEnd(){
-           const buscarDados = await fetch('/jubanga')
-
-           if(!buscarDados.ok){
-            console.log("Fetch de busca falhou.")
-           }
-
-           const dados = await buscarDados.json();
-            mostrarDadosSemTrigger(dados)
-        }
-        buscarNoBackEnd()
-
-    function mostrarDadosSemTrigger(dados){
-        console.log("X")
-            const conteudo = dados.map((list) => {
-                return "<li class='nomesRegistrados'>" + list + "</li>" 
-            }).join("");
-
-            listaRegistros.innerHTML =  "<li>" + "<ul>" + conteudo + "</ul>" + "</li>" 
-        }
-})();
-
- (function (){
-    const barraInput = document.getElementById("pesquisarRegistros");
-    const barraResultados = document.getElementById("listaRegistros");
-
-      function debounce(func, delay){
-            let timeoutId;
-
-            return function(...args){
-                if(timeoutId){
-                    clearTimeout(timeoutId);
-                }
-                timeoutId = setTimeout(() => {
-                    func.apply(this, args)
-                }, delay)
-            }
-        }
-
-        //
-
-        async function buscarNoBackEnd(valor){
-           const buscarDados = await fetch('/mostrarDadosSearch?valor=' + valor)
-
-           if(!buscarDados.ok){
-            console.log("Fetch de busca falhou.")
-           }
-
-           const dados = await buscarDados.json();
-            mostrarResultados(dados)
-        }
-
-    
-    const buscarDebounced = debounce(buscarNoBackEnd, 500)
-
-    //
-
-    barraInput.onkeyup = function(){ 
-        const valor = barraInput.value;
-        buscarDebounced(valor);
+    if (!buscarDados.ok) {
+      console.log("Fetch de busca falhou.");
     }
 
-    //
+    const dados = await buscarDados.json();
+    mostrarDadosSemTrigger(dados);
+  }
+  buscarNoBackEnd();
 
-    function mostrarResultados(dados){
-        const conteudo = dados.map((list) => {
-            return "<li class='nomesRegistrados'>" + list + "</li>" 
-        }).join("");
+  function mostrarDadosSemTrigger(dados) {
+    console.log("X");
+    const conteudo = dados
+      .map((list) => {
+        return "<li class='nomesRegistrados'>" + list + "</li>";
+      })
+      .join("");
 
-        listaRegistros.innerHTML =  "<li>" + "<ul>" + conteudo + "</ul>" + "</li>" 
-           // if(barraInput.value == ""){
-             //   listaRegistros.innerHTML = "";
-         //   }
-    }       
+    listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
+  }
+})();
 
-})(); 
+(function () {
+  const barraInput = document.getElementById("pesquisarRegistros");
+  const barraResultados = document.getElementById("listaRegistros");
 
+  function debounce(func, delay) {
+    let timeoutId;
 
-    ///////////////////////////////////////////////////////////////////
+    return function (...args) {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+      }, delay);
+    };
+  }
 
+  //
+
+  async function buscarNoBackEnd(valor) {
+    const buscarDados = await fetch("/mostrarDadosSearch?valor=" + valor);
+
+    if (!buscarDados.ok) {
+      console.log("Fetch de busca falhou.");
+    }
+
+    const dados = await buscarDados.json();
+    mostrarResultados(dados);
+  }
+
+  const buscarDebounced = debounce(buscarNoBackEnd, 500);
+
+  //
+
+  barraInput.onkeyup = function () {
+    const valor = barraInput.value;
+    buscarDebounced(valor);
+  };
+
+  //
+
+  function mostrarResultados(dados) {
+    const conteudo = dados
+      .map((list) => {
+        return "<li class='nomesRegistrados'>" + list + "</li>";
+      })
+      .join("");
+
+    listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
+    // if(barraInput.value == ""){
+    //   listaRegistros.innerHTML = "";
+    //   }
+  }
+})();
+
+///////////////////////////////////////////////////////////////////
 
 /*(function displayerDeDadosRegistrados(){
     const input = document.getElementById("pesquisarRegistros").value;
@@ -189,39 +190,35 @@
    })
 ();
 */
-(function modalHandler(){
-    const modalInfosInseridas = document.getElementById("modalMostrarInput")
-    const overlay = document.querySelector(".overlay")
+(function modalHandler() {
+  const modalInfosInseridas = document.getElementById("modalMostrarInput");
+  const overlay = document.querySelector(".overlay");
 
-            const fecharModal = document.getElementById("fecharModal")
+  const fecharModal = document.getElementById("fecharModal");
 
-            fecharModal.addEventListener("click", function(){
-                overlay.classList.add("escondido")
-                modalInfosInseridas.classList.add("escondido")
-            })
+  fecharModal.addEventListener("click", function () {
+    overlay.classList.add("escondido");
+    modalInfosInseridas.classList.add("escondido");
+  });
 
-            overlay.addEventListener("click", function(){
-                modalInfosInseridas.classList.add("escondido");
-                overlay.classList.add("escondido");
-            })
+  overlay.addEventListener("click", function () {
+    modalInfosInseridas.classList.add("escondido");
+    overlay.classList.add("escondido");
+  });
 
-            modalInfosInseridas.addEventListener("click", function(event){
-                event.stopPropagation()
-            })
-
-        
+  modalInfosInseridas.addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
 })();
 
-(function verificarDuploEnterro(){
-    const checkbox = document.getElementById("temOutraPessoa");
-    const box = document.getElementById("outraPessoaBox");
+(function verificarDuploEnterro() {
+  const checkbox = document.getElementById("temOutraPessoa");
+  const box = document.getElementById("outraPessoaBox");
 
-        checkbox.addEventListener("change", () => {
-        box.style.display = checkbox.checked ? "block" : "none";
-    });
-
+  checkbox.addEventListener("change", () => {
+    box.style.display = checkbox.checked ? "block" : "none";
+  });
 })();
-
 
 /*(function displayerDeDadosRegistrados(){
 
@@ -257,5 +254,3 @@
         } 
 
 })();*/
-
-
