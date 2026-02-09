@@ -1,9 +1,11 @@
 /* OVERLAY - Para criar o estilo opaco ao abrir uma div popUp.*/
 
 @import url("https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 
 * {
-  font-family: "Sen", sans-serif;
+  font-family: "Inter", "Sen", sans-serif;
 }
 
 .overlay {
@@ -144,11 +146,10 @@ body {
 
 #verificarCadastros {
   width: 90%;
-  padding: 1rem;
+  padding: 0.3rem;
 
-  border: 3px solid rgb(147, 145, 145);
-  border-radius: 6px;
   margin-bottom: 1rem;
+  border: 3px solid black;
 
   overflow-y: auto; /*Supostamente cria uma barra de rolagem se a lista crescer*/
 }
@@ -164,6 +165,8 @@ body {
 #listaRegistros {
   display: flex;
   flex-direction: column;
+
+  border-radius: 6px;
 }
 
 #listaRegistros li {
