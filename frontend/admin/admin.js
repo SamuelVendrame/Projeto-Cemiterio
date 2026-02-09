@@ -80,34 +80,6 @@
   const barraInput = document.getElementById("pesquisarRegistros");
   const barraResultados = document.getElementById("listaRegistros");
 
-  async function buscarNoBackEnd() {
-    const buscarDados = await fetch("/mostrarDadosSearch");
-
-    if (!buscarDados.ok) {
-      console.log("Fetch de busca falhou.");
-    }
-
-    const dados = await buscarDados.json();
-    mostrarDadosSemTrigger(dados);
-  }
-  buscarNoBackEnd();
-
-  function mostrarDadosSemTrigger(dados) {
-    console.log("X");
-    const conteudo = dados
-      .map((list) => {
-        return "<li class='nomesRegistrados'>" + list + "</li>";
-      })
-      .join("");
-
-    listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
-  }
-})();
-
-(function () {
-  const barraInput = document.getElementById("pesquisarRegistros");
-  const barraResultados = document.getElementById("listaRegistros");
-
   function debounce(func, delay) {
     let timeoutId;
 
@@ -153,42 +125,52 @@
       .join("");
 
     listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
-    // if(barraInput.value == ""){
-    //   listaRegistros.innerHTML = "";
-    //   }
+    if(barraInput.value == ""){
+        buscar()
+    }
   }
+  async function buscar(){
+        const buscaDados = await fetch("/mostrarDados")
+        if(!buscaDados.ok){
+            return console.log("O fetch de buscar dados para mostrar sem trigger falhou.")
+        }
+        const dados = await buscaDados.json()
+
+        const conteudo = dados
+        .map((list) => {
+            return "<li class='nomesRegistrados'>" + list + "</li>";
+        })
+        .join("");
+
+        listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
+    }
+    buscar()
 })();
 
-///////////////////////////////////////////////////////////////////
-
-/*(function displayerDeDadosRegistrados(){
-    const input = document.getElementById("pesquisarRegistros").value;
-    const listaRegistros = document.getElementById("listaRegistros");
-
+/*
+(function mostrarDadosSemTrigger(){
+    const barraResultados = document.getElementById("listaRegistros");
+    console.log("TESTE")
     
-
-   async function buscarRegistros(){
-        const busca = await fetch("/jubanga")
-
-        if(!busca.ok){
-            return console.log("Algo deu errado no fetch de display.")
+    async function buscar(){
+        const buscaDados = await fetch("/mostrarDados")
+        if(!buscaDados.ok){
+            return console.log("O fetch de buscar dados para mostrar sem trigger falhou.")
         }
+        const dados = await buscaDados.json()
 
-        const dados = await busca.json()
-        mostrarRegistros(dados);
-   }
-    buscarRegistros()
+        console.log(dados)
 
-     function mostrarRegistros(dados){
-        const listaNomes = dados.map((nome)=> {
-            return "<li class='nomesRegistrados'>"+ nome + "</li>"
-            }).join("");
+        const conteudo = dados
+        .map((list) => {
+            return "<li class='nomesRegistrados'>" + list + "</li>";
+        })
+        .join("");
 
-            listaRegistros.innerHTML = "<li>"+ listaNomes +"</li>"
-        }
-        
-   })
-();
+        listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
+    }
+    buscar()
+})();
 */
 (function modalHandler() {
   const modalInfosInseridas = document.getElementById("modalMostrarInput");

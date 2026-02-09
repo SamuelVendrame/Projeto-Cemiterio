@@ -19,6 +19,12 @@ router.get("/mostrarDadosSearch", (req, res) => {
   res.json(dadoFinal);
 });
 
+router.get("/mostrarDados", (req, res) => {
+  resultado = registros.map((resultado) => resultado.nome)
+  
+  res.send(resultado)
+})
+
 module.exports = router;
 /*router.get("/mostrarDadosSearch", (req, res) => {
   const { valor } = req.query;
