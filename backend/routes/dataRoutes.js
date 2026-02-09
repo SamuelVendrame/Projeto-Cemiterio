@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/mostrarDadosSearch", (req, res) => {
   const { valor } = req.query;
-
+// LEMBRETE!! FAZER npm install express-session AO USAR NO PC DE CASA!!
   if (!valor) {
     return res.json([]);
   }
@@ -21,7 +21,7 @@ router.get("/mostrarDadosSearch", (req, res) => {
 
 router.get("/mostrarDados", (req, res) => {
   resultado = registros.map((resultado) => resultado.nome)
-  
+
   res.send(resultado)
 })
 

@@ -27,8 +27,11 @@ app.use("/", rotaRegistros)
 const rotaDeDados = require("./routes/dataRoutes")
 app.use("/", rotaDeDados)
 
+const rotaCookies = require("./sessions/sessions.js")
+app.use("/", rotaCookies)
+
 const PORT = 3000;
 
-app.listen(PORT, () => {
-    console.log("Servidor rodando na porta 3000")
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor rodando na porta ${PORT}`)
 })

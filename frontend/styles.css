@@ -6,7 +6,7 @@ body{
     padding: 0;
     margin: 0;
     font-family: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", Times, serif;
-    overflow-x: hidden; /*Corrobora com o problema da horizontal sliding bar que aparecia por causa das animações que mexiam com pixeis e aumentavam o tamanho da tela por um breve momento ao reiniciar a pagina."*/
+    overflow: hidden; /*Corrobora com o problema da horizontal sliding bar que aparecia por causa das animações que mexiam com pixeis e aumentavam o tamanho da tela por um breve momento ao reiniciar a pagina."*/
 }
 
 *{
@@ -350,7 +350,7 @@ body{
 /* FOOTER */
 
 footer{
-    display: none; /*adicionar FLEX quando terminar o restante da pagina, e a imagem do linkedin tb.*/
+    display: flex; /*adicionar FLEX quando terminar o restante da pagina, e a imagem do linkedin tb.*/
     flex-direction: column;
     position: fixed;
     bottom: 0;
