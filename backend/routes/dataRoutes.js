@@ -26,17 +26,3 @@ router.get("/mostrarDados", (req, res) => {
 })
 
 module.exports = router;
-/*router.get("/mostrarDadosSearch", (req, res) => {
-  const { valor } = req.query;
-
-  if (!valor) {
-    return res.json([]);
-  }
-
-  const valorMin = valor.toLowerCase();
-  const resultado = registros.filter((registro) =>
-    registro.toLowerCase().includes(valorMin),
-  );
-
-  res.json(resultado);
-}); */

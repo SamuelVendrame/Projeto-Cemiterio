@@ -3,11 +3,17 @@
   const overlay = document.querySelector(".overlay");
   const formRegistro = document.getElementById("registroInputs");
   const modalInputs = document.getElementById("modalMostrarInput");
+  
 
   document.getElementById("registrar").addEventListener("click", function () {
     criarRegistro.classList.remove("escondido");
     overlay.classList.remove("escondido");
   });
+  
+  document.getElementById("fechar").addEventListener("click", function(){
+      criarRegistro.classList.add("escondido");
+      overlay.classList.add("escondido");
+  })
 
   const fechar = (event) => {
     if (event.target === overlay) {
@@ -82,7 +88,6 @@
   });
 })();
 
-
 (function () {
   const barraInput = document.getElementById("pesquisarRegistros");
   const barraResultados = document.getElementById("listaRegistros");
@@ -154,31 +159,6 @@
     buscar()
 })();
 
-/*
-(function mostrarDadosSemTrigger(){
-    const barraResultados = document.getElementById("listaRegistros");
-    console.log("TESTE")
-    
-    async function buscar(){
-        const buscaDados = await fetch("/mostrarDados")
-        if(!buscaDados.ok){
-            return console.log("O fetch de buscar dados para mostrar sem trigger falhou.")
-        }
-        const dados = await buscaDados.json()
-
-        console.log(dados)
-
-        const conteudo = dados
-        .map((list) => {
-            return "<li class='nomesRegistrados'>" + list + "</li>";
-        })
-        .join("");
-
-        listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
-    }
-    buscar()
-})();
-*/
 (function modalHandler() {
   const modalInfosInseridas = document.getElementById("modalMostrarInput");
   const overlay = document.querySelector(".overlay");
@@ -209,37 +189,3 @@
   });
 })();
 
-/*(function displayerDeDadosRegistrados(){
-
-        (function (){
-            const barraInput = document.getElementById("barraPesquisa");
-            const barraResultados = document.getElementById("caixaDeResultados");
-
-            barraInput.onkeyup = function(){
-                let resultado = []
-                let input = barraInput.value;
-
-                if(input.length){
-                    resultado = nomes.filter((nomes) => {
-                        return nomes.toLowerCase().includes(input.toLowerCase())
-                        
-                    })
-                }
-                mostrarResultados(resultado)
-
-                if(!resultado.length){
-                    caixaDeResultados.innerHTML = ' ';
-                }
-            }
-        })();
-
-        function mostrarResultados(resultado){
-            const resultadoSlice5 = resultado.slice(0, 5)
-
-            const conteudo = resultadoSlice5.map((list) => {
-                return "<li>" + list + "</li>"
-            }).join("")
-            caixaDeResultados.innerHTML = "<ul>" + conteudo + "</ul>"
-        } 
-
-})();*/
