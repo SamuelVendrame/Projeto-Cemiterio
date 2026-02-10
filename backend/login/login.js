@@ -10,15 +10,18 @@ router.post("/login", (req, res) => {
         return res.status(400).json({ mensagem: "Dados incompletos" });
     }
 
-    if (nome !==  usuarios.nome || senha !== usuarios.senha) {
+    const encontrarUser = usuarios.find((usuario) => usuario.nome === nome)
+    if(encontrarUser === undefined){
+        return res.status(401).json({ mensagem: "Usuário não encontrado"})
+    }
+
+    if(senha !== encontrarUser.senha){
         return res.status(401).json({ mensagem: "Credenciais inválidas" });
     }
 
-    const encontrarUser = 
-
     req.session.user = {
-        nome: usuarios.nome,
-        role: usuarios.role
+        nome: encontrarUser.nome,
+        role: encontrarUser.role
     };
     
     res.json({ mensagem: "Login realizado com sucesso" });

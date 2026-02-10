@@ -30,6 +30,9 @@ app.use("/", rotaRegistros)
 const rotaDeDados = require("./routes/dataRoutes")
 app.use("/", rotaDeDados)
 
+const rotaLogin = require("./login/login.js")
+app.use("/", rotaLogin)
+
 //remover quando funcionar (funcionou! só acessar a rota no google)
 app.get("/teste-session", (req, res) => {
     if (!req.session.contador) {
@@ -37,7 +40,7 @@ app.get("/teste-session", (req, res) => {
     } else {
         req.session.contador++;
     }
-
+    console.log(req.session.user)
     res.send(`Contador: ${req.session.contador}`);
 });
 

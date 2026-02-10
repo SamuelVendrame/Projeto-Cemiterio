@@ -1,9 +1,24 @@
 (function loginDealer(){
-    const userSenha = document.getElementById("password")
-    const userName = document.getElementById("username")
+    const formulario = document.getElementById("divLogin")
 
-    async function logar(){
-        const dados = await fetch("/login")
-    }
+    formulario.addEventListener("submit", function(event) {
+        event.preventDefault()
+
+        const senha = document.getElementById("password").value
+        const nome = document.getElementById("username").value
+
+        async function logar(){
+            const resposta = await fetch("/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify({
+                    nome,
+                    senha
+                })
+            });
+        }
+        logar()
+    })
 })();
 
