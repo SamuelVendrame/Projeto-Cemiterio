@@ -36,7 +36,7 @@ const registros = [
     outraPessoaNome: "Daniel",
   },
   {
-    nome: "Sucinto Pedro",
+    nome: "Pedro Teste",
     dataNascimento: "1971-12-03",
     dataFalencimento: "2023-08-05",
   },

@@ -4,12 +4,10 @@
   const formRegistro = document.getElementById("registroInputs");
   const modalInputs = document.getElementById("modalMostrarInput");
 
-  const botaoRegistrar = document
-    .getElementById("registrar")
-    .addEventListener("click", function () {
-      criarRegistro.classList.remove("escondido");
-      overlay.classList.remove("escondido");
-    });
+  document.getElementById("registrar").addEventListener("click", function () {
+    criarRegistro.classList.remove("escondido");
+    overlay.classList.remove("escondido");
+  });
 
   const fechar = (event) => {
     if (event.target === overlay) {
@@ -18,28 +16,22 @@
     }
   };
 
-  criarRegistro.addEventListener("click", function (event) {
-    event.stopPropagation();
-  });
-
+  criarRegistro.addEventListener("click", (event) => event.stopPropagation());
   overlay.addEventListener("click", fechar);
 
   formRegistro.addEventListener("submit", async function (event) {
     event.preventDefault();
-    overlay.classList.add("escondido");
-    criarRegistro.classList.add("escondido");
 
     const nome = formRegistro.elements.nome.value;
     const dataNascimento = formRegistro.elements.dataNascimento.value;
     const dataFalencia = formRegistro.elements.dataFalencia.value;
-    let nomeOutraPessoa = formRegistro.elements.nomeOutraPessoa.value || null;
+    const nomeOutraPessoa =
+      formRegistro.elements.nomeOutraPessoa.value || null;
 
     try {
       const resposta = await fetch("/registrar", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           nome,
           dataNascimento,
@@ -47,34 +39,49 @@
           nomeOutraPessoa,
         }),
       });
-      const dados = await resposta.json();
+
+      if (resposta.status === 422) {
+        alert("Você inseriu dados inválidos em um dos campos de entrada.");
+        return;
+      }
+
       if (!resposta.ok) {
         console.log("Um erro ocorreu AQUI.");
         return;
       }
 
-      document.getElementById("nomeInserido").textContent = dados.registro.nome;
+      const dados = await resposta.json();
+
+      document.getElementById("nomeInserido").textContent =
+        dados.registro.nome;
+
       document.getElementById("dataNascInserida").textContent =
         dados.registro.dataNascimento;
+
       document.getElementById("dataFaleInserida").textContent =
         dados.registro.dataFalencia;
-      const nomeOutraPessoaInput = document.getElementById(
-        "outraPessoaInserida",
-      );
 
+      const nomeOutraPessoaInput =
+        document.getElementById("outraPessoaInserida");
+
+      if (nomeOutraPessoa === null) {
+        nomeOutraPessoaInput.textContent = "Não há outra pessoa junto.";
+      } else {
+        nomeOutraPessoaInput.textContent =
+          "Sim - Nome: " + nomeOutraPessoa;
+      }
+
+      criarRegistro.classList.add("escondido")
       modalInputs.classList.remove("escondido");
       overlay.classList.remove("escondido");
 
-      nomeOutraPessoaInput.textContent = "Sim - Nome: " + nomeOutraPessoa;
-
-      if (nomeOutraPessoa == null) {
-        nomeOutraPessoaInput.textContent = "Não há outra pessoa junto.";
-      }
+      formRegistro.reset();
     } catch (error) {
       console.log("Um erro ocorreu.", error);
     }
   });
 })();
+
 
 (function () {
   const barraInput = document.getElementById("pesquisarRegistros");

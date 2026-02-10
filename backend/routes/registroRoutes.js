@@ -7,12 +7,17 @@ router.post("/registrar", (req, res) => {
   console.log(req.body);
 
   const { nome, dataNascimento, dataFalencia, nomeOutraPessoa } = req.body;
+  const apenasLetras = /^[A-Za-z]+$/
 
   if (!nome || !dataNascimento || !dataFalencia) {
     return res.status(400).json({ mensagem: "Há campos em aberto." });
   }
 
   let nomeOutraPessoaLimpo = null;
+
+  if(!apenasLetras.test(nome) || !apenasLetras.test(nomeOutraPessoa)){
+    return res.status(422).json({ mensagem: "Os dados inseridos são inválidos."})
+  }
 
   if (nomeOutraPessoa) {
     nomeOutraPessoaLimpo = nomeOutraPessoa.trim();
