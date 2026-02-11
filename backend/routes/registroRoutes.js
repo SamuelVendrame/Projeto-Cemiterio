@@ -7,7 +7,7 @@ router.post("/registrar", (req, res) => {
   console.log(req.body);
 
   const { nome, dataNascimento, dataFalencia, nomeOutraPessoa } = req.body;
-  const apenasLetras = /^[A-Za-z]+$/
+  const apenasLetras = /^[\p{L}\s\-]+$/u;
 
   if (!nome || !dataNascimento || !dataFalencia) {
     return res.status(400).json({ mensagem: "Há campos em aberto." });
