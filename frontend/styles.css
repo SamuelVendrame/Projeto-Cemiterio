@@ -112,22 +112,18 @@ body{
     animation: deslizarEsquerda 1s ease-out forwards;
 }
 
-#menuHamburger{
+#menuHamburgerIcon{
     animation: deslizarDireita 1s ease-out forwards;
-    /*Considerar arrumar o fato de que ao clicar no menu hamburguer com o overlay (opacidade) aberto, ele nao fecha a navbar lateral.*/
+    margin-top: 3px;
+
+    width: 2rem;
+    height: 0.4rem;
 }
 
 #menuHamburger:hover{
     cursor: pointer;    
 }
 
-#menuHamburger img{
-    width: 2rem;
-    height: 2rem;
-
-    margin-top: 3px;
-    animation: deslizarDireita 1s ease-out forwards;
-}
 
 #configNavBar{ 
     background-image: linear-gradient(to bottom, rgb(76, 128, 18), rgb(81, 133, 13), rgb(173, 132, 17));

@@ -1,6 +1,5 @@
 (function loginDealer(){
     const formulario = document.getElementById("divLogin")
-    console.log("JS carregou")
 
     formulario.addEventListener("submit", function(event) {
         event.preventDefault()

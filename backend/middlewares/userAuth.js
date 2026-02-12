@@ -6,7 +6,6 @@ const isAuthenticated = (req, res, next) => {
             path.join(__dirname, "../public/login/login.html")
         )
     }
-
     next()
 }
 

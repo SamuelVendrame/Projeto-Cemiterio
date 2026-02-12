@@ -10,8 +10,7 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    font-family: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", Times, serif;
-
+    padding: 0;
 }
 
 
@@ -28,10 +27,6 @@ body{
 
 .corBase{
     background-image: linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen);
-}
-
-#loginSection{
-    margin:  auto;
 }
 
 #divLogin{
@@ -53,20 +48,70 @@ body{
     flex-direction: column;
     text-align: center;
 
-    height: 55vh;
-    width: 55vw;
+    height: 70vh;
+    width: 70vw;
 
     animation: deslizarCima 0.5s ease-out forwards;
 }
 
+#divLogin img{
+    width: 60%;
+    height: 30%;
+    padding: 0.5rem;
+}
+
 #divLogin h1{
     margin-bottom: 1rem;
+    font-size:x-large;
+}
+
+#divLogin button{
+    padding: 0.5rem;
+    
+    margin-top: 0.4rem;
+    width: 85%;
+
+    border: 3px solid transparent;
+    border-radius: 6px;
+    background:
+    linear-gradient(rgb(216, 216, 216), rgb(216, 216, 216)) padding-box,
+    linear-gradient(
+        to bottom,
+        rgb(190, 149, 13),
+        rgb(76, 128, 18),
+        darkgreen
+    ) border-box;
+
+    transition: transform 0.4s ease;
+}
+
+#divLogin button:active{
+    background-color: rgb(174, 199, 210);
+    transform: translateY(-5px);
+
 }
 
 #loginInputs{
     display: flex;
     flex-direction: column;
 
-    padding: 3rem;
+    padding: 1rem;
     gap: 1.6rem;
+}
+
+#loginInputs input{
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid;
+}
+
+#loginInputs input:focus{
+    border-color:
+    linear-gradient(rgb(216, 216, 216), rgb(216, 216, 216)) padding-box,
+    linear-gradient(
+        to bottom,
+        rgb(190, 149, 13),
+        rgb(76, 128, 18),
+        darkgreen
+    ) border-box;
 }

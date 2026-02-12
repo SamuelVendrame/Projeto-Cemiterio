@@ -26,7 +26,7 @@
 })();
 
 (function(){
-    const botaoHamburger = document.getElementById("menuHamburger")
+    const botaoHamburger = document.getElementById("menuHamburgerIcon")
     const navBar = document.getElementById("configNavBar")
     const overlay = document.querySelector(".overlay");
 

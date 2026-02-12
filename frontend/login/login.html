@@ -8,21 +8,27 @@
     <!--Reconsiderar sua presenca no frontend, visto aos dados sensiveis (mesmo com a separacao de front e back)-->
 </head>
 <body>
-    <section id="loginSection">
         <form id="divLogin">
-            <h1>Realizar LOGIN</h1>
+            <div id="divLoginWrapper">
+            <img src="logoRodape.png">
+            <h1>REALIZAR LOGIN</h1>
 
             <div id="loginInputs">
-                <label>Digite seu usuário:</label>
-                <input id="username" type="text">
+                
+                <input id="username" type="text" placeholder="Digite seu usuário...">
 
-                <label>Digite sua senha:</label>
-                <input id="password" type="password">
+                <input id="password" type="password" placeholder="Digite sua senha...">
             </div>
 
             <button type="submit">Enviar</button>
+            </div>
         </form>        
-    </section>
+
+    <div class="resultadoLogin">
+        <div class="resultadoLoginWrapper">
+            <h2></h2>
+        </div>
+    </div>
     
     <script src="loginUX.js" defer></script>
 </body>
