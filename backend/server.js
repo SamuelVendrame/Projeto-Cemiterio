@@ -27,6 +27,10 @@ app.get("/admin", isAuthenticated, isAdmin, (req, res) => {
     res.sendFile(path.join(__dirname, "..", "frontend", "admin", "admin.html"));
 });
 
+app.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "frontend", "login", "login.html"));
+})
+
 const rotaRegistros = require("./routes/registroRoutes.js")
 app.use("/", rotaRegistros)
 

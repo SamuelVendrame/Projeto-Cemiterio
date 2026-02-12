@@ -16,7 +16,12 @@
                     nome,
                     senha
                 })
-            });
+            })
+            if(!resposta.ok){
+                alert("Credenciais inválidas. Tente novamente.")
+            } else{
+                window.location.href = "/admin";
+            }
         }
         logar()
     })
