@@ -41,15 +41,6 @@ const rotaLogin = require("./login/login.js")
 app.use("/", rotaLogin)
 
 //remover quando funcionar (funcionou! só acessar a rota no google)
-app.get("/teste-session", (req, res) => {
-    if (!req.session.contador) {
-        req.session.contador = 1;
-    } else {
-        req.session.contador++;
-    }
-    console.log(req.session.user)
-    res.send(`Contador: ${req.session.contador}`);
-});
 
 const PORT = 3000;
 
