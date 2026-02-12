@@ -20,7 +20,10 @@ app.use(loggerMiddleware)
 
 app.use(express.static(path.join(__dirname, "..", 'frontend')));
 
-app.get("/admin", (req, res) => { 
+const isAdmin = require("./middlewares/userRole.js")
+const isAuthenticated = require("./middlewares/userAuth.js")
+
+app.get("/admin", isAuthenticated, isAdmin, (req, res) => { 
     res.sendFile(path.join(__dirname, "..", "frontend", "admin", "admin.html"));
 });
 

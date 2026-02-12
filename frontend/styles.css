@@ -94,16 +94,14 @@ body{
 /* ESTILIZAÇÕES */
 #navBarPrincipal{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
-    padding: 0.3rem 2rem;
     color: white;
 }
 
 #navBarPrincipal h2{
     animation: deslizarCima 1s ease-out forwards;
-    padding: 0 1rem;
     font-size: 1rem;
 }
 
@@ -116,14 +114,18 @@ body{
     animation: deslizarDireita 1s ease-out forwards;
     margin-top: 3px;
 
-    width: 2rem;
-    height: 0.4rem;
+    width: 80%;
+    height: 40%;;
+}
+
+#menuHamburgerIcon img{
+    width: 50%;
+    height: 50%;
 }
 
 #menuHamburger:hover{
     cursor: pointer;    
 }
-
 
 #configNavBar{ 
     background-image: linear-gradient(to bottom, rgb(76, 128, 18), rgb(81, 133, 13), rgb(173, 132, 17));
