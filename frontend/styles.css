@@ -92,35 +92,32 @@ body{
 }
 
 /* ESTILIZAÇÕES */
-#navBarPrincipal{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    color: white;
+
+#navBarPrincipal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0.3rem 2rem;
+  color: white;
 }
 
-#navBarPrincipal h2{
-    animation: deslizarCima 1s ease-out forwards;
-    font-size: 1rem;
+#navBarPrincipal h2 {
+  animation: deslizarCima 1s ease-out forwards;
+  font-size: 1rem;
 }
 
-#navBarPrincipal img{
-    height: 4rem;
-    animation: deslizarEsquerda 1s ease-out forwards;
-}
-
-#menuHamburgerIcon{
-    animation: deslizarDireita 1s ease-out forwards;
-    margin-top: 3px;
-
-    width: 80%;
-    height: 40%;;
+#navBarPrincipal img {
+  height: 4rem;
+  animation: deslizarEsquerda 1s ease-out forwards;
 }
 
 #menuHamburgerIcon img{
-    width: 50%;
-    height: 50%;
+  height: 2.6rem;
+  width: 2.6rem;
+  margin-top: 4px;
+
+  animation: deslizarDireita 1s ease-out forwards;
 }
 
 #menuHamburger:hover{

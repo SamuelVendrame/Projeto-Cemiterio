@@ -1,17 +1,20 @@
 const registros = [
   {
+    id: 1,
     nome: "Ana",
     dataNascimento: "1958-03-22",
     dataFalencimento: "2023-05-14",
     outraPessoaNome: "Carlos",
   },
   {
+    id: 1,
     nome: "Pedro",
     dataNascimento: "1967-11-09",
     dataFalencimento: "2023-06-01",
     outraPessoaNome: "Maria",
   },
   {
+    id: 1,
     nome: "Gabriel",
     dataNascimento: "1975-01-15",
     dataFalencimento: "2023-06-18",
