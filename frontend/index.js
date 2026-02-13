@@ -72,7 +72,7 @@
 
            const dados = await buscarDados.json();
             mostrarResultados(dados)
-            clickInfoDisplay(dados)
+            clickInfoDisplay(dados) 
         }
 
     const buscarDebounced = debounce(buscarNoBackEnd, 500)
@@ -88,8 +88,6 @@
         const conteudo = resultadoSlice5.map((list) => {
             return `<li data-id="${list.id}">` + list.nome + "</li>"
         }).join("");
-
-        console.log(dados)
 
         let quantidadeDisplayed = resultadoSlice5.length
 
@@ -108,17 +106,32 @@
         const overlay = document.querySelector(".overlay")
         
         const nome = document.getElementById("nome")
+        const datafal = document.getElementById("datafal")
+        const datanasc = document.getElementById("datanasc")
+        const idregistro = document.getElementById("idregistro")
+
 
         caixaDeResultados.addEventListener("click", function (e) {
             if (e.target.tagName === "LI") {
-                console.log(dados)
                 const id = e.target.dataset.id;
+
                 modalInfosContainer.classList.remove("escondido")
                 overlay.classList.remove("escondido")
 
-                nome.textContent = dados.nome
+                const dadoEncontrado = dados.find((dado) => dado.id == id)
+                console.log(dadoEncontrado)
+
+                nome.textContent = dadoEncontrado.nome
+                datafal.textContent = dadoEncontrado.dataFalecimento
+                datanasc.textContent = dadoEncontrado.dataNascimento
+                idpessoa.textContent = dadoEncontrado.id // resolver b.o com o autoincrease de id que ta jogando erro no console
             }
         });
-    }
+        overlay.addEventListener("click", function(){
+                modalInfosContainer.classList.add("escondido")
+                overlay.classList.add("escondido")
+
+        })
+    }       
 })();
 

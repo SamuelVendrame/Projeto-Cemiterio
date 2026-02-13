@@ -370,9 +370,15 @@ body{
   min-height: auto;
   max-height: 78vh;
 
+  padding: 3rem;
+
   z-index: 9999;
 
   animation: deslizarCima 0.6s ease-out forwards;
+}
+
+.espaco{
+   padding: 0.5rem;
 }
 
 #modalInfosWrapper button{

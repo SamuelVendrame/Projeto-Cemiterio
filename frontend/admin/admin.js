@@ -30,7 +30,7 @@
 
     const nome = formRegistro.elements.nome.value;
     const dataNascimento = formRegistro.elements.dataNascimento.value;
-    const dataFalencia = formRegistro.elements.dataFalencia.value;
+    const dataFalecimento = formRegistro.elements.dataFalecimento.value;
     const nomeOutraPessoa =
       formRegistro.elements.nomeOutraPessoa.value || null;
 
@@ -41,7 +41,7 @@
         body: JSON.stringify({
           nome,
           dataNascimento,
-          dataFalencia,
+          dataFalecimento,
           nomeOutraPessoa,
         }),
       });
@@ -65,7 +65,7 @@
         dados.registro.dataNascimento;
 
       document.getElementById("dataFaleInserida").textContent =
-        dados.registro.dataFalencia;
+        dados.registro.dataFalecimento;
 
       const nomeOutraPessoaInput =
         document.getElementById("outraPessoaInserida");
