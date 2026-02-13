@@ -74,7 +74,7 @@ body{
     border: 3px solid transparent;
     border-radius: 6px;
     background:
-    linear-gradient(rgb(216, 216, 216), rgb(216, 216, 216)) padding-box,
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
     linear-gradient(
         to bottom,
         rgb(190, 149, 13),

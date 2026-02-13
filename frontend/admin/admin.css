@@ -194,6 +194,16 @@ body {
   padding: 1rem;
 
   border-radius: 6px;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+    linear-gradient(
+        to bottom,
+        rgb(190, 149, 13),
+        rgb(76, 128, 18),
+        darkgreen
+    ) border-box;
+
 }
 
 #registrar:hover {

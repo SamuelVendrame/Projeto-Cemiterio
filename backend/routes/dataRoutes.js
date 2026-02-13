@@ -14,7 +14,12 @@ router.get("/mostrarDadosSearch", (req, res) => {
     registro.nome.toLowerCase().includes(valorMin),
   );
 
-  const dadoFinal = resultado.map((resultado) => resultado.nome);
+  const dadoFinal = resultado.map(resultado => ({
+      nome: resultado.nome,
+      id: resultado.id,
+      dataNascimento: resultado.dataNascimento,
+      dataFalecimento: resultado.dataFalecimento
+  }));
 
   res.json(dadoFinal);
 });

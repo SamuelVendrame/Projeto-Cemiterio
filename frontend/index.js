@@ -85,8 +85,10 @@
         const resultadoSlice5 = dados.slice(0, 5)
 
         const conteudo = resultadoSlice5.map((list) => {
-            return "<li>" + list + "</li>" 
+            return `<li data-id="${list.id}">` + list.nome + "</li>"
         }).join("");
+
+        console.log(dados)
 
         let quantidadeDisplayed = resultadoSlice5.length
 
