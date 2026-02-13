@@ -92,7 +92,7 @@
 
         let quantidadeDisplayed = resultadoSlice5.length
 
-        caixaDeResultados.innerHTML =  "</li>" + "<ul>" + conteudo + "</ul>" + "<li id='displayer'>" + "Mostrando " + quantidadeDisplayed + " resultados de " + dados.length
+        caixaDeResultados.innerHTML =  "<ul>" + conteudo + "</ul>" + "<li id='displayer'>" + "Mostrando " + quantidadeDisplayed + " resultados de " + dados.length
             if(conteudo >= 0){ 
         caixaDeResultados.innerHTML = "<li id='displayer'>" + "Mostrando " + quantidadeDisplayed + " resultados de " + dados.length
             }
@@ -101,30 +101,9 @@
             }
     }       
 
+    function clickInfoDisplay(){
+
+    }
+    clickInfoDisplay()
 })();
 
-/*E se eu refatorar esse código, fazendo com que o display de resultados encontrados na busca possa ser mais ilimitado, mas definindo um padrão de height máximo para a div, e colocando um overflow-y pra gerar uma scrollbar*/
-
-/*   "<p>" + "Mostrando X resultados de " + dados.length + "</p>"
-// pasta userRoutes
-
-app.get("/listar", (req, res) =>{
-    const listarUsers = () => {
-        users.forEach = console.log(users)
-        }
-    })
-
-    app.post("/criarUser", (req, res) => {
-        const userNovo{
-        userNovo.nome = req.body.nome
-        userNovo.id = req.body.id
-        }
-        res.send(userNovo)
-        })
-
-    app.get("/buscarUser:id", (req, res) => {
-        const id = body.params.id
-        const userBuscado = users.find(users => users.id === id)
-        res.send(userBuscado)
-        })
-*/
