@@ -211,8 +211,17 @@ body {
 }
 
 #modalMostrarInput {
-  border: solid 3px black;
-  border-radius: 6px;
+    background:
+    linear-gradient(rgb(216, 216, 216), rgb(216, 216, 216)) padding-box,
+    linear-gradient(
+        to bottom,
+        rgb(190, 149, 13),
+        rgb(76, 128, 18),
+        darkgreen
+    ) border-box;
+
+    border: 0.3rem solid transparent;
+    border-radius: 1rem;
 
   background-color: white;
 
@@ -222,13 +231,28 @@ body {
   text-align: center;
   flex-direction: row;
 
-  max-width: 60vw;
+  max-width: 70vw;
   min-height: auto;
   max-height: 78vh;
 
   z-index: 9999;
 
   animation: deslizarCima 0.6s ease-out forwards;
+}
+
+#modalWrapper button{
+  padding: 0.5rem;
+    background:
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+    linear-gradient(
+        to bottom,
+        rgb(190, 149, 13),
+        rgb(76, 128, 18),
+        darkgreen
+    ) border-box;
+
+    border: 0.2rem solid transparent;
+    border-radius: 0.3rem;
 }
 
 #modalMostrarInputs:hover {

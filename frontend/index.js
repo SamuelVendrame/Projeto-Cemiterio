@@ -72,6 +72,7 @@
 
            const dados = await buscarDados.json();
             mostrarResultados(dados)
+            clickInfoDisplay(dados)
         }
 
     const buscarDebounced = debounce(buscarNoBackEnd, 500)
@@ -101,9 +102,23 @@
             }
     }       
 
-    function clickInfoDisplay(){
+    function clickInfoDisplay(dados){
+        const modalInfosContainer = document.getElementById("modalInfosContainer")
+        const modalInfosWrapper = document.getElementById("modalInfosWrapper")
+        const overlay = document.querySelector(".overlay")
+        
+        const nome = document.getElementById("nome")
 
+        caixaDeResultados.addEventListener("click", function (e) {
+            if (e.target.tagName === "LI") {
+                console.log(dados)
+                const id = e.target.dataset.id;
+                modalInfosContainer.classList.remove("escondido")
+                overlay.classList.remove("escondido")
+
+                nome.textContent = dados.nome
+            }
+        });
     }
-    clickInfoDisplay()
 })();
 

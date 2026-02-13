@@ -330,23 +330,82 @@ body{
     border: 1px solid black;
     border-radius: 0.15rem;
     padding: 0.8rem 0.5rem;
+    z-index: 9999;
 }
 
 #caixaDeResultados ul li{
     list-style: none;
     border-radius: 3px;
     padding: 0.7rem 0.5rem;
+    z-index: 9999;
+
 }
 
 #caixaDeResultados ul li:hover{
     background-color: rgb(147, 199, 245);
 }
 
+#modalInfosContainer {
+    background:
+    linear-gradient(rgb(216, 216, 216), rgb(216, 216, 216)) padding-box,
+    linear-gradient(
+        to bottom,
+        rgb(190, 149, 13),
+        rgb(76, 128, 18),
+        darkgreen
+    ) border-box;
 
+    border: 0.3rem solid transparent;
+    border-radius: 1rem;
 
+  background-color: white;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: row;
 
+  max-width: 70vw;
+  min-height: auto;
+  max-height: 78vh;
 
+  z-index: 9999;
+
+  animation: deslizarCima 0.6s ease-out forwards;
+}
+
+#modalInfosWrapper button{
+  padding: 0.5rem;
+    background:
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+    linear-gradient(
+        to bottom,
+        rgb(190, 149, 13),
+        rgb(76, 128, 18),
+        darkgreen
+    ) border-box;
+
+    border: 0.2rem solid transparent;
+    border-radius: 0.3rem;
+}
+
+#modalInfosWrapper:hover {
+  cursor: default;
+}
+
+#modalInfosWrapper h3,
+#modalInfosWrapper button {
+  margin: 1.7rem;
+}
+
+#modalInfosWrapper button:hover {
+  cursor: pointer;
+}
+
+#modalInfosWrapper:hover {
+  cursor: default;
+}
 
 /* FOOTER */
 
