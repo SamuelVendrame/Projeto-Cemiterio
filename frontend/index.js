@@ -118,13 +118,11 @@
 
   function clickInfoDisplay(dados) {
     const modalInfosContainer = document.getElementById("modalInfosContainer");
-    const modalInfosWrapper = document.getElementById("modalInfosWrapper");
     const overlay = document.querySelector(".overlay");
 
     const nome = document.getElementById("nome");
     const datafal = document.getElementById("datafal");
     const datanasc = document.getElementById("datanasc");
-    const idregistro = document.getElementById("idregistro");
 
     caixaDeResultados.addEventListener("click", function (e) {
       if (e.target.tagName === "LI") {
@@ -139,9 +137,20 @@
         nome.textContent = dadoEncontrado.nome;
         datafal.textContent = dadoEncontrado.dataFalecimento;
         datanasc.textContent = dadoEncontrado.dataNascimento;
-        idpessoa.textContent = dadoEncontrado.id; // resolver b.o com o autoincrease de id que ta jogando erro no console
+        idpessoa.textContent = dadoEncontrado.id; // resolver b.o com o autoincrease de id que ta jogando erro no console quando clico no displayer de resultados
       }
     });
+
+    modalInfosContainer.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+
+    document
+      .getElementById("displayer")
+      .addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+
     overlay.addEventListener("click", function () {
       modalInfosContainer.classList.add("escondido");
       overlay.classList.add("escondido");

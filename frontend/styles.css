@@ -402,7 +402,8 @@ body {
   border-radius: 0.3rem;
 }
 
-#modalInfosWrapper:hover {
+#modalInfosWrapper:hover,
+#modalInfosContainer {
   cursor: default;
 }
 
