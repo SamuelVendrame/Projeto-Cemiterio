@@ -25,9 +25,7 @@ router.get("/mostrarDadosSearch", (req, res) => {
 });
 
 router.get("/mostrarDados", (req, res) => {
-  resultado = registros.map((resultado) => resultado.nome)
-
-  res.send(resultado)
+  res.send(registros)
 })
 
 module.exports = router;
