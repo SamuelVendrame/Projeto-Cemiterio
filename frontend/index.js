@@ -8,7 +8,6 @@
     interrogacaoClicar.addEventListener("click", function(){
         invisivelDuvidaDiv.classList.remove("escondido")
         overlay.classList.remove("escondido")
-
     });
 
     botaoFechar.addEventListener("click", function(){

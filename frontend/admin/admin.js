@@ -132,7 +132,7 @@
   function mostrarResultados(dados) {
     const conteudo = dados
       .map((list) => {
-        return "<li class='nomesRegistrados'>" + list + "</li>";
+        return `<li class="nomesRegistrados" data-id="${list.id}">` + list.nome + "</li>"
       })
       .join("");
 
