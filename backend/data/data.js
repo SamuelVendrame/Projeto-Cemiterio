@@ -3,7 +3,7 @@ const registros = [
     id: 1,
     nome: "Ana",
     dataNascimento: "1958-03-22",
-    dataFalecimento: "1958-03-22", 
+    dataFalecimento: "1958-03-22",
     outraPessoaNome: "Carlos",
   },
   {
@@ -44,6 +44,12 @@ const registros = [
   {
     id: 7,
     nome: "Pedro Teste",
+    dataNascimento: "1971-12-03",
+    dataFalecimento: "2023-08-05",
+  },
+  {
+    id: 8,
+    nome: "Luis Antonio",
     dataNascimento: "1971-12-03",
     dataFalecimento: "2023-08-05",
   },
