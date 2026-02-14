@@ -1,103 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="admin.css">
-    <link rel="icon" type="icon" href="logoRodape.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="admin.css" />
+    <link rel="icon" type="icon" href="logoRodape.png" />
     <title>Pesquisa Cemitério - ADMIN</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <nav id="navBarPrincipal" class="corBase">
-        <div id="logoSaoManoel">
-            <a href="https://www.saomanoeldoparana.pr.gov.br/site/"><img src="logoRodape.png"></a>
-        </div>
+      <div id="logoSaoManoel">
+        <a href="https://www.saomanoeldoparana.pr.gov.br/site/"
+          ><img src="logoRodape.png"
+        /></a>
+      </div>
 
-        <h2>ADMIN</h2>
+      <h2>ADMIN</h2>
     </nav>
 
     <section id="infoSection">
-        <h1>Modificação de cadastros</h1>
-            <h3>Registros atuais</h3>
-            <div id="verificarCadastros">
-                <input id="pesquisarRegistros" placeholder="Procure um registro...">
-                    <ul id="listaRegistros">
-                        
-                    </ul>
-            </div>
+      <h1>Modificação de cadastros</h1>
+      <h3>Registros atuais</h3>
+      <div id="verificarCadastros">
+        <input id="pesquisarRegistros" placeholder="Procure um registro..." />
+        <ul id="listaRegistros"></ul>
+      </div>
     </section>
     <!--Considerar adição de método de pesquisa por páginas, não tudo num scroll com uma barra de pesquisa só. (pag 1, 2, 3...)-->
 
     <div id="divAdicionarRegistro">
-        <button id="registrar">ADICIONAR REGISTRO</button>
+      <button id="registrar">ADICIONAR REGISTRO</button>
+    </div>
+
+    <div id="voltarWrapper">
+      <a href="../index.html" id="botaoVoltar">Voltar à página principal</a>
     </div>
 
     <footer class="corBase">
-        <div id="mensagemFooter">
-            <h4>2026 @ Prefeitura de São Manoel do Paraná</h4>
-            <div id="creditosSite">
-                <p>Desenvolvido por Samuel</p>
-                <a href="https://www.linkedin.com/in/samuelvendrame/">
-                     <img src="LinkedIn_icon.svg.png" alt="Logo do LinkedIn.">
-                </a>
-            </div>
+      <div id="mensagemFooter">
+        <h4>2026 @ Prefeitura de São Manoel do Paraná</h4>
+        <div id="creditosSite">
+          <p>Desenvolvido por Samuel</p>
+          <a href="https://www.linkedin.com/in/samuelvendrame/">
+            <img src="LinkedIn_icon.svg.png" alt="Logo do LinkedIn." />
+          </a>
         </div>
+      </div>
     </footer>
 
-   <div class="overlay escondido">
-        <div id="criarRegistro" class="escondido">
-            <div id="fechar">X</div>
-            <form id="registroInputs">
-                <label>
-                    Nome:
-                    <input type="text" name="nome" required />
-                </label>
+    <div class="overlay escondido">
+      <div id="criarRegistro" class="escondido">
+        <div id="fechar">X</div>
+        <form id="registroInputs">
+          <label>
+            Nome:
+            <input type="text" name="nome" required />
+          </label>
 
-                <label>
-                    Data de nascimento:
-                    <input type="date" name="dataNascimento" required />
-                </label>
+          <label>
+            Data de nascimento:
+            <input type="date" name="dataNascimento" required />
+          </label>
 
-                <label>
-                    Data de falência:
-                    <input type="date" name="dataFalecimento" required />
-                </label>
+          <label>
+            Data de falência:
+            <input type="date" name="dataFalecimento" required />
+          </label>
 
-                <label>
-                    Há outra pessoa enterrada junto?
-                    <input type="checkbox" id="temOutraPessoa" />
-                </label>
+          <label>
+            Há outra pessoa enterrada junto?
+            <input type="checkbox" id="temOutraPessoa" />
+          </label>
 
-                <div id="outraPessoaBox" style="display: none;">
-                    <label>
-                    Nome da outra pessoa:
-                    <input type="text" name="nomeOutraPessoa" />
-                    </label>
-                </div>
+          <div id="outraPessoaBox" style="display: none">
+            <label>
+              Nome da outra pessoa:
+              <input type="text" name="nomeOutraPessoa" />
+            </label>
+          </div>
 
-                <button id="registrarDados" type="submit">REGISTRAR</button>
-            </form>
+          <button id="registrarDados" type="submit">REGISTRAR</button>
+        </form>
+      </div>
+
+      <div id="modalMostrarInput" class="escondido">
+        <div id="modalWrapper">
+          <h3>NOME INSERIDO</h3>
+          <h4 id="nomeInserido"></h4>
+          <h3>DATA DE NASCIMENTO</h3>
+          <h4 id="dataNascInserida"></h4>
+          <h3>DATA DE FALECIMENTO</h3>
+          <h4 id="dataFaleInserida"></h4>
+          <h3>HÁ OUTRA PESSOA JUNTO?</h3>
+          <h4 id="outraPessoaInserida"></h4>
+          <button id="fecharModal">FECHAR</button>
         </div>
-
-        <div id="modalMostrarInput" class="escondido">
-            <div id="modalWrapper">
-                <h3>NOME INSERIDO</h3>
-                <h4 id="nomeInserido"></h4>
-                <h3>DATA DE NASCIMENTO</h3>
-                <h4 id="dataNascInserida"></h4>
-                <h3>DATA DE FALECIMENTO</h3> 
-                <h4 id="dataFaleInserida"></h4>
-                <h3>HÁ OUTRA PESSOA JUNTO?</h3>
-                <h4 id="outraPessoaInserida"></h4>
-                <button id="fecharModal">FECHAR</button>
-            </div>
-        </div>
-
+      </div>
     </div>
 
-        
     <script src="admin.js" defer></script>
-    
-</body>
+  </body>
 </html>

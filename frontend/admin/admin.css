@@ -1,8 +1,7 @@
 /* OVERLAY - Para criar o estilo opaco ao abrir uma div popUp.*/
 
 @import url("https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 * {
   font-family: "Inter", "Sen", sans-serif;
@@ -150,6 +149,7 @@ body {
 
   margin-bottom: 1rem;
   border: 3px solid black;
+  border-radius: 0.7rem;
 
   overflow-y: auto; /*Supostamente cria uma barra de rolagem se a lista crescer*/
 }
@@ -197,13 +197,8 @@ body {
   border: 3px solid transparent;
   background:
     linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-    linear-gradient(
-        to bottom,
-        rgb(190, 149, 13),
-        rgb(76, 128, 18),
-        darkgreen
-    ) border-box;
-
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
 }
 
 #registrar:hover {
@@ -211,17 +206,13 @@ body {
 }
 
 #modalMostrarInput {
-    background:
+  background:
     linear-gradient(rgb(216, 216, 216), rgb(216, 216, 216)) padding-box,
-    linear-gradient(
-        to bottom,
-        rgb(190, 149, 13),
-        rgb(76, 128, 18),
-        darkgreen
-    ) border-box;
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
 
-    border: 0.3rem solid transparent;
-    border-radius: 1rem;
+  border: 0.3rem solid transparent;
+  border-radius: 1rem;
 
   background-color: white;
 
@@ -240,19 +231,15 @@ body {
   animation: deslizarCima 0.6s ease-out forwards;
 }
 
-#modalWrapper button{
+#modalWrapper button {
   padding: 0.5rem;
-    background:
+  background:
     linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-    linear-gradient(
-        to bottom,
-        rgb(190, 149, 13),
-        rgb(76, 128, 18),
-        darkgreen
-    ) border-box;
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
 
-    border: 0.2rem solid transparent;
-    border-radius: 0.3rem;
+  border: 0.2rem solid transparent;
+  border-radius: 0.3rem;
 }
 
 #modalMostrarInputs:hover {
@@ -318,13 +305,9 @@ footer {
 
   background-color: white;
   background:
-  linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-  linear-gradient(
-      to bottom,
-      rgb(190, 149, 13),
-      rgb(76, 128, 18),
-      darkgreen
-  ) border-box;
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
 
   border: 0.2rem solid transparent;
   border-radius: 0.7rem;
@@ -338,13 +321,9 @@ footer {
 
 #fechar {
   background:
-  linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-  linear-gradient(
-      to bottom,
-      rgb(190, 149, 13),
-      rgb(76, 128, 18),
-      darkgreen
-  ) border-box;
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
 
   border: 0.2rem solid transparent;
   border-radius: 0.9rem;
@@ -372,19 +351,22 @@ footer {
   text-align: center;
 }
 
-#registroInputs input{
+#registroInputs input {
   border: 1px solid black;
+  background:
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
+
+  border: 0.2rem solid transparent;
+  border-radius: 0.3rem;
 }
 
-#registroInputs input:focus{
+#registroInputs input:focus {
   background:
-  linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-  linear-gradient(
-      to bottom,
-      rgb(190, 149, 13),
-      rgb(76, 128, 18),
-      darkgreen
-  ) border-box;
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
 
   border: 0.2rem solid transparent;
   border-radius: 0.3rem;
@@ -397,13 +379,9 @@ footer {
   padding: 0.5rem;
 
   background:
-  linear-gradient(rgb(216, 216, 216), white) padding-box,
-  linear-gradient(
-      to bottom,
-      rgb(190, 149, 13),
-      rgb(76, 128, 18),
-      darkgreen
-  ) border-box;
+    linear-gradient(rgb(216, 216, 216), white) padding-box,
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
 
   border: 0.2rem solid transparent;
   border-radius: 0.3rem;
@@ -415,6 +393,22 @@ footer {
 
 #criarRegistro:hover {
   cursor: auto;
+}
+
+#voltarWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#botaoVoltar {
+  text-decoration: none;
+  color: black;
+  font-size: small;
+  font-weight: bold;
+
+  padding: 0.7rem;
+  margin: 0 auto;
 }
 
 /* ---------------------------------- */
