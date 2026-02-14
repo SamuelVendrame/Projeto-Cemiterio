@@ -147,13 +147,12 @@
             return console.log("O fetch de buscar dados para mostrar sem trigger falhou.")
         }
         const dados = await buscaDados.json()
-
-        const conteudo = dados
-        .map((list) => {
-            return "<li class='nomesRegistrados'>" + list + "</li>";
+        console.log(dados)
+        const conteudo = dados.map((list) => {
+          return `<li class="nomesRegistrados" data-id="${list.id}">` + list.nome + "</li>"
         })
         .join("");
-
+        
         listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
     }
     buscar()
