@@ -3,17 +3,16 @@
   const overlay = document.querySelector(".overlay");
   const formRegistro = document.getElementById("registroInputs");
   const modalInputs = document.getElementById("modalMostrarInput");
-  
 
   document.getElementById("registrar").addEventListener("click", function () {
     criarRegistro.classList.remove("escondido");
     overlay.classList.remove("escondido");
   });
-  
-  document.getElementById("fechar").addEventListener("click", function(){
-      criarRegistro.classList.add("escondido");
-      overlay.classList.add("escondido");
-  })
+
+  document.getElementById("fechar").addEventListener("click", function () {
+    criarRegistro.classList.add("escondido");
+    overlay.classList.add("escondido");
+  });
 
   const fechar = (event) => {
     if (event.target === overlay) {
@@ -31,8 +30,7 @@
     const nome = formRegistro.elements.nome.value;
     const dataNascimento = formRegistro.elements.dataNascimento.value;
     const dataFalecimento = formRegistro.elements.dataFalecimento.value;
-    const nomeOutraPessoa =
-      formRegistro.elements.nomeOutraPessoa.value || null;
+    const nomeOutraPessoa = formRegistro.elements.nomeOutraPessoa.value || null;
 
     try {
       const resposta = await fetch("/registrar", {
@@ -58,8 +56,7 @@
 
       const dados = await resposta.json();
 
-      document.getElementById("nomeInserido").textContent =
-        dados.registro.nome;
+      document.getElementById("nomeInserido").textContent = dados.registro.nome;
 
       document.getElementById("dataNascInserida").textContent =
         dados.registro.dataNascimento;
@@ -67,17 +64,17 @@
       document.getElementById("dataFaleInserida").textContent =
         dados.registro.dataFalecimento;
 
-      const nomeOutraPessoaInput =
-        document.getElementById("outraPessoaInserida");
+      const nomeOutraPessoaInput = document.getElementById(
+        "outraPessoaInserida",
+      );
 
       if (nomeOutraPessoa === null) {
         nomeOutraPessoaInput.textContent = "Não há outra pessoa junto.";
       } else {
-        nomeOutraPessoaInput.textContent =
-          "Sim - Nome: " + nomeOutraPessoa;
+        nomeOutraPessoaInput.textContent = "Sim - Nome: " + nomeOutraPessoa;
       }
 
-      criarRegistro.classList.add("escondido")
+      criarRegistro.classList.add("escondido");
       modalInputs.classList.remove("escondido");
       overlay.classList.remove("escondido");
 
@@ -106,6 +103,7 @@
   }
 
   //
+  let dadosGlobal = [];
 
   async function buscarNoBackEnd(valor) {
     const buscarDados = await fetch("/mostrarDadosSearch?valor=" + valor);
@@ -114,8 +112,9 @@
       console.log("Fetch de busca falhou.");
     }
 
-    const dados = await buscarDados.json();
-    mostrarResultados(dados);
+   const dados = await buscarDados.json();
+    dadosGlobal = dados;    
+    mostrarResultados(dados) 
   }
 
   const buscarDebounced = debounce(buscarNoBackEnd, 500);
@@ -132,30 +131,81 @@
   function mostrarResultados(dados) {
     const conteudo = dados
       .map((list) => {
-        return `<li class="nomesRegistrados" data-id="${list.id}">` + list.nome + "</li>"
+        return (
+          `<li class="nomesRegistrados" data-id="${list.id}">` +
+          list.nome +
+          "</li>"
+        );
       })
       .join("");
 
     listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
-    if(barraInput.value == ""){
-        buscar()
+    if (barraInput.value == "") {
+      buscar();
     }
   }
-  async function buscar(){
-        const buscaDados = await fetch("/mostrarDados")
-        if(!buscaDados.ok){
-            return console.log("O fetch de buscar dados para mostrar sem trigger falhou.")
-        }
-        const dados = await buscaDados.json()
-        console.log(dados)
-        const conteudo = dados.map((list) => {
-          return `<li class="nomesRegistrados" data-id="${list.id}">` + list.nome + "</li>"
-        })
-        .join("");
-        
-        listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
+  async function buscar() {
+    const buscaDados = await fetch("/mostrarDados");
+    if (!buscaDados.ok) {
+      return console.log(
+        "O fetch de buscar dados para mostrar sem trigger falhou.",
+      );
     }
-    buscar()
+    const dados = await buscaDados.json();
+    dadosGlobal = dados;
+    const conteudo = dados
+      .map((list) => {
+        return (
+          `<li class="nomesRegistrados" data-id="${list.id}">` +
+          list.nome +
+          "</li>"
+        );
+      })
+      .join("");
+
+    listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
+  }
+  buscar();
+
+  function clickInfoDisplay() {
+    const modalInfosContainer = document.getElementById("modalInfosContainer");
+    const overlay = document.querySelector(".overlay");
+
+    const nome = document.getElementById("nome");
+    const datafal = document.getElementById("datafal");
+    const datanasc = document.getElementById("datanasc");
+    const idpessoa = document.getElementById("idpessoa")
+    
+
+    barraResultados.addEventListener("click", function (e) {
+      const li = e.target.closest("li")
+      if (li) {
+        const id = li.dataset.id;
+
+         overlay.classList.remove("escondido");
+        modalInfosContainer.classList.remove("escondido");
+
+
+        const dadoEncontrado = dadosGlobal.find((dado) => dado.id == id);
+
+        nome.textContent = dadoEncontrado.nome;
+        datafal.textContent = dadoEncontrado.dataFalecimento;
+        datanasc.textContent = dadoEncontrado.dataNascimento;
+        idpessoa.textContent = dadoEncontrado.id;
+      }
+    });
+
+    modalInfosContainer.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+
+
+    overlay.addEventListener("click", function () {
+      modalInfosContainer.classList.add("escondido");
+      overlay.classList.add("escondido");
+    });
+  }; clickInfoDisplay()
+
 })();
 
 (function modalHandler() {
@@ -187,4 +237,3 @@
     box.style.display = checkbox.checked ? "block" : "none";
   });
 })();
-

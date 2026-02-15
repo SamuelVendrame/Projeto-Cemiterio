@@ -137,7 +137,7 @@
         nome.textContent = dadoEncontrado.nome;
         datafal.textContent = dadoEncontrado.dataFalecimento;
         datanasc.textContent = dadoEncontrado.dataNascimento;
-        idpessoa.textContent = dadoEncontrado.id; // resolver b.o com o autoincrease de id que ta jogando erro no console quando clico no displayer de resultados
+        idpessoa.textContent = dadoEncontrado.id;
       }
     });
 

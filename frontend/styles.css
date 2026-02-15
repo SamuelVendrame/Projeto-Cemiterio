@@ -369,6 +369,7 @@ body {
   border-radius: 1rem;
 
   background-color: white;
+  
 
   display: flex;
   align-items: center;
@@ -379,6 +380,8 @@ body {
   max-width: 70vw;
   min-height: auto;
   max-height: 78vh;
+
+  margin: 0 auto;
 
   padding: 3rem;
 
