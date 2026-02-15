@@ -108,12 +108,12 @@ body {
 }
 
 #navBarPrincipal h2 {
-  animation: deslizarDireita 1s ease-out forwards;
+  animation: deslizarCima 1s ease-out forwards;
   padding: 0 1rem;
   font-size: 1rem;
 }
 
-#navBarPrincipal img {
+#logoSaoManoel{
   height: 4rem;
   animation: deslizarEsquerda 1s ease-out forwards;
 }
@@ -136,11 +136,16 @@ body {
 #infoSection h1 {
   margin-top: 1rem;
   font-size: larger;
+
+  animation: deslizarBaixo 1s ease-out forwards;
 }
 
 #infoSection h3 {
   font-size: large;
   margin-bottom: 0.6rem;
+
+  animation: deslizarBaixo 1.4s ease-out forwards;
+
 }
 
 #verificarCadastros {
@@ -152,6 +157,9 @@ body {
   border-radius: 0.7rem;
 
   overflow-y: auto; /*Supostamente cria uma barra de rolagem se a lista crescer*/
+
+  animation: deslizarBaixo 1.8s ease-out forwards;
+
 }
 
 #verificarCadastros input {
@@ -199,6 +207,9 @@ body {
     linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
     linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
       border-box;
+
+  animation: deslizarBaixo 2.2s ease-out forwards;
+
 }
 
 #registrar:hover {
@@ -470,6 +481,22 @@ footer {
 
 #modalInfosWrapper:hover {
   cursor: default;
+}
+
+#homeLogo{
+  width: 4rem;
+  height: 4rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation: deslizarDireita 1s ease-out forwards;
+}
+
+#homeLogo img{
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 /* ---------------------------------- */
