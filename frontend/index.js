@@ -120,9 +120,10 @@
     const modalInfosContainer = document.getElementById("modalInfosContainer");
     const overlay = document.querySelector(".overlay");
 
-    const nome = document.getElementById("nome");
+    const nomePessoa = document.getElementById("nome");
     const datafal = document.getElementById("datafal");
     const datanasc = document.getElementById("datanasc");
+    const outrapessoa = document.getElementById("outrapessoa");
 
     caixaDeResultados.addEventListener("click", function (e) {
       if (e.target.tagName === "LI") {
@@ -132,11 +133,11 @@
         overlay.classList.remove("escondido");
 
         const dadoEncontrado = dados.find((dado) => dado.id == id);
-        console.log(dadoEncontrado);
 
-        nome.textContent = dadoEncontrado.nome;
+        nomePessoa.textContent = dadoEncontrado.nome;
         datafal.textContent = dadoEncontrado.dataFalecimento;
         datanasc.textContent = dadoEncontrado.dataNascimento;
+        outrapessoa.textContent = dadoEncontrado.outraPessoaNome;
         idpessoa.textContent = dadoEncontrado.id;
       }
     });
@@ -157,3 +158,5 @@
     });
   }
 })();
+
+
