@@ -139,7 +139,7 @@
       })
       .join("");
 
-    listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
+    listaRegistros.innerHTML = conteudo 
     if (barraInput.value == "") {
       buscar();
     }
@@ -163,7 +163,7 @@
       })
       .join("");
 
-    listaRegistros.innerHTML = "<li>" + "<ul>" + conteudo + "</ul>" + "</li>";
+    listaRegistros.innerHTML = conteudo
   }
   buscar();
 

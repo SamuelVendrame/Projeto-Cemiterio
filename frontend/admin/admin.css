@@ -150,16 +150,28 @@ body {
 
 #verificarCadastros {
   width: 90%;
-  padding: 0.3rem;
+  padding: 0.6rem;
 
   margin-bottom: 1rem;
-  border: 3px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.8);
   border-radius: 0.7rem;
 
   overflow-y: auto; /*Supostamente cria uma barra de rolagem se a lista crescer*/
 
+  box-shadow: 0 4px 15px rgba(0,0,0, 1); /* Usar mais isso aqui pelo senso de modernismo */
+
   animation: deslizarBaixo 1.8s ease-out forwards;
 
+}
+
+#verificarCadastros::-webkit-scrollbar {
+  width: 5px; 
+  overflow: none;
+}
+
+#verificarCadastros::-webkit-scrollbar-thumb {
+  background-color: #949393;
+  border-radius: 4px;
 }
 
 #verificarCadastros input {
@@ -168,6 +180,9 @@ body {
 
   padding: 0.5rem;
   margin-bottom: 0.5rem;
+
+  border-radius: 8px;
+  border: 1px solid black;
 }
 
 #listaRegistros {
@@ -175,15 +190,19 @@ body {
   flex-direction: column;
 
   border-radius: 6px;
+
 }
+
 
 #listaRegistros li {
   list-style: none;
 }
 
 .nomesRegistrados {
-  padding: 0.3rem;
+  padding: 0.5rem;
   text-align: left;
+
+  border-top: 1px solid rgba(0,0,0, 0.3);
 }
 
 .nomesRegistrados:hover {
@@ -470,8 +489,7 @@ footer {
   cursor: default;
 }
 
-#modalInfosWrapper h3,
-#modalInfosWrapper button {
+#modalInfosWrapper h3{
   margin: 1.7rem;
 }
 
@@ -481,6 +499,18 @@ footer {
 
 #modalInfosWrapper:hover {
   cursor: default;
+}
+
+#buttonWrapper{
+  display: flex;
+  
+  margin-top: 1rem;
+  gap: 1rem;
+
+}
+
+#buttonWrapper button{
+  padding: 0.5rem;
 }
 
 #homeLogo{

@@ -8,7 +8,11 @@ body {
   font-family:
     Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", Times,
     serif;
-  overflow: hidden; /*Corrobora com o problema da horizontal sliding bar que aparecia por causa das animações que mexiam com pixeis e aumentavam o tamanho da tela por um breve momento ao reiniciar a pagina."*/
+  overflow-x: hidden; /*Corrobora com o problema da horizontal sliding bar que aparecia por causa das animações que mexiam com pixeis e aumentavam o tamanho da tela por um breve momento ao reiniciar a pagina."*/
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
 }
 
 * {
@@ -125,7 +129,7 @@ body {
   animation: deslizarDireita 1s ease-out forwards;
 }
 
-#menuHamburger:hover {
+#menuHamburgerIcon:hover {
   cursor: pointer;
 }
 
@@ -140,13 +144,15 @@ body {
   height: 100vh;
   width: 55%;
 
-  z-index: 1000;
+  z-index: 10000;
   top: 0;
   left: 0;
   position: fixed;
 
   display: flex;
   justify-content: center;
+
+  
 
   animation: deslizarEsquerda 0.5s ease forwards;
 }
@@ -204,12 +210,14 @@ body {
   justify-content: center;
   align-items: center;
 
+
   animation: deslizarBaixo 1s ease-out forwards;
 }
 
 #sectionPrincipal h1 {
   margin-bottom: 0.8rem;
   font-size: x-large;
+
 }
 
 #principalTexto {
@@ -221,16 +229,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 #imagemInterrogacao img {
   height: 1.5rem;
   width: 1.5rem;
   margin-bottom: 1rem;
+  
 }
 
 #imagemInterrogacao img:hover {
   cursor: pointer;
+  
 }
 
 /* DIV invisível na aba de dúvidas (?) */
@@ -316,7 +327,13 @@ body {
 #divBarraPesquisa {
   justify-content: center;
   align-items: center;
-}
+
+  z-index: 9999;
+  position: relative;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Usar mais isso aqui pelo senso de modernismo */
+ }
+
 
 #divBarraPesquisa input {
   border: solid gray 2px;
@@ -339,6 +356,8 @@ body {
   background-color: rgb(194, 193, 193);
 
   list-style: none;
+
+  z-index: 10000;
 }
 
 #caixaDeResultados ul {
@@ -428,22 +447,23 @@ body {
 footer {
   display: flex; /*adicionar FLEX quando terminar o restante da pagina, e a imagem do linkedin tb.*/
   flex-direction: column;
-  position: fixed;
-  bottom: 0;
   padding: 1rem;
 
   align-items: center;
   justify-content: center;
   text-align: center;
 
-  width: 100vw;
-  height: 10vh;
+  width: 100%; /* pra evitar scroll horizontal */
+  height: 10dvh;
 
   gap: 0.6rem;
 
   margin-top: auto;
+  position: relative;
 
   color: white;
+
+  z-index: 1;
 }
 
 #creditosSite {
