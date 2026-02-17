@@ -175,6 +175,7 @@
     const datafal = document.getElementById("datafal");
     const datanasc = document.getElementById("datanasc");
     const idpessoa = document.getElementById("idpessoa")
+    const outrapessoa = document.getElementById("outrapessoa")
     
 
     barraResultados.addEventListener("click", function (e) {
@@ -182,9 +183,8 @@
       if (li) {
         const id = li.dataset.id;
 
-         overlay.classList.remove("escondido");
+        overlay.classList.remove("escondido");
         modalInfosContainer.classList.remove("escondido");
-
 
         const dadoEncontrado = dadosGlobal.find((dado) => dado.id == id);
 
@@ -192,8 +192,21 @@
         datafal.textContent = dadoEncontrado.dataFalecimento;
         datanasc.textContent = dadoEncontrado.dataNascimento;
         idpessoa.textContent = dadoEncontrado.id;
+        outrapessoa.textContent = dadoEncontrado?.outraPessoaNome || "Não.";
+
+          document.getElementById("botaoDeletar").addEventListener("click", function(){
+            const modalConfirmar = document.getElementById("modalConfirmar")
+
+            modalInfosContainer.classList.add("escondido")
+            modalConfirmar.classList.remove("escondido")
+            console.log(dadoEncontrado.id) // enmtender pq issoa q ta virando um acumulo de cliques colossal
+
+        })
+
       }
     });
+
+
 
     modalInfosContainer.addEventListener("click", function (e) {
       e.stopPropagation();

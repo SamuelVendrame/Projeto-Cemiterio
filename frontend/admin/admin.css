@@ -207,6 +207,7 @@ body {
 
 .nomesRegistrados:hover {
   background-color: rgb(100, 138, 227);
+  cursor: pointer;
 }
 
 #divAdicionarRegistro {
@@ -512,6 +513,65 @@ footer {
 #buttonWrapper button{
   padding: 0.5rem;
 }
+
+#modalConfirmar{
+  background-color: white;
+  border: 6.6px solid transparent;
+  border-radius: 6px;
+   background:
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  height: 30vh;
+
+  z-index: 9999;
+}
+
+#modalConfirmar h3{
+  padding: 1rem;
+}
+
+#modalConfirmar:hover{
+  cursor: default;
+}
+
+#modalConfirmarWrapper{
+  display: flex;
+  gap: 1rem;
+
+  margin-top: 2rem;
+}
+
+.botaoConfirmar{
+  padding: 0.9rem;
+
+  border: 1px solid black;
+  border-radius: 5px;
+
+}
+
+.botaoConfirmar:hover{
+  cursor: pointer;
+
+}
+
+#botaoSim{
+  background-color: green;
+}
+
+#botaoNao{
+  background-color: red;
+}
+
+
+
+
 
 #homeLogo{
   width: 4rem;

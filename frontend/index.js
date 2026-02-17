@@ -124,7 +124,7 @@
     const datafal = document.getElementById("datafal");
     const datanasc = document.getElementById("datanasc");
     const outrapessoa = document.getElementById("outrapessoa");
-
+    
     caixaDeResultados.addEventListener("click", function (e) {
       if (e.target.tagName === "LI") {
         const id = e.target.dataset.id;
@@ -134,15 +134,12 @@
 
         const dadoEncontrado = dados.find((dado) => dado.id == id);
 
-    
-
         nomePessoa.textContent = dadoEncontrado.nome;
         datafal.textContent = dadoEncontrado.dataFalecimento;
         datanasc.textContent = dadoEncontrado.dataNascimento;
-        outrapessoa.textContent = dadoEncontrado?.outraPessoaNome ?? "Não.";
+        outrapessoa.textContent = dadoEncontrado?.outraPessoaNome || "Não.";
         idpessoa.textContent = dadoEncontrado.id;
 
-        
       }
     });
 

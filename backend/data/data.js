@@ -25,7 +25,7 @@ const registros = [
     nome: "João",
     dataNascimento: "1962-08-30",
     dataFalecimento: "2023-07-02",
-    outraPessoaNome: "Fernanda",
+    outraPessoaNome: "",
   },
   {
     id: 5,

@@ -376,6 +376,7 @@ body {
 
 #caixaDeResultados ul li:hover {
   background-color: rgb(147, 199, 245);
+  cursor: pointer;
 }
 
 #modalInfosContainer {
