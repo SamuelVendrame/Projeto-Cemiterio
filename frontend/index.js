@@ -134,11 +134,15 @@
 
         const dadoEncontrado = dados.find((dado) => dado.id == id);
 
+    
+
         nomePessoa.textContent = dadoEncontrado.nome;
         datafal.textContent = dadoEncontrado.dataFalecimento;
         datanasc.textContent = dadoEncontrado.dataNascimento;
-        outrapessoa.textContent = dadoEncontrado.outraPessoaNome;
+        outrapessoa.textContent = dadoEncontrado?.outraPessoaNome ?? "Não.";
         idpessoa.textContent = dadoEncontrado.id;
+
+        
       }
     });
 
