@@ -197,6 +197,8 @@ function pegarIdDoClick(evento) {
 
     barraResultados.addEventListener("click", function (e) {
         const id = idGlobal
+                    console.log(dadosGlobal)
+
         overlay.classList.remove("escondido");
         modalInfosContainer.classList.remove("escondido");
 
@@ -242,8 +244,10 @@ function pegarIdDoClick(evento) {
       overlay.classList.add("escondido")
     })
 
+    const resultado =  document.getElementById("resultado");
+
     botaoSim.addEventListener("click", function(){
-      const resultado =  document.getElementById("resultado");
+      modalConfirmar.classList.add("escondido")
 
       modalConfirmar.classList.add("escondido")
 
@@ -261,12 +265,21 @@ function pegarIdDoClick(evento) {
             return resultado.innerHTML = "<h3>Cadastro deletado.</h3> "
         });
       } deletarRegistro(idGlobal)
+    }); 
 
+
+    resultado.addEventListener("click", function(e){
+      e.stopPropagation()
     })
 
 
     overlay.addEventListener("click", function () {
-      modalInfosContainer.classList.add("escondido");
+      const filhos = overlay.children
+
+      for (let filho of filhos) {
+        filho.classList.add("escondido");
+    }
+
       overlay.classList.add("escondido");
     });
   }; clickInfoDisplay()

@@ -2,12 +2,15 @@ const express = require("express");
 const router = express.Router();
 
 const registros = require("../data/data.js");
+let proximoId = 8; // Zerar quando for inserir os valores num banco de dados real
+
 
 router.post("/registrar", (req, res) => {
   console.log(req.body);
 
   const { nome, dataNascimento, dataFalecimento, nomeOutraPessoa } = req.body;
   const apenasLetras = /^[\p{L}\s\-]+$/u;
+
 
   if (!nome || !dataNascimento || !dataFalecimento) {
     return res.status(400).json({ mensagem: "Há campos em aberto." });
@@ -31,7 +34,7 @@ router.post("/registrar", (req, res) => {
   const tamanhoRegistros = registros.length + 1
 
   const novoRegistro = {
-    id: tamanhoRegistros,
+    id: proximoId++,
     nome,
     dataNascimento,
     dataFalecimento,

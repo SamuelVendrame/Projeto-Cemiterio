@@ -573,7 +573,7 @@ footer {
 
 #resultado{
    background-color: white;
-  border: 6.6px solid transparent;
+  border: 5px solid transparent;
   border-radius: 6px;
    background:
     linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
@@ -589,9 +589,14 @@ footer {
 
   z-index: 9999;
 
+  padding: 1rem;
+
   animation: deslizarCima 0.6s ease-out forwards;
 }
 
+#resultado:hover{
+  cursor: default;
+}
 
 
 #homeLogo{
