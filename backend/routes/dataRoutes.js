@@ -29,4 +29,17 @@ router.get("/mostrarDados", (req, res) => {
   res.send(registros)
 })
 
+router.delete("/deletarDado/:id", (req, res) =>{
+ const id = parseInt(req.params.id)
+
+  const indexEncontrado = registros.findIndex(registro => registro.id === id)
+
+  if (indexEncontrado !== -1) {
+    registros.splice(indexEncontrado, 1);
+    res.send(registros);
+  } else {
+    res.status(404).send("Registro não encontrado");
+  }
+})
+
 module.exports = router;

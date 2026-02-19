@@ -95,6 +95,17 @@ function pegarIdDoClick(evento) {
   const barraInput = document.getElementById("pesquisarRegistros");
   const barraResultados = document.getElementById("listaRegistros");
 
+  let idGlobal;
+
+  function pegarIdGlobal(){
+      barraResultados.addEventListener("click", function (e) {
+      idGlobal = pegarIdDoClick(e)
+    })
+   }
+
+  pegarIdGlobal()
+
+
   function debounce(func, delay) {
     let timeoutId;
 
@@ -185,7 +196,7 @@ function pegarIdDoClick(evento) {
     
 
     barraResultados.addEventListener("click", function (e) {
-      pegarIdDoClick(e)
+        const id = idGlobal
         overlay.classList.remove("escondido");
         modalInfosContainer.classList.remove("escondido");
 
@@ -197,7 +208,6 @@ function pegarIdDoClick(evento) {
         idpessoa.textContent = dadoEncontrado.id;
         outrapessoa.textContent = dadoEncontrado?.outraPessoaNome || "Não.";
 
-      }
     });
 
     const modalConfirmar = document.getElementById("modalConfirmar") // Modal de confirmação de delete
@@ -227,8 +237,24 @@ function pegarIdDoClick(evento) {
     });
 
     botaoNao.addEventListener("click", function(){
+
       modalConfirmar.classList.add("escondido")
       overlay.classList.add("escondido")
+    })
+
+    botaoSim.addEventListener("click", function(){
+
+    function deletarRegistro(id) {
+        fetch(`/deletarDado/${id}`, {
+          method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(dados => {
+          console.log(dados);
+        })
+        .catch(err => console.error(err));
+      } deletarRegistro(idGlobal)
+
     })
 
 
