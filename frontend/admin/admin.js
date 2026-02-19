@@ -85,6 +85,12 @@
   });
 })();
 
+function pegarIdDoClick(evento) {
+  const li = evento.target.closest("li");
+  if (!li) return null;
+  return li.dataset.id;
+}
+
 (function () {
   const barraInput = document.getElementById("pesquisarRegistros");
   const barraResultados = document.getElementById("listaRegistros");
@@ -179,10 +185,7 @@
     
 
     barraResultados.addEventListener("click", function (e) {
-      const li = e.target.closest("li")
-      if (li) {
-        const id = li.dataset.id;
-
+      pegarIdDoClick(e)
         overlay.classList.remove("escondido");
         modalInfosContainer.classList.remove("escondido");
 
@@ -194,23 +197,39 @@
         idpessoa.textContent = dadoEncontrado.id;
         outrapessoa.textContent = dadoEncontrado?.outraPessoaNome || "Não.";
 
-          document.getElementById("botaoDeletar").addEventListener("click", function(){
-            const modalConfirmar = document.getElementById("modalConfirmar")
-
-            modalInfosContainer.classList.add("escondido")
-            modalConfirmar.classList.remove("escondido")
-            console.log(dadoEncontrado.id) // enmtender pq issoa q ta virando um acumulo de cliques colossal
-
-        })
-
       }
     });
 
+    const modalConfirmar = document.getElementById("modalConfirmar") // Modal de confirmação de delete
+    const botaoNao = document.getElementById("botaoNao")
+    const botaoSim = document.getElementById("botaoSim")
 
+    document.getElementById("botaoDeletar").addEventListener("click", function(){
+
+      modalInfosContainer.classList.add("escondido")
+          modalConfirmar.classList.remove("escondido")
+          console.log("clicou") 
+
+        })
+
+        overlay.addEventListener("click", function() {
+            modalConfirmar.classList.add("escondido")
+            console.log("Clicou no overleison")
+          })
+
+        
+        modalConfirmar.addEventListener("click", function(e){
+          e.stopPropagation()
+        })
 
     modalInfosContainer.addEventListener("click", function (e) {
       e.stopPropagation();
     });
+
+    botaoNao.addEventListener("click", function(){
+      modalConfirmar.classList.add("escondido")
+      overlay.classList.add("escondido")
+    })
 
 
     overlay.addEventListener("click", function () {
