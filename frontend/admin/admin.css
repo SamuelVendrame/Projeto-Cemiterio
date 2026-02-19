@@ -571,7 +571,26 @@ footer {
   background-color: red;
 }
 
+#resultado{
+   background-color: white;
+  border: 6.6px solid transparent;
+  border-radius: 6px;
+   background:
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  height: 30vh;
+
+  z-index: 9999;
+
+  animation: deslizarCima 0.6s ease-out forwards;
+}
 
 
 

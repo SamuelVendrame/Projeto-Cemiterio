@@ -243,6 +243,9 @@ function pegarIdDoClick(evento) {
     })
 
     botaoSim.addEventListener("click", function(){
+      const resultado =  document.getElementById("resultado");
+
+      modalConfirmar.classList.add("escondido")
 
     function deletarRegistro(id) {
         fetch(`/deletarDado/${id}`, {
@@ -250,9 +253,13 @@ function pegarIdDoClick(evento) {
         })
         .then(res => res.json())
         .then(dados => {
-          console.log(dados);
+            resultado.classList.remove("escondido")
+            return resultado.innerHTML = "<h3> Cadastro deletado. </h3> "
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+            resultado.classList.remove("escondido")
+            return resultado.innerHTML = "<h3>Cadastro deletado.</h3> "
+        });
       } deletarRegistro(idGlobal)
 
     })
@@ -263,6 +270,7 @@ function pegarIdDoClick(evento) {
       overlay.classList.add("escondido");
     });
   }; clickInfoDisplay()
+
 
 })();
 
