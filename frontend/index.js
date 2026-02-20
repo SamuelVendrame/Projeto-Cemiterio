@@ -47,6 +47,8 @@
   overlay.addEventListener("click", fecharMenu);
 })(); // IIFE, eh bom entender e reutilizar - mas nao a carregar para o REACT por causa das presencas dos modulos.
 
+let dadosGlobal;
+
 (function () {
   const barraInput = document.getElementById("barraPesquisa");
   const barraResultados = document.getElementById("caixaDeResultados");
@@ -72,13 +74,9 @@
       console.log("Fetch de busca falhou.");
     }
 
-    console.log("1. Vou buscar os dados agora");
     const dados = await buscarDados.json();
-console.log("2. DADOS chegaram ", dados);
-    mostrarResultados(dados);
-    clickInfoDisplay(dados);
-    console.log("3.cabo");
-   
+    dadosGlobal = dados;
+    mostrarResultados(dados);   
   }
 
   const buscarDebounced = debounce(buscarNoBackEnd, 500);
@@ -117,8 +115,7 @@ console.log("2. DADOS chegaram ", dados);
     
   }
 
-  function clickInfoDisplay(dados) {
-    const modalInfosContainer = document.getElementById("modalInfosContainer");
+      const modalInfosContainer = document.getElementById("modalInfosContainer");
     const overlay = document.querySelector(".overlay");
 
     const nomePessoa = document.getElementById("nome");
@@ -133,7 +130,7 @@ console.log("2. DADOS chegaram ", dados);
         modalInfosContainer.classList.remove("escondido");
         overlay.classList.remove("escondido");
 
-        const dadoEncontrado = dados.find((dado) => dado.id == id);
+        const dadoEncontrado = dadosGlobal.find((dado) => dado.id == id);
         console.log(dadoEncontrado)
 
         if(dadoEncontrado){
@@ -147,6 +144,7 @@ console.log("2. DADOS chegaram ", dados);
       }
     });
 
+    
     modalInfosContainer.addEventListener("click", function (e) {
       e.stopPropagation();
     });
@@ -159,7 +157,7 @@ console.log("2. DADOS chegaram ", dados);
       modalInfosContainer.classList.add("escondido");
       overlay.classList.add("escondido");
     });
-  }
+
 })();
 
 
