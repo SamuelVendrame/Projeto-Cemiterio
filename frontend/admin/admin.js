@@ -301,7 +301,8 @@ function pegarIdDoClick(evento) {
       e.stopPropagation()
     })
 
-    editarRegistroForm.addEventListener("submit", function(){
+    editarRegistroForm.addEventListener("submit", function(e){
+      e.preventDefault()
       async function editar(){
         try{
           const resposta = await fetch("/editar", {
@@ -374,4 +375,15 @@ function pegarIdDoClick(evento) {
     box.style.display = checkbox.checked ? "block" : "none";
   });
 })();
+
+(function verificarDuploEnterroEDIT() {
+  const checkbox = document.getElementById("temOutraPessoaEDIT");
+  const box = document.getElementById("outraPessoaBox");
+
+  checkbox.addEventListener("change", () => {
+    box.style.display = checkbox.checked ? "block" : "none";
+  });
+})();
+
+
 
