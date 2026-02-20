@@ -649,6 +649,50 @@ footer {
   cursor: default;
 }
 
+#editarRegistroForm{
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 1.3rem;
+
+  text-align: center;
+}
+
+#editarRegistroForm input{
+     background:
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
+
+  border: 0.2rem solid transparent;
+  border-radius: 0.3rem;
+  }
+
+#confirmarEDIT{
+  display: block;
+  margin: 1.3rem auto auto auto;
+
+  padding: 0.5rem;
+
+  background:
+    linear-gradient(rgb(216, 216, 216), white) padding-box,
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
+
+  border: 0.2rem solid transparent;
+  border-radius: 0.3rem;
+}
+
+#confirmarEDIT:hover {
+  cursor: pointer;
+}
+
+
+
+
 #homeLogo{
   width: 4rem;
   height: 4rem;

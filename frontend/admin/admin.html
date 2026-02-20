@@ -54,7 +54,7 @@
         <form id="registroInputs">
           <label>
             Nome:
-            <input type="text" name="nome" required />
+            <input type="text" name="nome" placeholder="" required />
           </label>
 
           <label>
@@ -139,20 +139,20 @@
 
         <div id="editarRegistro" class="escondido">
           <h2>EDITAR REGISTRO</h2>
-          <form id="registroInputs">
+          <form id="editarRegistroForm">
             <label>
               Nome:
-              <input type="text" name="nome" required />
+              <input type="text" id="nomeEDIT" required />
             </label>
   
             <label>
               Data de nascimento:
-              <input type="date" name="dataNascimento" required />
+              <input type="date" id="dataNascimentoEDIT" required />
             </label>
   
             <label>
               Data de falência:
-              <input type="date" name="dataFalecimento" required />
+              <input type="date" id="dataFalecimentoEDIT" required />
             </label>
   
             <label>
@@ -163,11 +163,11 @@
             <div id="outraPessoaBox" style="display: none">
               <label>
                 Nome da outra pessoa:
-                <input type="text" name="nomeOutraPessoa" />
+                <input type="text" id="nomeOutraPessoaEDIT"/>
               </label>
             </div>
   
-            <button id="registrarDados" type="submit">REGISTRAR</button>
+            <button id="confirmarEDIT" type="submit">CONFIRMAR EDIÇÃO</button>
           </form>
         </div>
 

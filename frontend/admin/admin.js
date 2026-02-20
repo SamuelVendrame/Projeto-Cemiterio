@@ -92,6 +92,8 @@ function pegarIdDoClick(evento) {
   return li.dataset.id;
 }
 
+  let dadosGlobal = [];
+
 (function () {
   const barraInput = document.getElementById("pesquisarRegistros");
   const barraResultados = document.getElementById("listaRegistros");
@@ -121,7 +123,6 @@ function pegarIdDoClick(evento) {
   }
 
   //
-  let dadosGlobal = [];
 
   async function buscarNoBackEnd(valor) {
     const buscarDados = await fetch("/mostrarDadosSearch?valor=" + valor);
@@ -197,8 +198,7 @@ function pegarIdDoClick(evento) {
     
 
     barraResultados.addEventListener("click", function (e) {
-        const id = idGlobal
-                    console.log(dadosGlobal)
+    const id = idGlobal
 
         overlay.classList.remove("escondido");
         modalInfosContainer.classList.remove("escondido");
@@ -268,7 +268,6 @@ function pegarIdDoClick(evento) {
       } deletarRegistro(idGlobal)
     }); 
 
-
     resultado.addEventListener("click", function(e){
       e.stopPropagation()
     })
@@ -277,16 +276,50 @@ function pegarIdDoClick(evento) {
 
     const botaoEditar = document.getElementById("botaoEditar")
     const editarRegistro = document.getElementById("editarRegistro")
+    const editarRegistroForm = document.getElementById("editarRegistroForm")
+
+    const nomeEDIT = document.getElementById("nomeEDIT")
+    const dataFalecimentoEDIT = document.getElementById("dataFalecimentoEDIT")
+    const dataNascimentoEDIT = document.getElementById("dataNascimentoEDIT")
+    const nomeOutraPessoaEDIT = document.getElementById("nomeOutraPessoaEDIT")
 
     botaoEditar.addEventListener("click", function(){
       modalInfosContainer.classList.add("escondido")
 
       editarRegistro.classList.remove("escondido")
       overlay.classList.remove("escondido")
+
+      const dadoEncontrar = dadosGlobal.find((dado) => dado.id == idGlobal);
+
+      nomeEDIT.value = dadoEncontrar.nome
+      dataFalecimentoEDIT.value = dadoEncontrar.dataFalecimento
+      dataNascimentoEDIT.value = dadoEncontrar.dataNascimento
+      nomeOutraPessoaEDIT.value = dadoEncontrar.nomeOutraPessoa
     })
 
     editarRegistro.addEventListener("click", function(e){
       e.stopPropagation()
+    })
+
+    editarRegistroForm.addEventListener("submit", function(){
+      async function editar(){
+        try{
+          const resposta = await fetch("/editar", {
+            method: "PATCH",
+            headers: {
+            "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                  nome: nomeEDIT,
+                  dataNascimento: dataNascimentoEDIT,
+                  dataFalecimento: dataFalecimentoEDIT,
+                  nomeOutraPessoa: nomeOutraPessoaEDIT || null
+              })
+            })
+          } catch(error){
+            console.log(error)
+          }
+        } editar()
     })
 
     // botao OK
@@ -341,3 +374,4 @@ function pegarIdDoClick(evento) {
     box.style.display = checkbox.checked ? "block" : "none";
   });
 })();
+
