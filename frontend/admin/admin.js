@@ -378,7 +378,7 @@ function pegarIdDoClick(evento) {
 
 (function verificarDuploEnterroEDIT() {
   const checkbox = document.getElementById("temOutraPessoaEDIT");
-  const box = document.getElementById("outraPessoaBox");
+  const box = document.getElementById("outraPessoaBoxEDIT");
 
   checkbox.addEventListener("change", () => {
     box.style.display = checkbox.checked ? "block" : "none";
