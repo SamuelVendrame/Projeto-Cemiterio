@@ -65,15 +65,20 @@
   }
 
   async function buscarNoBackEnd(valor) {
+  
     const buscarDados = await fetch("/mostrarDadosSearch?valor=" + valor);
 
     if (!buscarDados.ok) {
       console.log("Fetch de busca falhou.");
     }
 
+    console.log("1. Vou buscar os dados agora");
     const dados = await buscarDados.json();
+console.log("2. DADOS chegaram ", dados);
     mostrarResultados(dados);
     clickInfoDisplay(dados);
+    console.log("3.cabo");
+   
   }
 
   const buscarDebounced = debounce(buscarNoBackEnd, 500);
@@ -94,26 +99,22 @@
 
     let quantidadeDisplayed = resultadoSlice5.length;
 
-    caixaDeResultados.innerHTML =
-      "<ul>" +
-      conteudo +
-      "</ul>" +
-      "<li id='displayer'>" +
-      "Mostrando " +
-      quantidadeDisplayed +
-      " resultados de " +
-      dados.length;
-    if (conteudo >= 0) {
-      caixaDeResultados.innerHTML =
-        "<li id='displayer'>" +
-        "Mostrando " +
-        quantidadeDisplayed +
-        " resultados de " +
-        dados.length;
-    }
+    const displayer = document.getElementById("displayer")
+    displayer.classList.remove("escondido")
+    caixaDeResultados.classList.remove("escondido")
+
+    caixaDeResultados.innerHTML = "<ul>" +  conteudo + "</ul>";
+    displayer.innerHTML = "Mostrando " + quantidadeDisplayed + " resultados de " + dados.length;
+
     if (barraInput.value == "") {
+      caixaDeResultados.classList.add("escondido")
       caixaDeResultados.innerHTML = "";
+      displayer.classList.add("escondido")
     }
+    if(conteudo == ""){
+      caixaDeResultados.classList.add("escondido")
+    }
+    
   }
 
   function clickInfoDisplay(dados) {
@@ -128,18 +129,21 @@
     caixaDeResultados.addEventListener("click", function (e) {
       if (e.target.tagName === "LI") {
         const id = e.target.dataset.id;
-
+        
         modalInfosContainer.classList.remove("escondido");
         overlay.classList.remove("escondido");
 
         const dadoEncontrado = dados.find((dado) => dado.id == id);
+        console.log(dadoEncontrado)
+
+        if(dadoEncontrado){
 
         nomePessoa.textContent = dadoEncontrado.nome;
         datafal.textContent = dadoEncontrado.dataFalecimento;
         datanasc.textContent = dadoEncontrado.dataNascimento;
         outrapessoa.textContent = dadoEncontrado?.outraPessoaNome || "Não.";
         idpessoa.textContent = dadoEncontrado.id;
-
+        }
       }
     });
 
@@ -147,9 +151,7 @@
       e.stopPropagation();
     });
 
-    document
-      .getElementById("displayer")
-      .addEventListener("click", function (e) {
+    document.getElementById("displayer").addEventListener("click", function (e) {
         e.stopPropagation();
       });
 
