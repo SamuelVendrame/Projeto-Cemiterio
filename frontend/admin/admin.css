@@ -512,6 +512,7 @@ footer {
 
 #buttonWrapper button{
   padding: 0.5rem;
+  width: 6rem;
 }
 
 #modalConfirmar{
@@ -545,29 +546,42 @@ footer {
 
 #modalConfirmarWrapper{
   display: flex;
-  gap: 1rem;
+  gap: 3rem;
 
-  margin-top: 2rem;
+  margin-top: 1rem; /*Lembrar de arrumar o bug do hoover que joga os elementos de cima pro alto qnd passo o mouse*/
 }
 
 .botaoConfirmar{
-  padding: 0.9rem;
+  padding: 0.5rem;
+
+  width: 6rem;
 
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 9px;
 
 }
 
 .botaoConfirmar:hover{
   cursor: pointer;
+  transform: translateY(-5px);
+  transition: transform 0.4s ease;
 
+  border: 2px solid rgb(0, 0, 0);
 }
 
 #botaoSim{
-  background-color: green;
+  background-color: rgb(13, 153, 13);
+}
+
+#botaoSim:hover{
+  background-color: rgb(20, 192, 20);
 }
 
 #botaoNao{
+  background-color: rgb(187, 13, 13);
+}
+
+#botaoNao:hover{
   background-color: red;
 }
 
@@ -598,6 +612,38 @@ footer {
   cursor: default;
 }
 
+#editarRegistro{
+  height: 23rem;
+  max-height: auto;
+  width: 21rem;
+  max-width: 500px;
+
+  z-index: 999;
+
+  background-color: white;
+  background:
+    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
+      border-box;
+
+  border: 0.2rem solid transparent;
+  border-radius: 0.7rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  animation: deslizarCima 0.6s ease-out forwards;
+}
+
+#editarRegistro h2{
+  padding: 1rem;
+}
+
+#editarRegistro:hover{
+  cursor: default;
+}
 
 #homeLogo{
   width: 4rem;

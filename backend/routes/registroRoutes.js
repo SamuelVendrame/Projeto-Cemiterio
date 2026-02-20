@@ -31,18 +31,17 @@ router.post("/registrar", (req, res) => {
     }
   }
 
-  const tamanhoRegistros = registros.length + 1
-
   const novoRegistro = {
-    id: proximoId++,
+    id: proximoId + 1,
     nome,
     dataNascimento,
     dataFalecimento,
     nomeOutraPessoa: nomeOutraPessoaLimpo,
   };
 
-  registros.push(novoRegistro);
-
+    registros.push(novoRegistro);
+    
+    proximoId++
   return res.status(201).json({
     mensagem: "Registro criado com sucesso",
     registro: novoRegistro,

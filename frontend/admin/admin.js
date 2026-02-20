@@ -79,6 +79,7 @@
       overlay.classList.remove("escondido");
 
       formRegistro.reset();
+
     } catch (error) {
       console.log("Um erro ocorreu.", error);
     }
@@ -272,6 +273,30 @@ function pegarIdDoClick(evento) {
       e.stopPropagation()
     })
 
+    // Funcao de botao de clique Editar
+
+    const botaoEditar = document.getElementById("botaoEditar")
+    const editarRegistro = document.getElementById("editarRegistro")
+
+    botaoEditar.addEventListener("click", function(){
+      modalInfosContainer.classList.add("escondido")
+
+      editarRegistro.classList.remove("escondido")
+      overlay.classList.remove("escondido")
+    })
+
+    editarRegistro.addEventListener("click", function(e){
+      e.stopPropagation()
+    })
+
+    // botao OK
+
+    const botaoOk = document.getElementById("botaoOk")
+
+    botaoOk.addEventListener("click", function(){
+      modalInfosContainer.classList.add("escondido")
+      overlay.classList.add("escondido")
+    })
 
     overlay.addEventListener("click", function () {
       const filhos = overlay.children
