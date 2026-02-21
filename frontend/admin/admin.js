@@ -30,7 +30,7 @@
     const nome = formRegistro.elements.nome.value;
     const dataNascimento = formRegistro.elements.dataNascimento.value;
     const dataFalecimento = formRegistro.elements.dataFalecimento.value;
-    const nomeOutraPessoa = formRegistro.elements.nomeOutraPessoa.value || null;
+    const outraPessoaNome = formRegistro.elements.outraPessoaNome.value || null; // o problema eh aqui!!!
 
     try {
       const resposta = await fetch("/registrar", {
@@ -40,7 +40,7 @@
           nome,
           dataNascimento,
           dataFalecimento,
-          nomeOutraPessoa,
+          outraPessoaNome, // o problema eh aqui!!!
         }),
       });
 
@@ -64,14 +64,14 @@
       document.getElementById("dataFaleInserida").textContent =
         dados.registro.dataFalecimento;
 
-      const nomeOutraPessoaInput = document.getElementById(
+      const outraPessoaNomeInput = document.getElementById(
         "outraPessoaInserida",
       );
 
-      if (nomeOutraPessoa === null) {
-        nomeOutraPessoaInput.textContent = "Não há outra pessoa junto.";
+      if (outraPessoaNome === null) {
+        outraPessoaNomeInput.textContent = "Não há outra pessoa junto.";
       } else {
-        nomeOutraPessoaInput.textContent = "Sim - Nome: " + nomeOutraPessoa;
+        outraPessoaNomeInput.textContent = "Sim - " + outraPessoaNome;
       }
 
       criarRegistro.classList.add("escondido");
@@ -282,7 +282,7 @@ function pegarIdDoClick(evento) {
     const nomeEDIT = document.getElementById("nomeEDIT")
     const dataFalecimentoEDIT = document.getElementById("dataFalecimentoEDIT")
     const dataNascimentoEDIT = document.getElementById("dataNascimentoEDIT")
-    const nomeOutraPessoaEDIT = document.getElementById("nomeOutraPessoaEDIT")
+    const outraPessoaNomeEDIT = document.getElementById("outraPessoaNomeEDIT")
 
     let dadoEncontrar;
 
@@ -299,7 +299,7 @@ function pegarIdDoClick(evento) {
       nomeEDIT.value = dadoEncontrar.nome
       dataFalecimentoEDIT.value = dadoEncontrar.dataFalecimento
       dataNascimentoEDIT.value = dadoEncontrar.dataNascimento
-      nomeOutraPessoaEDIT.value = dadoEncontrar.outraPessoaNome
+      outraPessoaNomeEDIT.value = dadoEncontrar.outraPessoaNome
     })
 
     editarRegistro.addEventListener("click", function(e){
@@ -311,7 +311,7 @@ function pegarIdDoClick(evento) {
       console.log(dadoEncontrar.id)
 
       async function editar(){
-        console.log(nomeOutraPessoaEDIT.value + " aqui")
+        console.log(outraPessoaNomeEDIT.value + " aqui")
         try{
           const resposta = await fetch(`/editar/${dadoEncontrar.id}`, {
             method: "PATCH",
@@ -322,7 +322,7 @@ function pegarIdDoClick(evento) {
                   nome: nomeEDIT.value,
                   dataNascimento: dataNascimentoEDIT.value,
                   dataFalecimento: dataFalecimentoEDIT.value,
-                  outraPessoaNome: nomeOutraPessoaEDIT.value
+                  outraPessoaNome: outraPessoaNomeEDIT.value
               }),
             })
             const dados = await resposta.json()

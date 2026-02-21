@@ -8,7 +8,7 @@ let proximoId = 8; // Zerar quando for inserir os valores num banco de dados rea
 router.post("/registrar", (req, res) => {
   console.log(req.body);
 
-  const { nome, dataNascimento, dataFalecimento, nomeOutraPessoa } = req.body;
+  const { nome, dataNascimento, dataFalecimento, outraPessoaNome } = req.body;
   const apenasLetras = /^[\p{L}\s\-]+$/u;
 
 
@@ -16,15 +16,15 @@ router.post("/registrar", (req, res) => {
     return res.status(400).json({ mensagem: "Há campos em aberto." });
   }
 
-  let nomeOutraPessoaLimpo = null;
+  let outraPessoaNomeLimpo = null;
 
-  if(!apenasLetras.test(nome) || !apenasLetras.test(nomeOutraPessoa)){
+  if(!apenasLetras.test(nome) || !apenasLetras.test(outraPessoaNome)){
     return res.status(422).json({ mensagem: "Os dados inseridos são inválidos."})
   }
 
-  if (nomeOutraPessoa) {
-    nomeOutraPessoaLimpo = nomeOutraPessoa.trim();
-    if (nomeOutraPessoaLimpo == "") {
+  if (outraPessoaNome) {
+    outraPessoaNomeLimpo = outraPessoaNome.trim();
+    if (outraPessoaNomeLimpo == "") {
       return res
         .status(400)
         .json({ mensagem: "O nome da outra pessoa está vazio." });
@@ -36,7 +36,7 @@ router.post("/registrar", (req, res) => {
     nome,
     dataNascimento,
     dataFalecimento,
-    nomeOutraPessoa: nomeOutraPessoaLimpo,
+    outraPessoaNome: outraPessoaNomeLimpo,
   };
 
     registros.push(novoRegistro);
