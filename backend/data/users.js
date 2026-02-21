@@ -1,7 +1,7 @@
 const usuarios = [
     {
-        nome: "user1",
-        senha: "123",
+        nome: "1",
+        senha: "1",
         role: "admin"
     },
     {
