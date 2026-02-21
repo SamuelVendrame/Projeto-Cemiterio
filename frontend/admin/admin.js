@@ -204,6 +204,7 @@ function pegarIdDoClick(evento) {
         modalInfosContainer.classList.remove("escondido");
 
         const dadoEncontrado = dadosGlobal.find((dado) => dado.id == id);
+        console.log(dadoEncontrado)
 
         nome.textContent = dadoEncontrado.nome;
         datafal.textContent = dadoEncontrado.dataFalecimento;
@@ -257,7 +258,7 @@ function pegarIdDoClick(evento) {
           method: "DELETE"
         })
         .then(res => res.json())
-        .then(dados => {
+        .then(dados => { /// ???????
             resultado.classList.remove("escondido")
             return resultado.innerHTML = "<h3> Cadastro deletado. </h3> "
         })
@@ -283,18 +284,22 @@ function pegarIdDoClick(evento) {
     const dataNascimentoEDIT = document.getElementById("dataNascimentoEDIT")
     const nomeOutraPessoaEDIT = document.getElementById("nomeOutraPessoaEDIT")
 
+    let dadoEncontrar;
+
     botaoEditar.addEventListener("click", function(){
       modalInfosContainer.classList.add("escondido")
 
       editarRegistro.classList.remove("escondido")
       overlay.classList.remove("escondido")
 
-      const dadoEncontrar = dadosGlobal.find((dado) => dado.id == idGlobal);
+      dadoEncontrar = dadosGlobal.find((dado) => dado.id == idGlobal);
+
+      console.log(dadoEncontrar)
 
       nomeEDIT.value = dadoEncontrar.nome
       dataFalecimentoEDIT.value = dadoEncontrar.dataFalecimento
       dataNascimentoEDIT.value = dadoEncontrar.dataNascimento
-      nomeOutraPessoaEDIT.value = dadoEncontrar.nomeOutraPessoa
+      nomeOutraPessoaEDIT.value = dadoEncontrar.outraPessoaNome
     })
 
     editarRegistro.addEventListener("click", function(e){
@@ -303,20 +308,26 @@ function pegarIdDoClick(evento) {
 
     editarRegistroForm.addEventListener("submit", function(e){
       e.preventDefault()
+      console.log(dadoEncontrar.id)
+
       async function editar(){
+        console.log(nomeOutraPessoaEDIT.value + " aqui")
         try{
-          const resposta = await fetch("/editar", {
+          const resposta = await fetch(`/editar/${dadoEncontrar.id}`, {
             method: "PATCH",
             headers: {
             "Content-Type": "application/json"
               },
               body: JSON.stringify({
-                  nome: nomeEDIT,
-                  dataNascimento: dataNascimentoEDIT,
-                  dataFalecimento: dataFalecimentoEDIT,
-                  nomeOutraPessoa: nomeOutraPessoaEDIT || null
-              })
+                  nome: nomeEDIT.value,
+                  dataNascimento: dataNascimentoEDIT.value,
+                  dataFalecimento: dataFalecimentoEDIT.value,
+                  outraPessoaNome: nomeOutraPessoaEDIT.value
+              }),
             })
+            const dados = await resposta.json()
+            console.log(dados.registro)
+
           } catch(error){
             console.log(error)
           }
@@ -345,6 +356,7 @@ function pegarIdDoClick(evento) {
 
 
 })();
+
 
 (function modalHandler() {
   const modalInfosInseridas = document.getElementById("modalMostrarInput");
@@ -384,6 +396,4 @@ function pegarIdDoClick(evento) {
     box.style.display = checkbox.checked ? "block" : "none";
   });
 })();
-
-
 
