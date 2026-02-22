@@ -76,8 +76,7 @@ body {
   padding: 0;
   margin: 0;
   font-family:
-    Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", Times,
-    serif;
+    "Inter", sans-serif;
   overflow-x: hidden; /*Corrobora com o problema da horizontal sliding bar que aparecia por causa das animações que mexiam com pixeis e aumentavam o tamanho da tela por um breve momento ao reiniciar a pagina."*/
 
   height: 100vh;
@@ -158,7 +157,7 @@ body {
 
   overflow-y: auto; /*Supostamente cria uma barra de rolagem se a lista crescer*/
 
-  box-shadow: 0 4px 15px rgba(0,0,0, 1); /* Usar mais isso aqui pelo senso de modernismo */
+  box-shadow: 0 4px 15px rgba(0,0,0, 0.7); /* Usar mais isso aqui pelo senso de modernismo */
 
   animation: deslizarBaixo 1.8s ease-out forwards;
 

@@ -2,26 +2,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+
+html, body{
+  height: 100%;
+}
+
 body {
   padding: 0;
   margin: 0;
   font-family:
-    Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", Times,
-    serif;
+    "Inter", sans-serif;
   overflow-x: hidden; /*Corrobora com o problema da horizontal sliding bar que aparecia por causa das animações que mexiam com pixeis e aumentavam o tamanho da tela por um breve momento ao reiniciar a pagina."*/
+
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-
+  min-height: 10
 }
 
 * {
   box-sizing: border-box; /*Pra evitar a barra de rolagem criada pelo padding em alguns elementos*/
   margin: 0;
   padding: 0;
-  font-family: "Inter", "Sen", sans-serif;
 }
-
 /* ---------------------- */
 
 /* OVERLAY - Para criar o estilo opaco ao abrir uma div popUp.*/
@@ -365,6 +367,7 @@ body {
   border-radius: 0.15rem;
   padding: 0.8rem 0.5rem;
   z-index: 9999;
+  
 }
 
 #caixaDeResultados ul li {
@@ -448,24 +451,23 @@ body {
 footer {
   display: flex; /*adicionar FLEX quando terminar o restante da pagina, e a imagem do linkedin tb.*/
   flex-direction: column;
+  bottom: 0;
   padding: 1rem;
 
   align-items: center;
   justify-content: center;
   text-align: center;
 
-  width: 100%; /* pra evitar scroll horizontal */
-  height: 10dvh;
+  width: 100vw;
+  height: 10vh;
 
   gap: 0.6rem;
 
   margin-top: auto;
-  position: relative;
 
   color: white;
-
-  z-index: 1;
 }
+
 
 #creditosSite {
   display: flex;
