@@ -173,15 +173,6 @@ body {
 
 }
 
-#verificarCadastros::-webkit-scrollbar {
-  width: 5px; 
-  overflow: none;
-}
-
-#verificarCadastros::-webkit-scrollbar-thumb {
-  background-color: #949393;
-  border-radius: 4px;
-}
 
 #verificarCadastros input {
   width: 100%;
@@ -199,6 +190,19 @@ body {
 #listaRegistros {
   flex: 1;
   overflow-y: auto;
+}
+
+
+#listaRegistros::-webkit-scrollbar {
+  width: 5px;
+  overflow: none;
+}
+
+#listaRegistros::-webkit-scrollbar-thumb {
+  background-color: #949393;
+  border-radius: 4px;
+    height: 1.2rem;
+
 }
 
 
@@ -246,14 +250,9 @@ body {
 }
 
 #modalMostrarInput {
-  background:
-    linear-gradient(rgb(216, 216, 216), rgb(216, 216, 216)) padding-box,
-    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
-      border-box;
-
-  border: 0.3rem solid transparent;
-  border-radius: 1rem;
-
+  background-color: white;
+  border: 0.2rem solid #b2b5ba;
+  border-radius: 0.7rem;
   background-color: white;
 
   display: flex;
@@ -273,10 +272,6 @@ body {
 
 #modalWrapper button {
   padding: 0.5rem;
-  background:
-    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
-      border-box;
 
   border: 0.2rem solid transparent;
   border-radius: 0.3rem;
@@ -467,12 +462,7 @@ footer {
 }
 
 #modalInfosContainer {
-  background:
-    linear-gradient(rgb(216, 216, 216), rgb(216, 216, 216)) padding-box,
-    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
-      border-box;
-
-  border: 0.3rem solid transparent;
+  border: 0.2rem solid #b2b5ba;
   border-radius: 1rem;
 
   background-color: white;
@@ -498,24 +488,18 @@ footer {
   padding: 0.5rem;
 }
 
-#modalInfosWrapper button {
-  padding: 0.5rem;
-  background:
-    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
-      border-box;
-
-  border: 0.2rem solid transparent;
-  border-radius: 0.3rem;
-}
-
 #modalInfosWrapper:hover,
 #modalInfosContainer {
   cursor: default;
 }
 
-#modalInfosWrapper h3{
-  margin: 1.7rem;
+#modalInfosWrapper h4{
+  font-weight: 700;
+}
+
+#modalInfosWrapper p{
+  font-weight: 500;
+  font-size: large;
 }
 
 #modalInfosWrapper button:hover {
@@ -529,18 +513,32 @@ footer {
 #buttonWrapper{
   display: flex;
   
-  margin-top: 1rem;
+  margin-top: 2rem;
   gap: 1rem;
 
+  
 }
 
 #buttonWrapper button{
-  padding: 0.5rem;
-  width: 4.5rem;
+  border-radius: 0.2rem;
+  border: 0.1rem solid #4c4d4e;
+  background-color: white;
 
-  text-align: center;
-  display: flex;
-  justify-content: center;
+  padding: 0.5rem 0.7rem;
+
+  font-size: medium;
+
+  transition: transform 0.4s ease; 
+}
+
+#buttonWrapper button:hover{
+  transform: translateY(-5px);
+}
+
+#buttonWrapper button:active{
+    background-color: rgb(147, 199, 245);
+  box-shadow: 0 2px 8px rgba(0,0,0, 0.7); /* Usar mais isso aqui pelo senso de modernismo */
+
 }
 
 #modalConfirmar{
@@ -615,13 +613,9 @@ footer {
 
 #resultado{
    background-color: white;
-  border: 5px solid transparent;
-  border-radius: 6px;
-   background:
-    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
-      border-box;
-
+  border: 0.2rem solid #b2b5ba;
+  border-radius: 3px;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -649,12 +643,8 @@ footer {
   z-index: 999;
 
   background-color: white;
-  background:
-    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
-      border-box;
+    border: 0.2rem solid #b2b5ba;
 
-  border: 0.2rem solid transparent;
   border-radius: 0.7rem;
 
   display: flex;
@@ -685,15 +675,40 @@ footer {
   text-align: center;
 }
 
+#editarRegistroForm label{
+
+
+  gap: 0.3rem;
+}
+
+#temOutraPessoaContainerEDIT{
+   display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.5rem;
+}
+
+#temOutraPessoaEDIT{
+  height: 1rem;
+  width: 1rem;
+}
+
 #editarRegistroForm input{
-     background:
-    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
+  background: linear-gradient(rgb(216, 216, 216), white) padding-box,
     linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
       border-box;
 
   border: 0.2rem solid transparent;
+  border: 0.2rem solid transparent;
   border-radius: 0.3rem;
+   padding-left: 0.3rem;
   }
+
+#outraPessoaBoxEDIT{
+    gap: 0.5rem;
+
+}
 
 #confirmarEDIT{
   display: block;
@@ -708,10 +723,13 @@ footer {
 
   border: 0.2rem solid transparent;
   border-radius: 0.3rem;
+    transition: transform 0.4s ease; 
+
 }
 
 #confirmarEDIT:hover {
   cursor: pointer;
+  transform: translateY(-5px);
 }
 
 

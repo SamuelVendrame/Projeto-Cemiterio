@@ -1,8 +1,11 @@
 (function () {
   const invisivelDuvidaDiv = document.getElementById("invisivelDuvidaDiv");
   const overlay = document.querySelector(".overlay");
-  const botaoFechar = document.getElementById("fechar");
+  const botaoFechar = document.querySelectorAll(".fechar");
   const interrogacaoClicar = document.getElementById("interrogacao");
+  const modalInfosContainer = document.getElementById("modalInfosContainer")
+
+
 
   invisivelDuvidaDiv.addEventListener("click", function (e) {
     e.stopPropagation();
@@ -13,10 +16,13 @@
     overlay.classList.remove("escondido");
   });
 
-  botaoFechar.addEventListener("click", function () {
+ botaoFechar.forEach(botao => {
+  botao.addEventListener("click", function () {
     invisivelDuvidaDiv.classList.add("escondido");
+    modalInfosContainer.classList.add("escondido");
     overlay.classList.add("escondido");
   });
+});
 
   const fecharOverlay = (e) => {
     if (e.target === overlay) {

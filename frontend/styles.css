@@ -254,14 +254,10 @@ body {
 /* DIV invisível na aba de dúvidas (?) */
 
 #invisivelDuvidaDiv {
-  background:
-    linear-gradient(rgb(216, 216, 216), rgb(216, 216, 216)) padding-box,
-    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
-      border-box;
-
-  border: 0.3rem solid transparent;
-  border-radius: 1rem;
+  border: 0.2rem solid #b2b5ba;
+  border-radius: 0.4rem;
   position: fixed;
+  background-color: white;
 
   width: 20rem;
   min-height: 19rem;
@@ -283,6 +279,7 @@ body {
 
 #invisivelDuvidaDiv h3 {
   margin: 1rem 1rem 0 1rem;
+  font-weight: 600;
 }
 
 #invisivelDuvidaDiv ul {
@@ -301,28 +298,28 @@ body {
   list-style: none;
 }
 
-#invisivelDuvidaDiv button {
-  border-radius: 6px;
-  border: 3px solid transparent;
-  background:
-    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
-      border-box;
+.fechar{
+  border-radius: 0.2rem;
+  border: 0.1rem solid #4c4d4e;
+  background-color: white;
 
   padding: 0.5rem;
+
+  font-size: medium;
 
   transition: transform 0.4s ease;
 
   margin-bottom: 0.7rem;
 }
 
-#invisivelDuvidaDiv button:active {
-  background-color: rgb(147, 199, 245);
-}
-
-#invisivelDuvidaDiv button:hover {
+.fechar:hover {
   transform: translateY(-5px);
   cursor: pointer;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.6); /* Usar mais isso aqui pelo senso de modernismo */
+}
+
+.fechar:active {
+  background-color: rgb(147, 199, 245);
 }
 
 .escondido {
@@ -389,11 +386,10 @@ body {
 }
 
 #modalInfosContainer {
-  border: 0.2rem solid #b2b5ba;;
+  border: 0.2rem solid #b2b5ba;
   border-radius: 1rem;
 
   background-color: white;
-  
 
   display: flex;
   align-items: center;
@@ -407,7 +403,7 @@ body {
 
   margin: 0 auto;
 
-  padding: 3rem;
+  padding: 2rem;
 
   z-index: 9999;
 
@@ -418,29 +414,22 @@ body {
   padding: 0.5rem;
 }
 
-#modalInfosWrapper button {
-  padding: 0.5rem;
-  background:
-    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
-      border-box;
-
-  border: 0.2rem solid transparent;
-  border-radius: 0.3rem;
-}
 
 #modalInfosWrapper:hover,
 #modalInfosContainer {
   cursor: default;
 }
 
-#modalInfosWrapper h3,
-#modalInfosWrapper button {
+#modalInfosWrapper h3 {
   margin: 1.7rem;
 }
 
-#modalInfosWrapper button:hover {
-  cursor: pointer;
+#modalInfosWrapper button{
+  margin-top: 1rem;
+}
+
+#modalInfosWrapper h4{
+  font-weight: 700;
 }
 
 #modalInfosWrapper:hover {
