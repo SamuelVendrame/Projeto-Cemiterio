@@ -30,7 +30,7 @@
     const nome = formRegistro.elements.nome.value;
     const dataNascimento = formRegistro.elements.dataNascimento.value;
     const dataFalecimento = formRegistro.elements.dataFalecimento.value;
-    const outraPessoaNome = formRegistro.elements.outraPessoaNome.value || null; // o problema eh aqui!!!
+    const outraPessoaNome = formRegistro.elements.outraPessoaNome.value || null; 
 
     try {
       const resposta = await fetch("/registrar", {
