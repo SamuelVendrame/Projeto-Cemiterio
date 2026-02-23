@@ -18,18 +18,19 @@ const loggerMiddleware = (req, res, next) => {
 
 app.use(loggerMiddleware)
 
-app.use(express.static(path.join(__dirname, "..", 'frontend')));
-
 const isAdmin = require("./middlewares/userRole.js")
 const isAuthenticated = require("./middlewares/userAuth.js")
+const autoSend = require("./middlewares/autoSend.js")
 
 app.get("/admin", isAuthenticated, isAdmin, (req, res) => { 
     res.sendFile(path.join(__dirname, "..", "frontend", "admin", "admin.html"));
 });
 
-app.get("/login", (req, res) => {
+app.get("/login", autoSend, (req, res) => {
     res.sendFile(path.join(__dirname, "..", "frontend", "login", "login.html"));
 })
+
+app.use("/", express.static(path.join(__dirname, "..", "frontend")));
 
 const rotaRegistros = require("./routes/registroRoutes.js")
 app.use("/", rotaRegistros)
