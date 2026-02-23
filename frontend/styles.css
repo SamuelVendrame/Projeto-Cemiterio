@@ -2,6 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+*{
+    font-weight: 500;
+  
+}
 
 html, body{
   height: 100%;
@@ -13,7 +17,7 @@ body {
   font-family:
     "Inter", sans-serif;
   overflow-x: hidden; /*Corrobora com o problema da horizontal sliding bar que aparecia por causa das animações que mexiam com pixeis e aumentavam o tamanho da tela por um breve momento ao reiniciar a pagina."*/
-
+  
   display: flex;
   flex-direction: column;
   min-height: 10
@@ -205,13 +209,14 @@ body {
 }
 
 #sectionPrincipal {
-  margin-top: 10rem;
+  margin-top: 7rem; /* preiso encontrar uma forma mais profissional de lidar com isso*/
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  color: #1f1f1f;
 
   animation: deslizarBaixo 1s ease-out forwards;
 }
@@ -373,9 +378,10 @@ body {
 #caixaDeResultados ul li {
   list-style: none;
   border-radius: 3px;
-  padding: 0.7rem 0.5rem;
+  padding: 0.9rem 0.5rem;
   z-index: 9999;
-}
+
+  }
 
 #caixaDeResultados ul li:hover {
   background-color: rgb(147, 199, 245);
@@ -383,12 +389,7 @@ body {
 }
 
 #modalInfosContainer {
-  background:
-    linear-gradient(rgb(216, 216, 216), rgb(216, 216, 216)) padding-box,
-    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
-      border-box;
-
-  border: 0.3rem solid transparent;
+  border: 0.2rem solid #b2b5ba;;
   border-radius: 1rem;
 
   background-color: white;

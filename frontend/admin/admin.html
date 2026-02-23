@@ -50,7 +50,9 @@
 
     <div class="overlay escondido">
       <div id="criarRegistro" class="escondido">
-        <div id="fechar">X</div>
+        <div id="fechar">
+          <img src="botaoFechar.png">
+        </div>
         <form id="registroInputs">
           <label>
             Nome:
@@ -67,7 +69,7 @@
             <input type="date" name="dataFalecimento" required />
           </label>
 
-          <label>
+          <label id="temOutraPessoaContainer">
             Há outra pessoa enterrada junto?
             <input type="checkbox" id="temOutraPessoa" />
           </label>
