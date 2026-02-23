@@ -7,7 +7,8 @@ const sessionMiddleware = session({ // aprender isso aq melhor
     resave: false,
     saveUninitialized: false,
     cookie: {
-        httpOnly: true
+        httpOnly: true,
+        maxAge: 3600000 // 1h de Session
     }
 });
 
