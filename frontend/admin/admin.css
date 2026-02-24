@@ -543,13 +543,9 @@ footer {
 
 #modalConfirmar{
   background-color: white;
-  border: 6.6px solid transparent;
+  border: 0.3rem solid #717374;
   border-radius: 6px;
-   background:
-    linear-gradient(rgb(216, 216, 216), rgb(255, 255, 255)) padding-box,
-    linear-gradient(to bottom, rgb(190, 149, 13), rgb(76, 128, 18), darkgreen)
-      border-box;
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -562,9 +558,11 @@ footer {
   animation: deslizarCima 0.6s ease-out forwards;
 }
 
-#modalConfirmar h3{
-  padding: 1rem;
+#modalConfirmar h3,
+#modalConfirmar h5{
+  padding: 0.3rem 1rem;
 }
+
 
 #modalConfirmar:hover{
   cursor: default;
@@ -574,7 +572,7 @@ footer {
   display: flex;
   gap: 3rem;
 
-  margin-top: 1rem; /*Lembrar de arrumar o bug do hoover que joga os elementos de cima pro alto qnd passo o mouse*/
+  margin-top: 3rem; /*Lembrar de arrumar o bug do hoover que joga os elementos de cima pro alto qnd passo o mouse*/
 }
 
 .botaoConfirmar{
@@ -583,7 +581,7 @@ footer {
   width: 6rem;
 
   border: 1px solid black;
-  border-radius: 9px;
+  border-radius: 4px;
 
 }
 

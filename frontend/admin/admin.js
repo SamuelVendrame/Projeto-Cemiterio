@@ -299,7 +299,11 @@ function pegarIdDoClick(evento) {
       nomeEDIT.value = dadoEncontrar.nome
       dataFalecimentoEDIT.value = dadoEncontrar.dataFalecimento
       dataNascimentoEDIT.value = dadoEncontrar.dataNascimento
-      outraPessoaNomeEDIT.value = dadoEncontrar.outraPessoaNome
+      outraPessoaNomeEDIT.value = dadoEncontrar.outraPessoaNome 
+
+      if(dadoEncontrar.outraPessoaNome == undefined){
+        outraPessoaNomeEDIT.value = "";
+      }
     })
 
     editarRegistro.addEventListener("click", function(e){
