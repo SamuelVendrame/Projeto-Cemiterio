@@ -1,9 +1,13 @@
-export default function App() {
+import Navbar from "./components/navbar/Navbar";
+import MainSection from "./components/mainSection/mainSection";
+
+const App = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-3xl font-bold">
-        Sistema Cemitério
-      </h1>
-    </div>
+    <>
+    <Navbar />
+    <MainSection />
+    </> // Ver se realmente posso fazer isso (c pedro ou professores)
   )
 }
+
+export default App;
