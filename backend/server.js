@@ -26,7 +26,7 @@ app.get("/admin", isAuthenticated, isAdmin, (req, res) => {
     res.sendFile(path.join(__dirname, "..", "frontend", "admin", "admin.html"));
 });
 
-app.get("/login", autoSend, (req, res) => {
+app.get("/login", (req, res) => { // LEMBRETE - READICIONAR O AUTOSEND APÓS MOSTRAR PRO FERNANDO!!
     res.sendFile(path.join(__dirname, "..", "frontend", "login", "login.html"));
 })
 

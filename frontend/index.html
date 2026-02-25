@@ -1,95 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa Cemitério - São Manoel do Paraná</title>
-    <link rel="icon" type="icon" href="logoRodape.png">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!--!! Considerar o uso de max-width nas propriedades CSS quando o projeto estiver funcional, para priorizar responsividade-->
-    <!--Arrumar a desproporcionalidade e assimetria da navbar-->
-    <nav id="navBarPrincipal" class="corBase">
-        <div id="logoSaoManoel">
-            <a href="https://www.saomanoeldoparana.pr.gov.br/site/"><img src="logoRodape.png"></a>
-        </div>
-
-        <div id="menuHamburgerIcon">
-            <img src="menuHamburgerIcon.png">
-        </div>
-    </nav>
-
-    <div id="configNavBar" class="escondido">
-            <ul id="navbarEscondidaLinks">
-                <li><a href="/login">LOGIN</a></li> <hr> <!-- considerar <br>s aqui-->
-            </ul>
-        </div>
-
-    <section id="sectionPrincipal">
-            <h1>Pesquisa do Cemitério</h1>
-
-            <div id="imagemInterrogacao">
-                <img id="interrogacao" src="interrogacao.png">
-            </div>
-
-        <div id="divBarraPesquisa">
-            <input id="barraPesquisa" type="name" placeholder="Pesquise um nome...">
-                <span id="caixaDeResultados">
-                    
-                </span>
-                <li id="displayer" class="escondido">
-
-                </li>
-        </div>
-    </section>
-
-
-    <footer class="corBase">
-        <div id="mensagemFooter">
-            <h4>2026 @ Prefeitura de São Manoel do Paraná</h4>
-            <div id="creditosSite">
-                <p>Desenvolvido por Samuel</p>
-                <a href="https://www.linkedin.com/in/samuelvendrame/">
-                     <img src="LinkedIn_icon.svg.png" alt="Logo do LinkedIn.">
-                </a>
-            </div>
-        </div>
-    </footer>
-
-
-    <div class="overlay escondido"> <!--Uma aparente ma pratica, mas vou a deixar, em caso de erros com o overlay o motivo sera este.-->
-        <div id="invisivelDuvidaDiv" class="escondido">
-        <h3>Como utilizar a barra de pesquisa?</h3>
-        <ul>
-            <li>Digite o nome que deseja encontrar informações sobre;</li>
-            <li>Em seguida, clique no item desejado;</li>
-            <li>Caso não apareça, a busca não consta no sistema.</li>
-        </ul>
-        <button class="fechar">
-            FECHAR
-        </button>
-    </div>
-
-        <div id="modalInfosContainer" class="escondido">
-            <div id="modalInfosWrapper">
-                <h4 class="espaco" >NOME DA PESSOA</h4>
-                <p id="nome"  class="espaco"></p>
-                <h4  class="espaco">DATA FALECIMENTO</h4>
-                <p id="datafal"  class="espaco" ></p>
-                <h4 class="espaco"> DATA NASCIMENTO </h4>
-                <p id="datanasc"  class="espaco"></p>
-                <h4 class="espaco">HÁ OUTRA PESSOA JUNTO?</h4>
-                <p id="outrapessoa"></p>
-                <h4 class="espaco"> ID DO REGISTRO</h4>
-                <p id="idpessoa"></p>
-
-                <button class="fechar">
-                     FECHAR
-                </button>
-            </div>
-        </div>
-
-    <script src="index.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>frontend</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
