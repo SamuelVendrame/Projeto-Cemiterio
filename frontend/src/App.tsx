@@ -1,14 +1,16 @@
-import Navbar from "./components/navbar/Navbar";
-import MainSection from "./components/mainSection/mainSection";
-import Footer from "./components/footer/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+import Home from "./pages/Home.tsx"
+import Admin from "./pages/Admin.tsx"
 
 const App = () => {
   return (
-    <>
-    <Navbar />
-    <MainSection />
-    <Footer />
-    </> // Ver se realmente posso fazer isso (c pedro ou professores)
+    <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<Admin />} />
+    </Routes>
+    </BrowserRouter>
   )
 }
 
