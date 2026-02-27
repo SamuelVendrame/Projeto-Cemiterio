@@ -9,7 +9,6 @@ const Navbar = () => {
 
             <div className="p-4">
                 <HamburgerMenu />
-                { /* <img src="./public/navbarImages/menuHamburger.png" className="w-10 h-10"/> */ }
             </div>
         </nav>
     )
