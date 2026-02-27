@@ -1,3 +1,5 @@
+import HamburgerMenu from "../hamburgerMenu/hamburgerMenu";
+
 const Navbar = () => {
     return(
         <nav className="bg-gradient-to-b from-[rgb(255,196,0)] via-[rgb(81,133,13)] to-[rgb(53,94,6)] w-full h-[13vh] flex justify-between items-center"> 
@@ -6,7 +8,8 @@ const Navbar = () => {
             </div>
 
             <div className="p-4">
-                <img src="./public/navbarImages/menuHamburger.png" className="w-10 h-10"/>
+                <HamburgerMenu />
+                { /* <img src="./public/navbarImages/menuHamburger.png" className="w-10 h-10"/> */ }
             </div>
         </nav>
     )
