@@ -9,7 +9,7 @@ const Home = () => {
         <>
         <Navbar>
             <HamburgerMenu>
-                <Link to="/admin">ADMIN</Link>
+                <Link to="/admin" className="py-7 px-5 block text-[white] text-2xl">ADMIN</Link>
             </HamburgerMenu>
         </Navbar>
         <MainSection />

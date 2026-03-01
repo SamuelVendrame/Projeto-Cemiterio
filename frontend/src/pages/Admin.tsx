@@ -9,7 +9,7 @@ const Admin = () => {
         <>
         <Navbar>
             <HamburgerMenu>
-                    <StyledLink to="/">HOME</StyledLink>
+                    <StyledLink to="/" className="py-7 px-5 block text-[white] text-2xl">HOME</StyledLink>
             </HamburgerMenu>
         </Navbar>
         <Footer />

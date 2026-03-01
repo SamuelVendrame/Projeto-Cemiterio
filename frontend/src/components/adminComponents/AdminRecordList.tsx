@@ -1,6 +1,6 @@
 const AdminRecordList = () => {
     return(
-        <div className="w-80 flex flex-col justify-center items-center">
+        <div className="w-80 flex flex-col justify-end items-center ">
             <li>
                 Nome:
             </li>
