@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Squash as Hamburger } from "hamburger-react"
 import Overlay from "../overlay/Overlay"
+import StyledLink from "../styledLinks/StyledLinks"
 
 
 const HamburgerMenu = ({children}) => {
@@ -12,7 +13,7 @@ const HamburgerMenu = ({children}) => {
 
             <Overlay isOpen={isOpen} close={() => setOpen(false)} />
 
-            <div className={` flex items-center flex-col bg-[#28A428] z-5 fixed top-0 left-0 h-screen w-[43vw] transition-all duration-300 ${ isOpen ? "translate-x-0" : "-translate-x-full" }`}>
+            <div className={` flex items-center flex-col bg-gradient-to-b from-[rgb(53,94,6)] via-[rgb(113,190,13)] to-[rgb(53,94,6)] z-5 fixed top-0 left-0 h-screen w-[43vw] transition-all duration-300 ${ isOpen ? "translate-x-0" : "-translate-x-full" }`}>
                 <ul className="flex flex-col mt-8 gap-5">
                     {children}
                 </ul>
