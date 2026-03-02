@@ -20,9 +20,8 @@ const MainSection = () => {
 
             <Input />
 
-            {isOpen && 
                 <Overlay isOpen={isOpen} close={() => setOpen(false)}>
-                    <Modal>
+                    <Modal isOpen={isOpen}>
                     <h2 className="font-bold text-xl">Como realizar uma pesquisa?</h2>
 
                     <ul className="list-disc list-inside space-y-3 list-none p-1">
@@ -32,7 +31,6 @@ const MainSection = () => {
                     </ul>
                     </Modal>
                 </Overlay>
-            }
         </section>
     )
 }
