@@ -5,8 +5,8 @@ const AdminSection = () => {
     return(
         <section className="h-[10vh] mt-10 flex flex-col items-center">
             <div className=" w-[10] flex flex-col justify-center items-center gap-5">
-                <h2>Modificação de Cadastros</h2>
-                <button className="bg-[red] w-50 p-2">adicionar registros</button>                
+                <h2 className="font-2xl">Modificação de Cadastros</h2>
+                <button className="bg-[red] w-50 p-2">Adicionar registro</button>           
             </div>
 
             <div className="bg-[gray] w-[80vw] flex flex-col mt-5 justify-center items-center rounded-xl">
