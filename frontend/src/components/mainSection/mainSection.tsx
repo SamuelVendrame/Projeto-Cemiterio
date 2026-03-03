@@ -2,6 +2,7 @@ import { useState } from "react";
 import Input from "../inputbar/Input";
 import Modal from "../modals/ModalBase";
 import Overlay from "../overlay/Overlay";
+import RecordList from "../inputbar/RecordList";
 
 const MainSection = () => {
     const [isOpen, setOpen] = useState(false)
@@ -19,6 +20,11 @@ const MainSection = () => {
             </button>
 
             <Input />
+                <ul>
+                    <RecordList>
+
+                    </RecordList>
+                </ul>
 
                 <Overlay isOpen={isOpen} close={() => setOpen(false)}>
                     <Modal isOpen={isOpen}>

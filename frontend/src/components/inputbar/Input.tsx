@@ -1,25 +1,23 @@
 import { useState, useEffect } from "react";
+import type { User } from "../User";
 
  const Input = () => {
-        type User = {
-        id: number
-        name: string
-        username: string
-        email: string
-        };
         {/*TESTE, REVER DEPOIS */}
 
     const [ search, setSearch ] = useState("")
-    const [users, setUsers] = useState<User[]>([])
 
     useEffect(() => {
         try{
         const pegarDados = async function(){
             const resposta = await fetch("https://jsonplaceholder.typicode.com/users")
                 const dados: User[] = await resposta.json()
-                const name = dados.map(nome => nome.name)
-                setUsers(dados)
-                return console.log(name)
+
+                const dadosLowercase = dados.filter((dadoN) => dadoN.name.toLowerCase().includes(search))
+                    if(search == ""){
+                        return console.log("Nada na searchbar.")
+                    }
+
+                return console.log(dadosLowercase)
                 } 
                 pegarDados()
             }
