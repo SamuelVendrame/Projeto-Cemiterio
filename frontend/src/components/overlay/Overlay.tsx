@@ -1,6 +1,6 @@
 
 {/* Inset=0 é um atalho pra propriedades que cobrem a tela toda, faz com que a div cubra toda a viewport, mas depende da position */}
-{/* Entender melhor essas props depois vvvvvvvvv*/}
+{/* Entender melhor essas props depois vvvvvvv*/}
 
 
 const Overlay = ({isOpen, close, children}) => {
