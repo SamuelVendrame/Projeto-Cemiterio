@@ -12,7 +12,7 @@ const MainSection = () => {
     }
 
     return(
-        <section className="mt-10 h-50 flex flex-col justify-center items-center gap-5">
+        <section className="mt-19 h-50 flex flex-col justify-center items-center gap-5">
             <h1 className="h text-3xl font-[300] text-center">Pesquisa do Cemitério</h1>
 
             <button onClick={abrirModal} className="cursor-pointer block p-3">

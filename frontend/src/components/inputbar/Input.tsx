@@ -12,12 +12,14 @@ import type { User } from "../User";
             const resposta = await fetch("https://jsonplaceholder.typicode.com/users")
                 const dados: User[] = await resposta.json()
 
-                const dadosLowercase = dados.filter((dadoN) => dadoN.name.toLowerCase().includes(search))
+                const searchLower = search.toLowerCase()
+
+                const filtroBusca = dados.filter((dado) => dado.name.toLowerCase().includes(searchLower))
                     if(search == ""){
                         return console.log("Nada na searchbar.")
                     }
 
-                return console.log(dadosLowercase)
+                return console.log(filtroBusca)
                 } 
                 pegarDados()
             }
@@ -29,7 +31,7 @@ import type { User } from "../User";
 
 
     return(
-        <input type="text" value={search}  onChange={(e) => setSearch(e.target.value)} className="border border-black md rounded p-1 pl-3 h-11 w-[70vw]" placeholder="Digite um nome..."/> /* componentizar isso depois pra searchbar do admin*/ 
+        <input type="text" value={search}  onChange={(e) => setSearch(e.target.value)} className="border border-black md rounded p-6 pl-3 h-11 w-[70vw]" placeholder="Digite um nome..."/> /* componentizar isso depois pra searchbar do admin*/ 
     )
 }
 
