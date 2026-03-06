@@ -1,13 +1,17 @@
+import type { User } from "../User"
+
 interface RecordListProps{
-    nome: string;
-    onClick: (nome: string) => void;
+    dados: User[]
 }
 
-const RecordList = ({ nome, onClick }: RecordListProps) => {
+const RecordList = ({dados}: RecordListProps) => {
+
     return(
-        <li onClick={() => onClick(nome)} className="bg-red w-10 h-10">
-            {nome}
-        </li>
+        dados.map((dado) => (
+            <li className="bg-[red]" key={dado.id}>
+                {dado.name}
+            </li>
+        ))
     )
 }
 

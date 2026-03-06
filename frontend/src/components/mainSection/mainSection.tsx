@@ -1,15 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../inputbar/Input";
 import Modal from "../modals/ModalBase";
 import Overlay from "../overlay/Overlay";
 import RecordList from "../inputbar/RecordList";
+import pegarDados from "../inputbar/SearchFunction";
+import type { User } from "../User";
+
 
 const MainSection = () => {
     const [isOpen, setOpen] = useState(false)
+    const [resultado, setResultado] = useState<User[]>([])
+    const [search, setSearch] = useState("")
+    
 
     function abrirModal(){
         setOpen(true)
     }
+
+    useEffect(() =>{
+        const carregar = async () => {
+            try {
+                const dados = await pegarDados(search);
+                setResultado(dados); 
+            } catch (error) {
+                console.log("Erro na busca:", error);
+            }
+        };
+        carregar()
+    }, [search])
+
 
     return(
         <section className="mt-19 h-50 flex flex-col justify-center items-center gap-5">
@@ -19,9 +38,9 @@ const MainSection = () => {
                 <img src="mainSectionImages/iconDuvida.png" className="w-10 h-10"/>
             </button>
 
-            <Input />
+            <Input search={search} setSearch={setSearch}/>
                 <ul>
-                    <RecordList>
+                    <RecordList dados={resultado}>
 
                     </RecordList>
                 </ul>
