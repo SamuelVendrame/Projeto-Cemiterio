@@ -8,7 +8,7 @@ const RecordList = ({dados}: RecordListProps) => {
 
     return(
         dados.map((dado) => (
-            <li className="bg-[red]" key={dado.id}>
+            <li className="bg-[grey] p-2 z-10 border-solid" key={dado.id} onClick={() => console.log("clicou no: " + dado.name + " que tem o id " + dado.id)}>
                 {dado.name}
             </li>
         ))

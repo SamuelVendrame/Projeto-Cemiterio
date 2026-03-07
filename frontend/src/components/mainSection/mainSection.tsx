@@ -31,20 +31,20 @@ const MainSection = () => {
 
 
     return(
-        <section className="mt-19 h-50 flex flex-col justify-center items-center gap-5">
+        <section className="mt-19 flex flex-col justify-center items-center gap-0">
             <h1 className="h text-3xl font-[300] text-center">Pesquisa do Cemitério</h1>
 
-            <button onClick={abrirModal} className="cursor-pointer block p-3">
+            <button onClick={abrirModal} className="cursor-pointer block p-7">
                 <img src="mainSectionImages/iconDuvida.png" className="w-10 h-10"/>
             </button>
 
-            <Input search={search} setSearch={setSearch}/>
-                <ul>
+            <Input search={search} setSearch={setSearch} />
+                <ul className="w-[70vw] h-auto flex flex-col border-solid border-2 z-10">
                     <RecordList dados={resultado}>
 
                     </RecordList>
                 </ul>
-
+            
                 <Overlay isOpen={isOpen} close={() => setOpen(false)}>
                     <Modal isOpen={isOpen}>
                     <h2 className="font-bold text-xl">Como realizar uma pesquisa?</h2>
