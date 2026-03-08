@@ -10,6 +10,7 @@ import type { User } from "../User";
 const MainSection = () => {
     const [isOpen, setOpen] = useState(false)
     const [resultado, setResultado] = useState<User[]>([])
+    const [resultadoFull, setResultadoFull] = useState<User[]>([])
     const [search, setSearch] = useState("")
     
 
@@ -17,11 +18,14 @@ const MainSection = () => {
         setOpen(true)
     }
 
+
     useEffect(() =>{
         const carregar = async () => {
             try {
                 const dados = await pegarDados(search);
-                setResultado(dados); 
+                setResultado(dados.slice(0, 5)); 
+                setResultadoFull(dados)
+
             } catch (error) {
                 console.log("Erro na busca:", error);
             }
@@ -40,11 +44,14 @@ const MainSection = () => {
 
             <Input search={search} setSearch={setSearch} />
                     {resultado.length > 0 && (
+                        <>
                         <RecordList dados={resultado} >
 
                         </RecordList>
+                        <div className="bg-[red] w-[70vw] flex justify-center">Mostrando {resultado.length} de {resultadoFull.length} resultados</div>
+                        </>
                     )}
-                    
+
                 <Overlay isOpen={isOpen} close={() => setOpen(false)}>
                     <Modal isOpen={isOpen}>
                     <h2 className="font-bold text-xl">Como realizar uma pesquisa?</h2>
