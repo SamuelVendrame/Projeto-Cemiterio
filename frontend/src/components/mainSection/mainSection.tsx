@@ -39,12 +39,12 @@ const MainSection = () => {
             </button>
 
             <Input search={search} setSearch={setSearch} />
-                <ul className="w-[70vw] h-auto flex flex-col border-solid border-2 z-10">
-                    <RecordList dados={resultado}>
+                    {resultado.length > 0 && (
+                        <RecordList dados={resultado} >
 
-                    </RecordList>
-                </ul>
-            
+                        </RecordList>
+                    )}
+                    
                 <Overlay isOpen={isOpen} close={() => setOpen(false)}>
                     <Modal isOpen={isOpen}>
                     <h2 className="font-bold text-xl">Como realizar uma pesquisa?</h2>

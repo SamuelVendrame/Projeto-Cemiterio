@@ -5,10 +5,13 @@ export default async function pegarDados(search: string){
             const resposta = await fetch("https://jsonplaceholder.typicode.com/users")
                 const dados: User[] = await resposta.json()
                 
+                function normalizar(texto: string) {
+                    return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                }
 
-                const searchLower = search.toLowerCase()
+                const searchNormalizado = normalizar(search)
 
-                const filtroBusca = dados.filter((dado) => dado.name.toLowerCase().includes(searchLower))
+                const filtroBusca = dados.filter((dado) => normalizar(dado.name).includes(searchNormalizado))
                     if(search == ""){
                         console.log("Nada na searchbar.")
                         return []
