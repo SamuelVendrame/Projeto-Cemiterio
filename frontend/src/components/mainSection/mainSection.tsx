@@ -10,7 +10,6 @@ import type { User } from "../User";
 const MainSection = () => {
     const [isOpen, setOpen] = useState(false)
     const [resultado, setResultado] = useState<User[]>([])
-    const [resultadoFull, setResultadoFull] = useState<User[]>([])
     const [search, setSearch] = useState("")
     
 
@@ -23,8 +22,7 @@ const MainSection = () => {
         const carregar = async () => {
             try {
                 const dados = await pegarDados(search);
-                setResultado(dados.slice(0, 5)); 
-                setResultadoFull(dados)
+                setResultado(dados); 
 
             } catch (error) {
                 console.log("Erro na busca:", error);
@@ -45,10 +43,10 @@ const MainSection = () => {
             <Input search={search} setSearch={setSearch} />
                     {resultado.length > 0 && (
                         <>
-                        <RecordList dados={resultado} >
+                        <RecordList dados={resultado.slice(0, 5)} >
 
                         </RecordList>
-                        <div className="bg-[red] w-[70vw] flex justify-center">Mostrando {resultado.length} de {resultadoFull.length} resultados</div>
+                        <div className="bg-[red] w-[70vw] flex justify-center">Mostrando {resultado.slice(0, 5).length} de {resultado.length} resultados</div>
                         </>
                     )}
 
