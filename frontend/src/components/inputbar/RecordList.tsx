@@ -17,7 +17,7 @@ const RecordList = ({dados}: RecordListProps) => {
                 <li
                     className="bg-[#e4e0e0] p-2 border-solid"
                     key={dado.id}
-                    onClick={() => {setOpen(true), setDadoSelect(dado)}}
+                    onClick={() => {setOpen(true), setDadoSelect(dado), console.log(dado)}}
                 >
                     {dado.name}
                 </li>
@@ -25,8 +25,14 @@ const RecordList = ({dados}: RecordListProps) => {
 
             <Overlay isOpen={isOpen} close={() => setOpen(false)}>
                 <Modal isOpen={isOpen}>
-                    <h1>NOME DA PESSOA</h1>
+                    <h1 className="font-bold">NOME DA PESSOA</h1>
                     <h3>{dadoSelect?.name}</h3>
+                    <h1 className="font-bold">EMAIL</h1>
+                    <h3>{dadoSelect?.email}</h3>
+                    <h1 className="font-bold">APELIDO</h1>
+                    <h3>{dadoSelect?.username}</h3>
+                    <h1 className="font-bold">ID</h1>
+                    <h3>{dadoSelect?.id}</h3>
                     <button className="bg-[gray] p-2" onClick={() => setOpen(false)}>Fechar</button>
                 </Modal>
             </Overlay>
