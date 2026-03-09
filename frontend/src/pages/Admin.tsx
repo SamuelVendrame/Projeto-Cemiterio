@@ -12,8 +12,8 @@ const Admin = () => {
                     <StyledLink to="/" className="py-7 px-5 block text-[white] text-2xl">HOME</StyledLink>
             </HamburgerMenu>
         </Navbar>
-        <Footer />
         <AdminSection />
+        <Footer />
         </>
     )
 }

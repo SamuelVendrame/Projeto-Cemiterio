@@ -11,12 +11,10 @@ const MainSection = () => {
     const [isOpen, setOpen] = useState(false)
     const [resultado, setResultado] = useState<User[]>([])
     const [search, setSearch] = useState("")
-    
 
     function abrirModal(){
         setOpen(true)
     }
-
 
     useEffect(() =>{
         const carregar = async () => {
@@ -46,7 +44,7 @@ const MainSection = () => {
                         <RecordList dados={resultado.slice(0, 5)} >
 
                         </RecordList>
-                        <div className="bg-[red] w-[70vw] flex justify-center">Mostrando {resultado.slice(0, 5).length} de {resultado.length} resultados</div>
+                        <div className="bg-[grey] w-[70vw] flex justify-center">Mostrando {resultado.slice(0, 5).length} de {resultado.length} resultados</div>
                         </>
                     )}
 
