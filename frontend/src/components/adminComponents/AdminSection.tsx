@@ -30,9 +30,10 @@ const AdminSection = () => {
             </div>
 
                 <Input />
-                <ul className="w-[70vw] flex flex-col bg-[green] mt-5 ">
+                <ul className="w-[70vw] flex flex-col items-end bg-[green] mt-5 ">
                     <AdminRecordList dados={resultado}/>
                 </ul>
+
         </section>
     )
 }
