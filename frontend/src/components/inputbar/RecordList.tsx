@@ -19,18 +19,20 @@ const RecordList = ({dados}: RecordListProps) => {
                     key={dado.id}
                     onClick={() => {setOpen(true), setDadoSelect(dado), console.log(dado)}}
                 >
-                    {dado.name}
+                    {dado.nome}
                 </li>
             ))}
 
             <Overlay isOpen={isOpen} close={() => setOpen(false)}>
                 <Modal isOpen={isOpen}>
                     <h1 className="font-bold">NOME DA PESSOA</h1>
-                    <h3>{dadoSelect?.name}</h3>
-                    <h1 className="font-bold">EMAIL</h1>
-                    <h3>{dadoSelect?.email}</h3>
-                    <h1 className="font-bold">APELIDO</h1>
-                    <h3>{dadoSelect?.username}</h3>
+                    <h3>{dadoSelect?.nome}</h3>
+                    <h1 className="font-bold">DATA DE NASCIMENTO</h1>
+                    <h3>{dadoSelect?.dataNascimento}</h3>
+                    <h1 className="font-bold">DATA DE FALECIMENTO</h1>
+                    <h3>{dadoSelect?.dataFalecimento}</h3>
+                    <h1 className="font-bold">NOME DA OUTRA PESSOA ENTERRADA JUNTO</h1>
+                    <h3>{dadoSelect?.outraPessoaNome || "Não há outra pessoa junto."}</h3>
                     <h1 className="font-bold">ID</h1>
                     <h3>{dadoSelect?.id}</h3>
                     <button className="bg-[gray] p-2" onClick={() => setOpen(false)}>Fechar</button>

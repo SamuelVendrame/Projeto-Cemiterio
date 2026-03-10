@@ -26,7 +26,9 @@ router.get("/mostrarDadosSearch", (req, res) => {
 });
 
 router.get("/mostrarDados", (req, res) => {
-  res.send(registros)
+  res
+    .status(201)
+    .json(registros)
 })
 
 router.delete("/deletarDado/:id", (req, res) =>{

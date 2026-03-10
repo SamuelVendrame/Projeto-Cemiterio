@@ -1,9 +1,7 @@
 import Input from "../inputbar/Input";
-import AdminButton from "./AdminButton";
 import AdminRecordList from "./AdminRecordList";
 import type { User } from "../User";
 import { useState, useEffect } from "react";
-import pegarDados from "../inputbar/SearchFunction";
 
 const AdminSection = () => {
     const [resultado, setResultado] = useState<User[]>([])
@@ -11,7 +9,7 @@ const AdminSection = () => {
        useEffect(() =>{
             const carregar = async () => {
                 try {
-                    const resposta = await fetch("https://jsonplaceholder.typicode.com/users"); 
+                    const resposta = await fetch("/api/mostrarDados"); 
                     const dados = await resposta.json()
                     setResultado(dados)
 
@@ -24,9 +22,9 @@ const AdminSection = () => {
 
     return(
         <section className="max-h-fit w-[90vw] bg-gray-200 mx-auto mt-10 flex flex-col items-center border rounded-xl ">
-            <div className=" flex flex-col justify-center items-center gap-5">
-                <h2 className="text-2xl">Modificação de Cadastros</h2>
-                <button className="bg-[red] w-50 p-2">Adicionar registro</button>           
+            <div className=" flex flex-col justify-center items-center">
+                <h2 className="text-2xl m-3">Modificação de Cadastros</h2>
+                <button className="bg-[red] w-50 p-2 mb-4">Adicionar registro</button>           
             </div>
 
                 <Input />
