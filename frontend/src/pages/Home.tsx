@@ -13,7 +13,6 @@ const Home = () => {
             </HamburgerMenu>
         </Navbar>
         <MainSection />
-        <Footer />
         </>
     )
 }

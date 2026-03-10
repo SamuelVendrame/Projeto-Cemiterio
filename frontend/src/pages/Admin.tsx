@@ -13,7 +13,6 @@ const Admin = () => {
             </HamburgerMenu>
         </Navbar>
         <AdminSection />
-        <Footer />
         </>
     )
 }
