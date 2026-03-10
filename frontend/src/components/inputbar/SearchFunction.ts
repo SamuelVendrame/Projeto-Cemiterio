@@ -2,7 +2,7 @@ import type { User } from "../User";
 
 export default async function pegarDados(search: string){
         const buscarDados = async function(){
-            const resposta = await fetch("https://jsonplaceholder.typicode.com/users")
+            const resposta = await fetch("/api/mostrarDados")
                 const dados: User[] = await resposta.json()
                 
                 function normalizar(texto: string) {
@@ -11,7 +11,7 @@ export default async function pegarDados(search: string){
 
                 const searchNormalizado = normalizar(search)
 
-                const filtroBusca = dados.filter((dado) => normalizar(dado.name).includes(searchNormalizado))
+                const filtroBusca = dados.filter((dado) => normalizar(dado.nome).includes(searchNormalizado))
                     if(search == ""){
                         console.log("Nada na searchbar.")
                         return []
