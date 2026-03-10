@@ -1,8 +1,9 @@
 import { useState } from "react";
 import type { User } from "../User";
-import AdminButton from "./AdminButton";
+import AdminButton from "./AdminEdit";
 import Overlay from "../overlay/Overlay";
 import Modal from "../modals/ModalBase";
+import Botao from "./AdminButtonBase";
 
         interface RecordListProps{
             dados: User[]
@@ -15,22 +16,32 @@ const AdminRecordList = ({dados}: RecordListProps) => {
     return(
             <>
                {dados.map((dado) => (
-                <li className="w-[90%] bg-[#e4e0e0] p-2 border flex justify-between items-center" key={dado.id} 
-                onClick={() => {setOpen(true), setDadoSelect(dado), console.log(dado.nome)}}
-                >
+                <li className="w-[90%] bg-[#e4e0e0] p-2 border flex justify-between items-center" key={dado.id}>
                 {dado.nome}      
-                <AdminButton />
+                <AdminButton onClick={() => {setOpen(true); setDadoSelect(dado); console.log(dado.nome)}}/>
                 </li>
             ))}
 
             <Overlay isOpen={isOpen} close={() => setOpen(false)}>
                 <Modal isOpen={isOpen}>
-                    <h1>{dadoSelect?.nome}</h1>
+                    <h1 className="font-bold">NOME DA PESSOA</h1>
+                    <h3>{dadoSelect?.nome}</h3>
+                    <h1 className="font-bold">DATA DE NASCIMENTO</h1>
+                    <h3>{dadoSelect?.dataNascimento}</h3>
+                    <h1 className="font-bold">DATA DE FALECIMENTO</h1>
+                    <h3>{dadoSelect?.dataFalecimento}</h3>
+                    <h1 className="font-bold">NOME DA OUTRA PESSOA ENTERRADA JUNTO</h1>
+                    <h3>{dadoSelect?.outraPessoaNome || "Não há outra pessoa junto."}</h3>
+                    <h1 className="font-bold">ID</h1>
+                    <h3>{dadoSelect?.id}</h3>
+
+                    <div className="flex justify-center items-center gap-5">
+                        <Botao onClick={() => setOpen(false)}>Editar</Botao>
+                        <button className="bg-[gray] p-2" onClick={() => setOpen(false)}>Fechar</button>
+                    </div>
                 </Modal>
             </Overlay>
-
             </>
-
     )
 }
 

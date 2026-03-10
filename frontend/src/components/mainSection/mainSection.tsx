@@ -31,32 +31,40 @@ const MainSection = () => {
 
 
     return(
-        <section className="mt-19 flex flex-col justify-center items-center gap-0">
+        <section className="mt-19 relative flex flex-col justify-center items-center gap-0">
             <h1 className="h text-3xl font-[300] text-center">Pesquisa do Cemitério</h1>
 
             <button onClick={abrirModal} className="cursor-pointer block p-7">
                 <img src="mainSectionImages/iconDuvida.png" className="w-10 h-10"/>
             </button>
 
+            <div className="relative w-[70vw]">
             <Input search={search} setSearch={setSearch} />
                     {resultado.length > 0 && (
                         <>
+                        <div className="absolute">
                         <RecordList dados={resultado.slice(0, 5)} >
 
                         </RecordList>
-                        <div className="bg-[grey] w-[70vw] flex justify-center">Mostrando {resultado.slice(0, 5).length} de {resultado.length} resultados</div>
+                        <div className="bg-[rgb(186,184,184)] border border-2 rounded-sm w-[70vw] flex justify-center">Mostrando {resultado.slice(0, 5).length} de {resultado.length} resultados</div>
+                        </div>
                         </>
                     )}
+            </div>        
 
                 <Overlay isOpen={isOpen} close={() => setOpen(false)}>
                     <Modal isOpen={isOpen}>
                     <h2 className="font-bold text-xl">Como realizar uma pesquisa?</h2>
 
-                    <ul className="list-disc list-inside space-y-3 list-none p-1">
+                    <ul className="flex flex-col list-disc list-inside my-5 gap-5 list-none">
                         <li>Procure por um nome;</li>
                         <li>Clique no resultado desejado, e as informações aparecerão;</li>
                         <li>Caso nenhum nome apareça, a busca não consta em nossos registros.</li>
                     </ul>
+
+                    <button className="bg-[red] p-2 border border-solid" onClick={() => setOpen(false)}>
+                        FECHAR
+                    </button>
                     </Modal>
                 </Overlay>
         </section>

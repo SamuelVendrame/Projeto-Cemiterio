@@ -12,10 +12,10 @@ const RecordList = ({dados}: RecordListProps) => {
     const [dadoSelect, setDadoSelect] = useState<User | null>(null)
 
     return(
-           <ul className={`w-[70vw] flex flex-col border-solid border-2`}>
+           <ul className={`w-full flex flex-col border-solid border-2 border-b-0`}>
             {dados.map((dado) => (
                 <li
-                    className="bg-[#e4e0e0] p-2 border-solid"
+                    className="bg-[#e4e0e0] p-3 border-b-2 border-solid"
                     key={dado.id}
                     onClick={() => {setOpen(true), setDadoSelect(dado), console.log(dado)}}
                 >
