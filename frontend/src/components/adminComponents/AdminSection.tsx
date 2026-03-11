@@ -2,6 +2,7 @@ import Input from "../inputbar/Input";
 import AdminRecordList from "./AdminRecordList";
 import type { User } from "../User";
 import { useState, useEffect } from "react";
+import Botao from "../botao/Botao";
 
 const AdminSection = () => {
     const [resultado, setResultado] = useState<User[]>([])
@@ -24,7 +25,7 @@ const AdminSection = () => {
         <section className="max-h-fit w-[90vw] bg-gray-200 mx-auto mt-10 flex flex-col items-center border rounded-xl ">
             <div className=" flex flex-col justify-center items-center">
                 <h2 className="text-2xl m-3">Modificação de Cadastros</h2>
-                <button className="bg-[red] w-50 p-2 mb-4">Adicionar registro</button>           
+                <Botao onClick={() => console.log("Adicionando registro...")}>Adicionar registro</Botao>           
             </div>
 
                 <Input />

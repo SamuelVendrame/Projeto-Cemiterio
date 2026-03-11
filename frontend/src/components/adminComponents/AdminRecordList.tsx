@@ -3,7 +3,7 @@ import type { User } from "../User";
 import AdminButton from "./AdminEdit";
 import Overlay from "../overlay/Overlay";
 import Modal from "../modals/ModalBase";
-import Botao from "./AdminButtonBase";
+import Botao from "../botao/Botao";
 
         interface RecordListProps{
             dados: User[]
@@ -16,7 +16,7 @@ const AdminRecordList = ({dados}: RecordListProps) => {
     return(
             <>
                {dados.map((dado) => (
-                <li className="w-[90%] bg-[#e4e0e0] p-2 border flex justify-between items-center" key={dado.id}>
+                <li className="w-[100%] bg-[#e4e0e0] p-2 border flex justify-between items-center" key={dado.id}>
                 {dado.nome}      
                 <AdminButton onClick={() => {setOpen(true); setDadoSelect(dado); console.log(dado.nome)}}/>
                 </li>
@@ -36,8 +36,9 @@ const AdminRecordList = ({dados}: RecordListProps) => {
                     <h3>{dadoSelect?.id}</h3>
 
                     <div className="flex justify-center items-center gap-5">
-                        <Botao onClick={() => setOpen(false)}>Editar</Botao>
-                        <button className="bg-[gray] p-2" onClick={() => setOpen(false)}>Fechar</button>
+                        <Botao className="w-[20vw] justify-center items-center flex" onClick={() => setOpen(false)}>Deletar</Botao>
+                        <Botao className="w-[20vw] justify-center items-center flex" onClick={() => setOpen(false)}>Editar</Botao>
+                        <Botao className="w-[20vw] justify-center items-center flex" onClick={() => setOpen(false)}>Fechar</Botao>
                     </div>
                 </Modal>
             </Overlay>
