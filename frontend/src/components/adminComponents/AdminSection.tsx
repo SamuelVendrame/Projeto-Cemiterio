@@ -25,7 +25,7 @@ const AdminSection = () => {
         <section className="max-h-fit w-[90vw] bg-gray-200 mx-auto mt-10 flex flex-col items-center border rounded-xl ">
             <div className=" flex flex-col justify-center items-center">
                 <h2 className="text-2xl m-3">Modificação de Cadastros</h2>
-                <Botao onClick={() => console.log("Adicionando registro...")}>Adicionar registro</Botao>           
+                <Botao onClick={() => setOpen(true)}>Adicionar registro</Botao>           
             </div>
 
                 <Input />

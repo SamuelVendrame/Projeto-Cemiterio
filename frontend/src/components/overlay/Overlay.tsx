@@ -1,12 +1,19 @@
+import type { ReactNode } from "react";
 
 {/* Inset=0 é um atalho pra propriedades que cobrem a tela toda, faz com que a div cubra toda a viewport, mas depende da position */}
 {/* Entender melhor essas props depois vvvvvvv*/}
 
+interface OverlayProps{
+    isOpen: boolean;
+    close: () => void;
+    children: ReactNode;
+}
 
-const Overlay = ({isOpen, close, children}) => {
+const Overlay = ({isOpen, close, children}: OverlayProps) => {
+    
     return(
         <div
-        className={`flex justify-center items-center cursor-pointer z-3 fixed inset-0 bg-black/50 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`} 
+        className={`flex justify-center items-center cursor-pointer z-50 fixed inset-0 bg-black/50 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`} 
         onClick={close}
         >
         {children}

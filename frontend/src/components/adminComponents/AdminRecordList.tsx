@@ -1,7 +1,6 @@
 import { useState } from "react";
 import type { User } from "../User";
 import AdminButton from "./AdminEdit";
-import Overlay from "../overlay/Overlay";
 import Modal from "../modals/ModalBase";
 import Botao from "../botao/Botao";
 
@@ -22,8 +21,7 @@ const AdminRecordList = ({dados}: RecordListProps) => {
                 </li>
             ))}
 
-            <Overlay isOpen={isOpen} close={() => setOpen(false)}>
-                <Modal isOpen={isOpen}>
+                <Modal isOpen={isOpen} onClose={() => setOpen(false)}>
                     <h1 className="font-bold">NOME DA PESSOA</h1>
                     <h3>{dadoSelect?.nome}</h3>
                     <h1 className="font-bold">DATA DE NASCIMENTO</h1>
@@ -41,7 +39,6 @@ const AdminRecordList = ({dados}: RecordListProps) => {
                         <Botao className="w-[20vw] justify-center items-center flex" onClick={() => setOpen(false)}>Fechar</Botao>
                     </div>
                 </Modal>
-            </Overlay>
             </>
     )
 }
