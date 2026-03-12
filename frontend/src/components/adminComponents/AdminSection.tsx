@@ -45,14 +45,14 @@ const AdminSection = () => {
             }
         }
 
-                            console.log(resultado)
+        console.log(resultado)
 
         
     return(
         <section className="max-h-fit w-[90vw] bg-gray-200 mx-auto my-10 flex flex-col items-center border rounded-xl ">
             <div className=" flex flex-col justify-center items-center">
                 <h2 className="text-2xl m-3">Modificação de Cadastros</h2>
-                <Botao onClick={() => setOpen(true)}>Adicionar registro</Botao>
+                <Botao onClick={() => setOpen(true)}> Adicionar Registro</Botao>
                 
 
                 {/* fazer o forms e usaria só um estado no forms ao invés de 4 para cada input */} 
