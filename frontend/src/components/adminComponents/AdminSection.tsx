@@ -29,7 +29,7 @@ const AdminSection = () => {
             };
             carregar()
         }, [])
-
+ // rever CAGADAS do willaim
         const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
             event.preventDefault()
             const a = new FormData(event.target);
