@@ -66,9 +66,9 @@ const AdminSection = () => {
                         <h1>DATA DE FALECIMENTO</h1>
                         <InputModifier type="date" placeholder="Data de falecimento" {...register("dataFalecimento")}/>
                         <h1>HÁ OUTRA PESSOA JUNTO?</h1>
-                        <InputModifier type="text" placeholder="Nome da outra pessoa que está enterrada junto" {...register("nomeOutraPessoa")}/>
+                        <InputModifier type="text" placeholder="Nome da outra pessoa que está enterrada junto" {...register("outraPessoaNome")}/>
 
-                        <Botao type="submit" className="mt-5">Enviar Registro</Botao>
+                        <Botao type="submit" className="mt-5" onClick={() => setOpen(false)}>Enviar Registro</Botao>
                     </form>
                 </Modal>    
 
