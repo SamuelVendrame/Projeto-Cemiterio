@@ -11,9 +11,9 @@ const AdminSection = () => {
     const [isOpen, setOpen] = useState(false)
     const [formData, setFormData] = useState({
         nome: "",
-        nascimento: "",
-        falecimento: "",
-        tumulo: ""
+        dataNascimento: "",
+        dataFalecimento: "",
+        nomeOutraPessoa: ""
     })
 
        useEffect(() =>{
@@ -30,6 +30,41 @@ const AdminSection = () => {
             carregar()
         }, [])
 
+        const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
+            event.preventDefault()
+            const a = new FormData(event.target);
+            
+            console.log(a);
+            console.log(a.get('nome'))
+            try {
+                console.log(formData);
+                const resposta = await fetch("/api/registrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                })
+
+                const dados = await resposta.json()
+
+                setResultado((prev) => [...prev, dados])
+                console.log(dados)
+console.log(formData);
+                setFormData({
+                    nome: "",
+                    dataNascimento: "",
+                    dataFalecimento: "",
+                    nomeOutraPessoa: ""
+            })
+
+        setOpen(false)
+
+    } catch (error) {
+        console.log("Erro ao enviar:", error)
+    }
+}
+
     return(
         <section className="max-h-fit w-[90vw] bg-gray-200 mx-auto mt-10 flex flex-col items-center border rounded-xl ">
             <div className=" flex flex-col justify-center items-center">
@@ -39,15 +74,17 @@ const AdminSection = () => {
                 {/* fazer o forms e usaria só um estado no forms ao invés de 4 para cada input */} 
 
                 <Modal isOpen={isOpen} onClose={() => setOpen(false)}>
-                    <form>
+                    <form className="flex flex-col" onSubmit={handleSubmit}>
                         <h1>NOME DA PESSOA</h1>
-                        <InputModifier value={formData.nome}/>
+                        <InputModifier type="text" name="nome"  value={formData.nome}/>
                         <h1>DATA DE NASCIMENTO</h1>
-                        <InputModifier value={formData.nome}/>
+                        <InputModifier type="date" name={"dataNascimento"} value={formData.dataNascimento}/>
                         <h1>DATA DE FALECIMENTO</h1>
-                        <InputModifier value={formData.nome}/>
+                        <InputModifier type="date" name={"dataFalecimento"} value={formData.dataFalecimento}/>
                         <h1>HÁ OUTRA PESSOA JUNTO?</h1>
-                        <InputModifier value={formData.nome}/>
+                        <InputModifier type="text" name={"outraPessoaNome"} value={formData.nomeOutraPessoa}/>
+
+                        <Botao type="submit" className="mt-5">Enviar Registro</Botao>
                     </form>
                 </Modal>    
 
