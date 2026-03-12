@@ -1,6 +1,6 @@
 import Navbar from "../components/navbar/Navbar";
 import MainSection from "../components/mainSection/mainSection";
-import HamburgerMenu from "../components/hamburgerMenu/HamburgerMenu";
+import HamburgerMenu from "../components/hamburgerMenu/hamburgerMenu";
 import { Link } from "react-router-dom";
 import Map from "../components/mapComponents/Map";
 

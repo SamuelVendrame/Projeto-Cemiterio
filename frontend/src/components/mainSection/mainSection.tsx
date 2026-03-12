@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Input from "../inputbar/Input";
 import Modal from "../modals/ModalBase";
-import Overlay from "../overlay/Overlay";
 import RecordList from "../inputbar/RecordList";
 import pegarDados from "../inputbar/SearchFunction";
 import type { User } from "../User";
@@ -52,8 +51,7 @@ const MainSection = () => {
                     )}
             </div>        
 
-                <Overlay isOpen={isOpen} close={() => setOpen(false)}>
-                    <Modal isOpen={isOpen}>
+                <Modal isOpen={isOpen} onClose={() => setOpen(false)}>
                     <h2 className="font-bold text-xl">Como realizar uma pesquisa?</h2>
 
                     <ul className="flex flex-col list-disc list-inside my-5 gap-5 list-none">
@@ -65,8 +63,7 @@ const MainSection = () => {
                     <button className="bg-[red] p-2 border border-solid" onClick={() => setOpen(false)}>
                         FECHAR
                     </button>
-                    </Modal>
-                </Overlay>
+                </Modal>
         </section>
     )
 }
