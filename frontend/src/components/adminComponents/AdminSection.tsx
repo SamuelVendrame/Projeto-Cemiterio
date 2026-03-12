@@ -29,13 +29,10 @@ const AdminSection = () => {
             };
             carregar()
         }, [])
- // rever CAGADAS do willaim
-        const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
+
+        const handleSubmit = async (event: React.SubmitEvent) => {
             event.preventDefault()
-            const a = new FormData(event.target);
-            
-            console.log(a);
-            console.log(a.get('nome'))
+     
             try {
                 console.log(formData);
                 const resposta = await fetch("/api/registrar", {
@@ -49,8 +46,7 @@ const AdminSection = () => {
                 const dados = await resposta.json()
 
                 setResultado((prev) => [...prev, dados])
-                console.log(dados)
-console.log(formData);
+
                 setFormData({
                     nome: "",
                     dataNascimento: "",
