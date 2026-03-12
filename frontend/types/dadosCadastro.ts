@@ -1,4 +1,4 @@
-export interface User {
+export interface dadosCadastro {
         id: number
         nome: string
         dataFalecimento?: string

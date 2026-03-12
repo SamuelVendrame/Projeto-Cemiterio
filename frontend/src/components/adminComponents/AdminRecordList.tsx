@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { User } from "../User";
+import type { dadosCadastro } from "../../../types/dadosCadastro";
 import AdminButton from "./AdminEdit";
 import Modal from "../modals/ModalBase";
 import Botao from "../botao/Botao";

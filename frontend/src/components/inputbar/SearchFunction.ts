@@ -1,4 +1,4 @@
-import type { User } from "../User";
+import type { dadosCadastro } from "../../../types/dadosCadastro";
 
 export default async function pegarDados(search: string){
         const buscarDados = async function(){

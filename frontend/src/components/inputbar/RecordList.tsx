@@ -1,4 +1,4 @@
-import type { User } from "../User"
+import type { dadosCadastro } from "../../../types/dadosCadastro"
 import { useState } from "react"
 import Modal from "../modals/ModalBase"
 import Overlay from "../overlay/Overlay"

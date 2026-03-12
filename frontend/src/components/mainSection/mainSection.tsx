@@ -3,7 +3,7 @@ import Input from "../inputbar/Input";
 import Modal from "../modals/ModalBase";
 import RecordList from "../inputbar/RecordList";
 import pegarDados from "../inputbar/SearchFunction";
-import type { User } from "../User";
+import type { dadosCadastro } from "../../../types/dadosCadastro";
 
 
 const MainSection = () => {
