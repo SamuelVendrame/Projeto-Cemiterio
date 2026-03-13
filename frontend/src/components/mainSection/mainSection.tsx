@@ -9,7 +9,7 @@ import Botao from "../botao/Botao";
 
 const MainSection = () => {
     const [isOpen, setOpen] = useState(false)
-    const [resultado, setResultado] = useState<User[]>([])
+    const [resultado, setResultado] = useState<dadosCadastro[]>([])
     const [search, setSearch] = useState("")
 
     function abrirModal(){

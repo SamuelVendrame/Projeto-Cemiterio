@@ -1,16 +1,14 @@
-import { useState } from "react";
 import type { dadosCadastro } from "../../../types/dadosCadastro";
 import AdminButton from "./AdminEdit";
-import ModalCreate from "../modals/ModalCreate";
 
         interface RecordListProps{
             dados: dadosCadastro[]
-            onClick: () => void;
+            onClick: (dado: dadosCadastro) => void;
         }
 
-const AdminRecordList = ({dados}: RecordListProps) => {
-    const [isOpen, setOpen] = useState(false)
-    const [dadoSelect, setDadoSelect] = useState<dadosCadastro | null>(null)
+        
+
+const AdminRecordList = ({dados, onClick}: RecordListProps) => {
 
     return(
             <>
@@ -19,14 +17,12 @@ const AdminRecordList = ({dados}: RecordListProps) => {
                     <span className="max-w-[200px] truncate">
                         {dado.nome} 
                     </span>     
-                <AdminButton onClick={() => {setOpen(true); setDadoSelect(dado); console.log(dado.nome)}}/>
+                <AdminButton onClick={() => onClick(dado)}/>
                 </li>
             ))}
 
             {/* Preciso LITERALMENTE só criar um componente novo de ModalEdit e usar o ModalCreate como base, mas usar um patch dentro */}
-            <ModalCreate isOpen={isOpen} onClose={() => setOpen(false)} dadoSelect={dadoSelect}>
-                <h1 className="font-bold text-xl w-full">EDITAR REGISTRO</h1>
-            </ModalCreate>
+
             </>
     )
 }

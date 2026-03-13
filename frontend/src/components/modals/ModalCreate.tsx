@@ -1,54 +1,26 @@
 import Modal from "./ModalBase"
-import InputModifier from "../adminComponents/InputModifier"
-import Botao from "../botao/Botao"
 import type { ModalProps } from "./ModalBase"
 import type { dadosCadastro } from "../../../types/dadosCadastro";
-import { useForm } from "react-hook-form";
+import type { ReactNode } from "react";
+import RegistroForm from "../adminComponents/Formulario";
 
 
 interface ModalCreateProps extends ModalProps {
+    isOpen: boolean;    
+    children?: ReactNode;
     dadoSelect?: dadosCadastro | null;
-    onClick?: () => void
+    onSubmit: (data: dadosCadastro) => Promise<void>;
 }
 
-const ModalCreate = ({isOpen, onClose, onClick, children}: ModalCreateProps) => {
-    const { register, handleSubmit } = useForm<dadosCadastro>()
+const ModalCreate = ({isOpen, onClose, children, onSubmit, dadoSelect}: ModalCreateProps) => {
 
-
-    async function onSubmit(data: dadosCadastro) {
-        try {
-            const resposta = await fetch("/api/registrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-                },
-            body: JSON.stringify(data)
-            })
-
-            const resultado = await resposta.json()
-            console.log(resultado)
-
-        } catch (erro) {
-            console.error("Erro ao cadastrar:", erro)
-        }
-    }
 
     return(
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} close={close}>
             {children}
-        <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
-            {/* Componentizar essa budega tb*/}
-            <h1 className="flex flex-end">NOME DA PESSOA</h1>
-            <InputModifier type="text" placeholder="Nome da pessoa..." {...register("nome")}/>
-            <h1 className="flex flex-end">DATA DE NASCIMENTO</h1>
-            <InputModifier type="date" placeholder="Data de nascimento" {...register("dataNascimento")}/>
-            <h1 className="flex flex-end">DATA DE FALECIMENTO</h1>
-            <InputModifier type="date" placeholder="Data de falecimento" {...register("dataFalecimento")}/>
-            <h1 className="flex flex-end">HÁ OUTRA PESSOA JUNTO?</h1>
-            <InputModifier type="text" placeholder="Nome da outra pessoa..." {...register("outraPessoaNome")}/>
+            <RegistroForm onSubmit={onSubmit} dadoSelect={dadoSelect}>
 
-            <Botao type="submit" className="mt-5" onClick={onClick}>Enviar Registro</Botao>
-        </form>
+            </RegistroForm>
     </Modal> 
     )
 }

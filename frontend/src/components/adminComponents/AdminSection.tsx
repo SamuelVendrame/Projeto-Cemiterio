@@ -5,9 +5,13 @@ import { useState, useEffect } from "react";
 import Botao from "../botao/Botao";
 import ModalCreate from "../modals/ModalCreate";
 
+
 const AdminSection = () => {
     const [resultado, setResultado] = useState<dadosCadastro[]>([])
     const [isOpen, setOpen] = useState(false)
+    const [dadoSelect, setDadoSelect] = useState<dadosCadastro | null>(null)
+    const [search, setSearch] = useState("")
+    const [modalMode, setModalMode] = useState<"create" | "edit" | null>(null)
 
        useEffect(() =>{
             const carregar = async () => {
@@ -23,27 +27,86 @@ const AdminSection = () => {
             carregar()
         }, [])
 
+        function selecionarRegistro(dado: dadosCadastro) {
+            setDadoSelect(dado)
+            setModalMode("edit")
+        }
+
+        async function criarRegistro(data: dadosCadastro) {
+            try {
+            const resposta = await fetch("/api/registrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                    },
+                body: JSON.stringify(data)
+                })
+
+                const resultado = await resposta.json()
+                console.log(resultado)
+
+            } catch (erro) {
+                console.error("Erro ao cadastrar:", erro)
+            }
+        }
+
+       async function editarRegistro(data: dadosCadastro) {
+            try {
+
+                if (!data.id) {
+                    console.error("ID do registro é obrigatório para edição");
+                    return;
+                }
+
+                const resposta = await fetch(`/api/registrar/${data.id}`, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        nome: data.nome,
+                        dataNascimento: data.dataNascimento,
+                        dataFalecimento: data.dataFalecimento,
+                        outraPessoaNome: data.outraPessoaNome,
+                        id: data.id
+                    })
+                });
+
+                const resultado = await resposta.json();
+                console.log("Registro editado com sucesso:", resultado);
+
+            } catch (erro) {
+                console.error("erro ao editar registro:", erro);
+            }
+        }
 
         
     return(
         <section className="max-h-fit w-[90vw] bg-gray-200 mx-auto my-10 flex flex-col items-center border rounded-xl ">
             <div className=" flex flex-col justify-center items-center">
                 <h2 className="text-2xl m-3">Modificação de Cadastros</h2>
-                <Botao onClick={() => setOpen(true)}> Adicionar Registro</Botao>
-                {/* fazer o forms e usaria só um estado no forms ao invés de 4 para cada input */} 
-                <ModalCreate isOpen={isOpen} onClose={() => setOpen(false)}>
-                    <h1 className="font-bold text-xl w-full">CRIAR NOVO REGISTRO</h1>
-                </ModalCreate>    
+                <Botao onClick={() => {setDadoSelect(null); setModalMode("create")}}> Adicionar Registro</Botao>
             </div>
 
-                <Input />
+                <Input search={search} setSearch={setSearch} />
                 <ul className="w-[70vw] flex flex-col items-end bg-[green] mt-5 ">
-                    <AdminRecordList dados={resultado} onClick={() => setOpen(true)}/>
+                    <AdminRecordList dados={resultado} onClick={selecionarRegistro}/>
                 </ul>
 
+                {modalMode === "create" && (                
+                    <ModalCreate isOpen={true} onClose={() => setOpen(false)} onSubmit={criarRegistro}>
+                    </ModalCreate>  
+                )}
+    
+                {modalMode === "edit" && (
+                <ModalCreate isOpen={true} onClose={() => setOpen(false)} dadoSelect={dadoSelect} onSubmit={editarRegistro}>
+
+                </ModalCreate>
+                )}
             
         </section>
     )
 }
 
 export default AdminSection;
+
