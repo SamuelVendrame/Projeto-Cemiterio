@@ -4,7 +4,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const InputModifier = ({className, ...props}: InputProps) => {
     return(
-        <input className={`p-1 bg-red border-solid border-2 ${className}`} {...props}>
+        <input className={`p-1 bg-red border-solid border-1 ${className}`} {...props}>
 
         </input>
     )

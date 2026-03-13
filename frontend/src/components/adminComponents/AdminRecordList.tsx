@@ -1,11 +1,11 @@
 import { useState } from "react";
 import type { dadosCadastro } from "../../../types/dadosCadastro";
 import AdminButton from "./AdminEdit";
-import Modal from "../modals/ModalBase";
-import Botao from "../botao/Botao";
+import ModalCreate from "../modals/ModalCreate";
 
         interface RecordListProps{
             dados: dadosCadastro[]
+            onClick: () => void;
         }
 
 const AdminRecordList = ({dados}: RecordListProps) => {
@@ -23,26 +23,10 @@ const AdminRecordList = ({dados}: RecordListProps) => {
                 </li>
             ))}
 
-            {/* Componentizar essas coisas aqui abaixo E LEMBRAR DO truncate*/}
-
-                <Modal isOpen={isOpen} onClose={() => setOpen(false)}>
-                    <h1 className="font-bold">NOME DA PESSOA</h1>
-                    <h3 className=" max-w-[250px] truncate">{dadoSelect?.nome}</h3>
-                    <h1 className="font-bold">DATA DE NASCIMENTO</h1>
-                    <h3 className=" max-w-[250px] truncate">{dadoSelect?.dataNascimento}</h3>
-                    <h1 className="font-bold">DATA DE FALECIMENTO</h1>
-                    <h3 className=" max-w-[250px] truncate">{dadoSelect?.dataFalecimento}</h3>
-                    <h1 className="font-bold">NOME DA OUTRA PESSOA ENTERRADA JUNTO</h1>
-                    <h3 className=" max-w-[250px] truncate">{dadoSelect?.outraPessoaNome || "Não há outra pessoa junto."}</h3>
-                    <h1 className="font-bold">ID</h1>
-                    <h3 className="truncate">{dadoSelect?.id}</h3>
-
-                    <div className="flex justify-center items-center gap-5">
-                        <Botao className="w-[20vw] justify-center items-center flex" onClick={() => setOpen(false)}>Deletar</Botao>
-                        <Botao className="w-[20vw] justify-center items-center flex" onClick={() => setOpen(false)}>Editar</Botao>
-                        <Botao className="w-[20vw] justify-center items-center flex" onClick={() => setOpen(false)}>Fechar</Botao>
-                    </div>
-                </Modal>
+            {/* Preciso LITERALMENTE só criar um componente novo de ModalEdit e usar o ModalCreate como base, mas usar um patch dentro */}
+            <ModalCreate isOpen={isOpen} onClose={() => setOpen(false)} dadoSelect={dadoSelect}>
+                <h1 className="font-bold text-xl w-full">EDITAR REGISTRO</h1>
+            </ModalCreate>
             </>
     )
 }

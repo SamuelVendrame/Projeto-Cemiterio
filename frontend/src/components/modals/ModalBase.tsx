@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Overlay from "../overlay/Overlay";
 
-type ModalProps = {
+export type ModalProps = {
   children?: ReactNode;
   isOpen: boolean;
   onClose: () => void;
