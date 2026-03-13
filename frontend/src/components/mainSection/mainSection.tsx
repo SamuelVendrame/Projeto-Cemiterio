@@ -4,6 +4,7 @@ import Modal from "../modals/ModalBase";
 import RecordList from "../inputbar/RecordList";
 import pegarDados from "../inputbar/SearchFunction";
 import type { dadosCadastro } from "../../../types/dadosCadastro";
+import Botao from "../botao/Botao";
 
 
 const MainSection = () => {
@@ -60,9 +61,9 @@ const MainSection = () => {
                         <li>Caso nenhum nome apareça, a busca não consta em nossos registros.</li>
                     </ul>
 
-                    <button className="bg-[red] p-2 border border-solid" onClick={() => setOpen(false)}>
+                    <Botao onClick={() => setOpen(false)}>
                         FECHAR
-                    </button>
+                    </Botao>
                 </Modal>
         </section>
     )

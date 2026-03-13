@@ -10,6 +10,7 @@ router.post("/registrar", (req, res) => {
 
   const { nome, dataNascimento, dataFalecimento, outraPessoaNome } = req.body;
   const apenasLetras = /^[\p{L}\s\-]+$/u;
+  const apenasLetrasOutroNome = /^[\p{L}\s\-]*$/u;
 
 
   if (!nome || !dataNascimento || !dataFalecimento) {
@@ -17,18 +18,10 @@ router.post("/registrar", (req, res) => {
   }
 
   let outraPessoaNomeLimpo = null;
+  outraPessoaNomeLimpo = outraPessoaNome.trim();
 
-  if(!apenasLetras.test(nome) || !apenasLetras.test(outraPessoaNome)){
+  if(!apenasLetras.test(nome) || !apenasLetrasOutroNome.test(outraPessoaNomeLimpo)){
     return res.status(422).json({ mensagem: "Os dados inseridos são inválidos."})
-  }
-
-  if (outraPessoaNome) {
-    outraPessoaNomeLimpo = outraPessoaNome.trim();
-    if (outraPessoaNomeLimpo == "") {
-      return res
-        .status(400)
-        .json({ mensagem: "O nome da outra pessoa está vazio." });
-    }
   }
 
   const novoRegistro = {
