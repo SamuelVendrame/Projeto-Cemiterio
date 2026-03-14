@@ -23,7 +23,7 @@ const RecordList = ({dados}: RecordListProps) => {
                 </li>
             ))}
 
-                <Modal isOpen={isOpen} onClose={() => setOpen(false)}>
+                <Modal isOpen={isOpen} close={() => setOpen(false)}>
                     <h1 className="font-bold">NOME DA PESSOA</h1>
                     <h3>{dadoSelect?.nome}</h3>
                     <h1 className="font-bold">DATA DE NASCIMENTO</h1>

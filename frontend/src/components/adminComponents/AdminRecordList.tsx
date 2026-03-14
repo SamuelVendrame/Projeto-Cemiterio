@@ -21,8 +21,6 @@ const AdminRecordList = ({dados, onClick}: RecordListProps) => {
                 </li>
             ))}
 
-            {/* Preciso LITERALMENTE só criar um componente novo de ModalEdit e usar o ModalCreate como base, mas usar um patch dentro */}
-
             </>
     )
 }
