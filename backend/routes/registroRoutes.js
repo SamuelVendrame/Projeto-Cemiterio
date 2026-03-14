@@ -44,7 +44,7 @@ router.post("/registrar", (req, res) => {
 router.patch("/editar/:id", (req, res) => {
   const { nome, dataFalecimento, dataNascimento, outraPessoaNome } = req.body
   const id = parseInt(req.params.id);
-  //console.log(req.body)
+
 
   const idEncontrado = registros.find(registro => registro.id == id)
 

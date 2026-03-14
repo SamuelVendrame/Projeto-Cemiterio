@@ -52,7 +52,7 @@ const MainSection = () => {
                     )}
             </div>        
 
-                <Modal isOpen={isOpen} onClose={() => setOpen(false)}>
+                <Modal isOpen={isOpen} close={() => setOpen(false)}>
                     <h2 className="font-bold text-xl">Como realizar uma pesquisa?</h2>
 
                     <ul className="flex flex-col list-disc list-inside my-5 gap-5 list-none">

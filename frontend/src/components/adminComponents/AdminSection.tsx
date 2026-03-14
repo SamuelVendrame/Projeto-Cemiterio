@@ -8,10 +8,14 @@ import ModalCreate from "../modals/ModalCreate";
 
 const AdminSection = () => {
     const [resultado, setResultado] = useState<dadosCadastro[]>([])
-    const [isOpen, setOpen] = useState(false)
     const [dadoSelect, setDadoSelect] = useState<dadosCadastro | null>(null)
     const [search, setSearch] = useState("")
     const [modalMode, setModalMode] = useState<"create" | "edit" | null>(null)
+
+    let isOpen = modalMode !== null;
+        if(isOpen === null){
+            isOpen = false
+        }
 
        useEffect(() =>{
             const carregar = async () => {
@@ -44,6 +48,7 @@ const AdminSection = () => {
 
                 const resultado = await resposta.json()
                 console.log(resultado)
+                setModalMode(null)
 
             } catch (erro) {
                 console.error("Erro ao cadastrar:", erro)
@@ -58,7 +63,7 @@ const AdminSection = () => {
                     return;
                 }
 
-                const resposta = await fetch(`/api/registrar/${data.id}`, {
+                const resposta = await fetch(`/api/editar/${data.id}`, {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json"
@@ -71,9 +76,11 @@ const AdminSection = () => {
                         id: data.id
                     })
                 });
+                console.log(resposta)
 
                 const resultado = await resposta.json();
                 console.log("Registro editado com sucesso:", resultado);
+                setModalMode(null)
 
             } catch (erro) {
                 console.error("erro ao editar registro:", erro);
@@ -85,21 +92,21 @@ const AdminSection = () => {
         <section className="max-h-fit w-[90vw] bg-gray-200 mx-auto my-10 flex flex-col items-center border rounded-xl ">
             <div className=" flex flex-col justify-center items-center">
                 <h2 className="text-2xl m-3">Modificação de Cadastros</h2>
-                <Botao onClick={() => {setDadoSelect(null); setModalMode("create")}}> Adicionar Registro</Botao>
+                <Botao onClick={() => {setDadoSelect(null); setModalMode("create")}}>Adicionar Registro</Botao>
             </div>
 
                 <Input search={search} setSearch={setSearch} />
                 <ul className="w-[70vw] flex flex-col items-end bg-[green] mt-5 ">
-                    <AdminRecordList dados={resultado} onClick={selecionarRegistro}/>
+                    <AdminRecordList dados={resultado} onClick={(dado) => {selecionarRegistro(dado)}}/>
                 </ul>
 
                 {modalMode === "create" && (                
-                    <ModalCreate isOpen={true} onClose={() => setOpen(false)} onSubmit={criarRegistro}>
+                    <ModalCreate isOpen={isOpen} close={() => setModalMode(null)} onSubmit={criarRegistro}>
                     </ModalCreate>  
-                )}
+                )} {/* Erro no null (?) de animacoes*/}
     
                 {modalMode === "edit" && (
-                <ModalCreate isOpen={true} onClose={() => setOpen(false)} dadoSelect={dadoSelect} onSubmit={editarRegistro}>
+                <ModalCreate isOpen={isOpen} close={() => setModalMode(null)}  dadoSelect={dadoSelect} onSubmit={editarRegistro}>
 
                 </ModalCreate>
                 )}
