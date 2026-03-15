@@ -2,9 +2,10 @@ import type { ReactNode } from "react";
 import Overlay from "../overlay/Overlay";
 
 export type ModalProps = {
-  children?: ReactNode;
+  children?: React.ReactNode;
   close: () => void;
   isOpen: boolean;
+  className?: ""
 };
 
 

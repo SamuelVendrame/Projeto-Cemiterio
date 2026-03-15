@@ -13,7 +13,7 @@ const AdminRecordList = ({dados, onClick}: RecordListProps) => {
     return(
             <>
                {dados.map((dado) => (
-                <li className="w-[100%] bg-[#e4e0e0] p-2 border flex justify-between items-center" key={dado.id}>
+                <li className="w-full bg-white px-4 py-3 border-b flex justify-between items-center hover:bg-gray-50 transition-colors" key={dado.id}>
                     <span className="max-w-[200px] truncate">
                         {dado.nome} 
                     </span>     

@@ -10,11 +10,13 @@ interface ModalCreateProps extends ModalProps {
     mode: "create" | "edit" | null
 }
 
-const ModalCreate = ({ isOpen, close, children, onSubmit, dadoSelect }: ModalCreateProps) => {
+const ModalCreate = ({ isOpen, close, children, onSubmit, dadoSelect, className }: ModalCreateProps) => {
     return (
       <Modal isOpen={isOpen} close={close}>
+        <RegistroForm onSubmit={onSubmit} dadoSelect={dadoSelect}>
+        </RegistroForm>
         {children}
-        <RegistroForm onSubmit={onSubmit} dadoSelect={dadoSelect} />
+
       </Modal>
     );
   };

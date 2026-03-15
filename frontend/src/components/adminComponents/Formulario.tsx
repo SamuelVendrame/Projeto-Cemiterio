@@ -1,15 +1,15 @@
 import InputModifier from "../adminComponents/InputModifier"
-import Botao from "../botao/Botao"
 import { useForm } from "react-hook-form"
-import { useEffect } from "react"
+import { useEffect, type ReactNode } from "react"
 import type { dadosCadastro } from "../../../types/dadosCadastro"
 
 interface RegistroFormProps {
     dadoSelect?: dadosCadastro | null
-    onSubmit: (data: dadosCadastro) => Promise<void>
+    onSubmit?: (data: dadosCadastro) => Promise<void> 
+    children?: ReactNode;
 }
 
-const RegistroForm = ({ dadoSelect, onSubmit }: RegistroFormProps) => {
+const RegistroForm = ({ dadoSelect, onSubmit, children }: RegistroFormProps) => {
 
     const { register, handleSubmit, reset } = useForm<dadosCadastro>()
 
@@ -20,7 +20,7 @@ const RegistroForm = ({ dadoSelect, onSubmit }: RegistroFormProps) => {
     }, [dadoSelect, reset])
 
     return (
-        <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col gap-2" onSubmit={ onSubmit ? handleSubmit(onSubmit) : undefined}>
 
             <h1 className="font-bold text-xl w-full">
                 {dadoSelect ? "EDITAR REGISTRO" : "CRIAR REGISTRO"}
@@ -50,9 +50,7 @@ const RegistroForm = ({ dadoSelect, onSubmit }: RegistroFormProps) => {
                 {...register("outraPessoaNome")}
             />
 
-            <Botao type="submit" className="mt-5">
-                Enviar Registro
-            </Botao>
+            {children}
 
         </form>
     )

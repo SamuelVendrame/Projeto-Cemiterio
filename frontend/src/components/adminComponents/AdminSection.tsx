@@ -90,14 +90,21 @@ const AdminSection = () => {
             </div>
 
                 <Input search={search} setSearch={setSearch} />
-                <ul className="w-[70vw] flex flex-col items-end bg-[green] mt-5 ">
+                <ul className="w-[70vw] flex flex-col mt-5 ">
                     <AdminRecordList dados={resultado} onClick={(dado) => {selecionarRegistro(dado)}}/>
                 </ul>
-
                              
-                <ModalCreate isOpen={modalMode !== null} mode={modalMode} close={() => setModalMode(null)} dadoSelect={dadoSelect}  onSubmit={modalMode === "create" ? criarRegistro : editarRegistro}>
-                    
+                <ModalCreate isOpen={modalMode == "edit"} mode={"edit"} close={() => setModalMode(null)} dadoSelect={dadoSelect} onSubmit={editarRegistro}>
+                    <div className="flex gap-5 mt-10">
+                        <Botao className="w-[20vw] justify-center items-center flex">DELETAR</Botao>
+                        <Botao className="w-[20vw] justify-center items-center flex">EDITAR</Botao>
+                        <Botao className="w-[20vw] justify-center items-center flex" onClick={() => setModalMode(null)}>FECHAR</Botao>
+                    </div>
                 </ModalCreate>  
+
+                <ModalCreate isOpen={modalMode == "create"} mode={"create"} close={() => setModalMode(null)} onSubmit={criarRegistro}>
+                    <h1>oi</h1>
+                </ModalCreate>
                    
         </section>
     )
