@@ -13,7 +13,7 @@ const Modal = ({children, close, isOpen}: ModalProps) => {
     return(
         <Overlay isOpen={isOpen} close={close}>
             <div
-                className={`cursor-default px-6 gap-3 h-[80vh] w-[80vw] bg-white absolute text-center z-10 flex flex-col justify-center items-center border-4 border-green-900/80 rounded-lg transition-all duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+                className={`cursor-default px-6 gap-3 h-[80vh] w-[80vw] bg-white absolute text-center z-10 flex flex-col justify-center items-center border-4 border-green-900/80 transition-all duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
                 onClick={(e) => e.stopPropagation()}
                 >
                 {children}

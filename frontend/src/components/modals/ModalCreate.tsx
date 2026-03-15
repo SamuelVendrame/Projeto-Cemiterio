@@ -7,6 +7,7 @@ import RegistroForm from "../adminComponents/Formulario";
 interface ModalCreateProps extends ModalProps {
     dadoSelect?: dadosCadastro | null;
     onSubmit: (data: dadosCadastro) => Promise<void>;
+    mode: "create" | "edit" | null
 }
 
 const ModalCreate = ({ isOpen, close, children, onSubmit, dadoSelect }: ModalCreateProps) => {

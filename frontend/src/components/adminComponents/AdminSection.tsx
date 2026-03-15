@@ -5,18 +5,12 @@ import { useState, useEffect } from "react";
 import Botao from "../botao/Botao";
 import ModalCreate from "../modals/ModalCreate";
 
-
 const AdminSection = () => {
     const [resultado, setResultado] = useState<dadosCadastro[]>([])
     const [dadoSelect, setDadoSelect] = useState<dadosCadastro | null>(null)
     const [search, setSearch] = useState("")
     const [modalMode, setModalMode] = useState<"create" | "edit" | null>(null)
-
-    let isOpen = modalMode !== null;
-        if(isOpen === null){
-            isOpen = false
-        }
-
+    
        useEffect(() =>{
             const carregar = async () => {
                 try {
@@ -100,17 +94,11 @@ const AdminSection = () => {
                     <AdminRecordList dados={resultado} onClick={(dado) => {selecionarRegistro(dado)}}/>
                 </ul>
 
-                {modalMode === "create" && (                
-                    <ModalCreate isOpen={isOpen} close={() => setModalMode(null)} onSubmit={criarRegistro}>
-                    </ModalCreate>  
-                )} {/* Erro no null (?) de animacoes*/}
-    
-                {modalMode === "edit" && (
-                <ModalCreate isOpen={isOpen} close={() => setModalMode(null)}  dadoSelect={dadoSelect} onSubmit={editarRegistro}>
-
-                </ModalCreate>
-                )}
-            
+                             
+                <ModalCreate isOpen={modalMode !== null} mode={modalMode} close={() => setModalMode(null)} dadoSelect={dadoSelect}  onSubmit={modalMode === "create" ? criarRegistro : editarRegistro}>
+                    
+                </ModalCreate>  
+                   
         </section>
     )
 }
